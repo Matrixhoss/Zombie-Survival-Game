@@ -42,4 +42,7 @@ public abstract class Character extends JLabel {
     }  public int getSpeed(){
         return speed;
     }
+    public int getSpeed(){
+        return speed;
+    }
 }
