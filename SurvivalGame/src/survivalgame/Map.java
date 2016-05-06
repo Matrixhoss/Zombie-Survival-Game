@@ -15,8 +15,11 @@ public class Map extends JFrame {
     private ZombieNormal z ;
     private ImagePanel Background;
     private ZombieGenerator zg;
+    private Player p ;
+    private Weapons w = new Weapons ();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
+    ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     private Random r;
     private Random R;
     public Map(){
@@ -26,6 +29,12 @@ public class Map extends JFrame {
     
     Background = new ImagePanel(MapIcn.getImage());
     c.add(Background);
+    
+       p = new Player (100,10,w,this,50,50);
+       p.setIcon(Playericon);
+       p.setSize(200, 200);
+       Background.add(p);
+       
      
    
    try{ 
@@ -48,12 +57,15 @@ public class Map extends JFrame {
     z.setIcon(Zombierawr);
     z.setBounds(50,50, 100, 100);
     Background.add(z);
+    
+
     Timer t=new Timer(50,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
         
            z.move();
-           
+           p.move();
+           p.setLocation(p.getx()*p.getSpeed(), p.gety()*p.getSpeed());
         }
    
    
