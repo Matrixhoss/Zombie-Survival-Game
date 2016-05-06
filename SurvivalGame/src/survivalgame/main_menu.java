@@ -72,6 +72,8 @@ public class main_menu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    diffculty df = new diffculty();
+                    df.setVisible(true);
                 }
             }
         );
