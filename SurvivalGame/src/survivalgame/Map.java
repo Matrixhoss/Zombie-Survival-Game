@@ -8,10 +8,10 @@ import javax.swing.JFrame;
 public class Map extends JFrame {
     
     private ImagePanel Background;
-    
+    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map.jpg"));
     public Map(){
         
-     Background = new ImagePanel(new ImageIcon("misc/Map.jpg").getImage());
+     Background = new ImagePanel(MapIcn.getImage());
     Container c = this.getContentPane();
     c.add(Background);
     this.pack();
