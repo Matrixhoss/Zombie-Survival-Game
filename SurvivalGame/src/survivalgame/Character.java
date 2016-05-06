@@ -1,6 +1,8 @@
 package survivalgame;
 
-public abstract class Character {
+import javax.swing.JLabel;
+
+public abstract class Character extends JLabel {
     
     private int speed;
     private int health;
