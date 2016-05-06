@@ -42,8 +42,26 @@ class MELEE extends Weapons{
     MELEE(){
         this.damage = 10;
         this.rateoffire = 5;
-        this.ammo=
-        this.range=this.MAPSIZE*(1/2);
-        this.burstfire=true;
+        this.ammo=Integer.MAX_VALUE;
+        this.range=0;
+        this.burstfire=false;
+    }
+}
+class MELEE2 extends Weapons{
+    MELEE2(){
+        this.damage = 20;
+        this.rateoffire = 5;
+        this.ammo=Integer.MAX_VALUE;
+        this.range=0;
+        this.burstfire=false;
+    }
+}
+class MELEEFast extends Weapons{
+    MELEEFast(){
+        this.damage = 10;
+        this.rateoffire = 20;
+        this.ammo=Integer.MAX_VALUE;
+        this.range=0;
+        this.burstfire=false;
     }
 }
