@@ -34,7 +34,7 @@ public class Map extends JFrame {
     z.setIcon(Zombierawr);
     z.setBounds(50,50, 200, 400);
     Background.add(z);
-    Timer t=new Timer(300,new ActionListener(){
+    Timer t=new Timer(50,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
         
