@@ -58,11 +58,11 @@ public class Map extends JFrame {
    }
     
    
-    Timer t=new Timer(50,new ActionListener(){
+    Timer t=new Timer(1,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
         
-           z.move();
+           //z.move();
            p.move();
            p.setLocation(p.getx()*p.getSpeed(), p.gety()*p.getSpeed());
         }
