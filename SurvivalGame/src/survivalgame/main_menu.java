@@ -52,7 +52,8 @@ public class main_menu extends JFrame{
         exit.setBounds(310, 390, 200, 50);
         c.add(exit);
         
-        background = new JLabel(main_menu_logo);
+        background = new JLabel();
+        background.setIcon(main_menu_logo);
         background.setBounds(0, 0, 800, 600);
         c.add(background);
         
@@ -60,8 +61,10 @@ public class main_menu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    choose_map m = new choose_map();
-                    m.setVisible(true);
+//                    choose_map m = new choose_map();
+//                    m.setVisible(true);
+                    Map M = new Map();
+                     M.setVisible(true);
                 }
             }
         );

@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class Zombie extends Character {
+public class Zombie extends Character  {
     private String Type;
     Random r;
     private MELEE m;
