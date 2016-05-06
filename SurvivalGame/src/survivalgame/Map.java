@@ -33,9 +33,9 @@ public class Map extends JFrame {
  
     zg=new ZombieGenerator("ZombieNormal");
         for (int i = 0; i < zg.getZombieNumber(); i++) {
-              int x = r.nextInt(1200);
+              int x = r.nextInt(1400);
               int y= r.nextInt(800);
-            zg.z[i].setBounds(x, y, 100,100);
+            zg.z[i].setBounds(0, y, 100,100);
             Background.add(zg.z[i]);
         }
    }

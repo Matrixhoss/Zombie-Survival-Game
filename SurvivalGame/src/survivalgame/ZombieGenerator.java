@@ -44,7 +44,9 @@ public class ZombieGenerator {
     public int getZombieNumber(){
     return this.ZombieNumber;
     }
-    
+    public void setZombieNumber(int n){
+  this.ZombieNumber=n;
+    }
     
     
     
