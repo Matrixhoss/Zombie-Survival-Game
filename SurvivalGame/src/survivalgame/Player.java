@@ -71,11 +71,11 @@ public class Player extends Character {
           y = (y)-(this.getSpeed());
         }
         if (down) {
-          if (!(y > d.height-50))
+          if (!(y > 650))
             y = (y)+(this.getSpeed());
         }
         if (right) {
-           if (!(x > d.width-50))
+           if (!(x > 1300))
               x = (x)+(this.getSpeed());
         }
         if (left) {
