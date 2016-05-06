@@ -60,7 +60,7 @@ public class main_menu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Map m = new Map();
+                    choose_map m = new choose_map();
                     m.setVisible(true);
                 }
             }
