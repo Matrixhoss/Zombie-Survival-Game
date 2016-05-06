@@ -3,44 +3,99 @@ package survivalgame;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
+import sun.audio.*;
 
 public class main_menu extends JFrame{
     public JLabel background;
     public JButton start;
     public JButton option;
+    public JButton music;
     public JButton exit;
     public JLabel logo;
-    ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("logo.gif"));
-    ImageIcon start_logo= new ImageIcon(getClass().getResource("logo.gif"));
+    ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("zm.png"));
+    ImageIcon start_logo= new ImageIcon(getClass().getResource("zm2.gif"));
     ImageIcon start_logo_button= new ImageIcon(getClass().getResource("logo.gif"));
+    ImageIcon option_button= new ImageIcon(getClass().getResource("op.png"));
+    ImageIcon exit_button= new ImageIcon(getClass().getResource("ex.png"));
+    ImageIcon music_button= new ImageIcon(getClass().getResource("ms.png"));
+    
     public main_menu(){
         this.setTitle("Glav Survival");
         this.setResizable(false);
         this.setBounds(0, 0, 800, 600);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        Container c = this.getContentPane();
+        c.setLayout(null);
         
-    Container c = this.getContentPane();
-    c.setLayout(null);
-    
-    logo = new JLabel(start_logo);
-    logo.setBounds(200,0, 400, 200);
-    c.add(logo);
-    
-    start = new JButton(start_logo_button);
-    start.setBounds(310, 180, 200, 50);
-    start.setBackground(Color.BLACK);
-    c.add(start);
-    
-    option = new JButton("Option");
-    option.setBounds(310, 250, 200, 50);
-    c.add(option);
-    
-    exit = new JButton("Exit");
-    exit.setBounds(310, 320, 200, 50);
-    c.add(exit);
-    
-    background = new JLabel(main_menu_logo);
-    background.setBounds(0, 0, 800, 600);
-    c.add(background);
+        logo = new JLabel(start_logo);
+        logo.setBounds(200,0, 400, 200);
+        c.add(logo);
+        
+        start = new JButton(start_logo_button);
+        start.setBounds(310, 180, 200, 50);
+        start.setBackground(Color.BLACK);
+        c.add(start);
+        
+        option = new JButton(option_button);
+        option.setBackground(Color.BLACK);
+        option.setBounds(310, 250, 200, 50);
+        c.add(option);
+        
+        music = new JButton(music_button);
+        music.setBackground(Color.BLACK);
+        music.setBounds(310, 320, 200, 50);
+        c.add(music);
+        
+        exit = new JButton(exit_button);
+        exit.setBackground(Color.BLACK);
+        exit.setBounds(310, 390, 200, 50);
+        c.add(exit);
+        
+        background = new JLabel(main_menu_logo);
+        background.setBounds(0, 0, 800, 600);
+        c.add(background);
+        
+        start.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                }
+            }
+        );
+        
+        option.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                }
+            }
+        );
+        
+        music.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    InputStream in;
+                    try {
+                        in = new FileInputStream(new File("C:\\Users\\User\\Desktop\\Theme.wav"));
+                        AudioStream audios = new AudioStream(in);
+                        AudioPlayer.player.start(audios);
+                    }
+                    catch(Exception k){
+                        System.out.println("Error");
+                    }
+                }
+            }
+        );
+                
+        exit.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.exit(0);
+                }
+            }
+        );
     }
 }
