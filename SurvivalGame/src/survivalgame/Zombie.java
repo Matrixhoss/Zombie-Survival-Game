@@ -31,11 +31,8 @@ public abstract class Zombie extends Character  {
     }
 
     
-    public void move(){
-        double move=S*this.getSpeed();
-        int x=this.getX();
-        int y=this.getY();
-        this.setBounds(x,y-(int)move, this.getWidth(),this.getHeight());
+    public void move(int xOfplayer,int yOfplayer){
+        
         
     }
     @Override
