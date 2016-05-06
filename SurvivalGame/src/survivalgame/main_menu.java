@@ -81,29 +81,29 @@ public class main_menu extends JFrame{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     InputStream in;
-                    try {
-                        File soundFile = new File("C:\\Users\\User\\Desktop\\Project\\asuprogrammingproject\\SurvivalGame\\src\\survivalgame\\misc\\Theme.m4a");
+                    try { 
+                        File soundFile = new File(getClass().getResource("misc/Theme.mp4").getFile());
                         AudioInputStream sound = AudioSystem.getAudioInputStream(soundFile);
-                        
-                        DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-                        Clip clip = (Clip) AudioSystem.getLine(info);
+                       
+                        //DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
+                        Clip clip = AudioSystem.getClip();
                         clip.open(sound);
                         
-                        clip.addLineListener(new LineListener() {
-                            public void update(LineEvent event) {
-                                if (event.getType() == LineEvent.Type.STOP) {
-                                    event.getLine().close();
-                                    System.exit(0);
-                                }
-                            }
-                        });
+//                        clip.addLineListener(new LineListener() {
+//                            public void update(LineEvent event) {
+//                                if (event.getType() == LineEvent.Type.STOP) {
+//                                    event.getLine().close();
+//                                    System.exit(0);
+//                                }
+//                            }
+//                        });
         clip.start();
 //                        in = new FileInputStream(new File("misc/Theme.m4a"));
 //                        AudioStream audios = new AudioStream(in);
 //                        AudioPlayer.player.start(audios);
                     }
-                    catch(Exception k){
-                        System.out.println("Error");
+                    catch(Exception ex){
+                        System.out.println(ex);
                     }
                 }
             }
