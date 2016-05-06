@@ -16,7 +16,7 @@ public class choose_map extends JFrame{
     ImageIcon choose_btn = new ImageIcon(getClass().getResource("misc/cho.png"));
     ImageIcon first_map_btn = new ImageIcon(getClass().getResource("misc/Map.jpg"));
     ImageIcon second_map_btn = new ImageIcon(getClass().getResource("misc/dre.jpg"));
-    ImageIcon third_map_btn = new ImageIcon(getClass().getResource("msic/wd.jpg"));
+    ImageIcon third_map_btn = new ImageIcon(getClass().getResource("misc/wd.jpg"));
     
     public choose_map(){
         this.setTitle("Choose map");
@@ -46,5 +46,35 @@ public class choose_map extends JFrame{
         background = new JLabel(background_img);
         background.setBounds(0, 0, 800, 600);
         c.add(background);
+        
+        first_map.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Map fa = new Map();
+                    fa.setVisible(true);
+                }
+            }
+        );
+        
+        second_map.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    MAP2 sn = new MAP2();
+                    sn.setVisible(true);
+                }
+            }
+        );
+        
+        third_map.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    MAP3 se = new MAP3();
+                    se.setVisible(true);
+                }
+            }
+        );
     }
 }
