@@ -13,9 +13,10 @@ public class choose_map extends JFrame{
     private JButton second_map;
     private JButton third_map;
     ImageIcon background_img = new ImageIcon(getClass().getResource("misc/zm.png"));
-    ImageIcon first_map_btn = new ImageIcon(getClass().getResource(""));
-    ImageIcon second_map_btn = new ImageIcon(getClass().getResource(""));
-    ImageIcon third_map_btn = new ImageIcon(getClass().getResource(""));
+    ImageIcon choose_btn = new ImageIcon(getClass().getResource("misc/cho.png"));
+    ImageIcon first_map_btn = new ImageIcon(getClass().getResource("misc/Map.jpg"));
+    ImageIcon second_map_btn = new ImageIcon(getClass().getResource("misc/dre.jpg"));
+    ImageIcon third_map_btn = new ImageIcon(getClass().getResource("msic/wd.jpg"));
     
     public choose_map(){
         this.setTitle("Choose map");
@@ -26,9 +27,21 @@ public class choose_map extends JFrame{
         Container c = this.getContentPane();
         c.setLayout(null);
         
-        choose = new JLabel();
-        choose.setBounds(200, 100, 200, 200);
+        choose = new JLabel(choose_btn);
+        choose.setBounds(160, 10, 500, 100);
         c.add(choose);
+        
+        first_map = new JButton(first_map_btn);
+        first_map.setBounds(50, 150, 200, 300);
+        c.add(first_map);
+        
+        second_map = new JButton(second_map_btn);
+        second_map.setBounds(300, 150, 200, 300);
+        c.add(second_map);
+        
+        third_map = new JButton(third_map_btn);
+        third_map.setBounds(550, 150, 200, 300);
+        c.add(third_map);
         
         background = new JLabel(background_img);
         background.setBounds(0, 0, 800, 600);
