@@ -10,8 +10,8 @@ public class main_menu extends JFrame{
     public JButton option;
     public JButton exit;
     public JLabel logo;
-    ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("zm.png"));
-    ImageIcon start_logo= new ImageIcon(getClass().getResource("zm2.gif"));
+    ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("logo.gif"));
+    ImageIcon start_logo= new ImageIcon(getClass().getResource("logo.gif"));
     ImageIcon start_logo_button= new ImageIcon(getClass().getResource("logo.gif"));
     public main_menu(){
         this.setTitle("Glav Survival");
