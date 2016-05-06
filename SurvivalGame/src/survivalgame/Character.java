@@ -39,5 +39,7 @@ public abstract class Character extends JLabel {
     
     public Weapons getWeapon(){
     return this.weapon;
+    }  public int getSpeed(){
+        return speed;
     }
 }
