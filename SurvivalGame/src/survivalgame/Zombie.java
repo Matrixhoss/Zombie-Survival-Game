@@ -5,6 +5,7 @@ import static java.lang.Math.random;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static survivalgame.Constants.*;
 
 
 public abstract class Zombie extends Character  {
@@ -31,7 +32,12 @@ public abstract class Zombie extends Character  {
 
     
     public void move(){
-     }
+        double move=S*this.getSpeed();
+        int x=this.getX();
+        int y=this.getY();
+        this.setBounds(x,y-(int)move, this.getWidth(),this.getHeight());
+        
+    }
     @Override
     public void die(){
       if (this.getHealth()==0)
