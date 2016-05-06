@@ -18,6 +18,7 @@ public abstract class Character extends JLabel {
     this.health=h;
     
     }
+    
 
     
     
@@ -41,6 +42,9 @@ public abstract class Character extends JLabel {
     return this.weapon;
     }  public int getSpeed(){
         return speed;
+    }
+    public void setSpeed(int s){
+    this.speed=s;
     }
     
 }

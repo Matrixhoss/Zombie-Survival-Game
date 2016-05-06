@@ -18,6 +18,26 @@ public abstract class Zombie extends Character  {
         this.Type=Type;
 
     }
+    public Zombie (String T){
+        super(20,50);
+        switch (T){
+            case "ZombieNormal":
+                this.sethealth(20);
+                this.setSpeed(40);
+                break;
+            case"ZombieStrong":
+                this.sethealth(40);
+                this.setSpeed(30);
+                break;
+            case"ZombieFast":
+                this.sethealth(10);
+                this.setSpeed(110);
+                  break;
+                        
+        }
+        
+      
+    }
     public Zombie (int health,int speed){
     super(health,speed);
           int rand=r.nextInt(3);
@@ -51,21 +71,21 @@ public abstract class Zombie extends Character  {
   class ZombieNormal extends Zombie{
     
         public ZombieNormal(){
-        super(20,50,"Normal");
+        super("ZombieNormal");
         this.setWeapon(new MELEE());
         }
     }
     class ZombieStrong extends Zombie{
     
         public ZombieStrong(){
-        super(40,40,"Strong");
+        super("ZombieStrong");
         this.setWeapon(new MELEE2());
         }
     }
     class ZombieFast extends Zombie{
 
         public ZombieFast(){
-         super(10,150,"Fast");
+         super("ZombieFast");
         this.setWeapon(new MELEEFast());
         }
     }
