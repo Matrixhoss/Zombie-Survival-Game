@@ -8,33 +8,21 @@ import java.util.logging.Logger;
 
 
 public abstract class Zombie extends Character  {
+    
     private String Type;
     Random r;
-//    private MELEE m;
-//    private MELEE2 m2;
-//    private MELEEFast m3;
     
     public Zombie (int health,int speed,String Type){
         super(health,speed);
         this.Type=Type;
-        
-            switch (Type){
-            case "Normal":
-                
-                break;
-            case "Strong":
-                
-                break;
-            case "Fast":
-                
-                break;
-            }
+
     }
     public Zombie (int health,int speed){
     super(health,speed);
           int rand=r.nextInt(3);
         switch (rand){
-            case 1:  
+            case 1: 
+                
             case 2:  
             case 3:
         
@@ -43,7 +31,7 @@ public abstract class Zombie extends Character  {
 
     
     public void move(){
- }
+     }
     @Override
     public void die(){
       if (this.getHealth()==0)
