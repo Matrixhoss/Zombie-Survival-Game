@@ -11,7 +11,7 @@ public class Map extends JFrame {
     
     public Map(){
         
-     Background = new ImagePanel(new ImageIcon("Map.jpg").getImage());
+     Background = new ImagePanel(new ImageIcon("misc/Map.jpg").getImage());
     Container c = this.getContentPane();
     c.add(Background);
     this.pack();

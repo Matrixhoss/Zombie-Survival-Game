@@ -13,12 +13,12 @@ public class main_menu extends JFrame{
     public JButton music;
     public JButton exit;
     public JLabel logo;
-    ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("zm.png"));
-    ImageIcon start_logo= new ImageIcon(getClass().getResource("zm2.gif"));
-    ImageIcon start_logo_button= new ImageIcon(getClass().getResource("logo.gif"));
-    ImageIcon option_button= new ImageIcon(getClass().getResource("op.png"));
-    ImageIcon exit_button= new ImageIcon(getClass().getResource("ex.png"));
-    ImageIcon music_button= new ImageIcon(getClass().getResource("ms.png"));
+    ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("misc/zm.png"));
+    ImageIcon start_logo= new ImageIcon(getClass().getResource("misc/zm2.gif"));
+    ImageIcon start_logo_button= new ImageIcon(getClass().getResource("misc/logo.gif"));
+    ImageIcon option_button= new ImageIcon(getClass().getResource("misc/op.png"));
+    ImageIcon exit_button= new ImageIcon(getClass().getResource("misc/ex.png"));
+    ImageIcon music_button= new ImageIcon(getClass().getResource("misc/ms.png"));
     
     public main_menu(){
         this.setTitle("Glav Survival");
@@ -78,7 +78,7 @@ public class main_menu extends JFrame{
                 public void actionPerformed(ActionEvent e) {
                     InputStream in;
                     try {
-                        in = new FileInputStream(new File("C:\\Users\\User\\Desktop\\Theme.wav"));
+                        in = new FileInputStream(new File("misc/Theme.m4a"));
                         AudioStream audios = new AudioStream(in);
                         AudioPlayer.player.start(audios);
                     }
