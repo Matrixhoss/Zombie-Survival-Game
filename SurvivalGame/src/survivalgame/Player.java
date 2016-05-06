@@ -1,6 +1,7 @@
 
 package survivalgame;
 
+import java.awt.Dimension;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -63,18 +64,23 @@ public class Player extends Character {
     public int getSpeed (){
     return super.getSpeed();
     }
-    public void move (){
+    public void move (Dimension d){
      if (up) {
-            y--;
+         if (!(y < 0))
+             
+          y = (y)-(this.getSpeed());
         }
         if (down) {
-            y++;
+          if (!(y > d.height-50))
+            y = (y)+(this.getSpeed());
         }
         if (right) {
-            x++;
+           if (!(x > d.width-50))
+              x = (x)+(this.getSpeed());
         }
         if (left) {
-            x--;
+          if (!(x < 0))
+             x = (x)-(this.getSpeed());
         }
     
         //this.setLocation(x, y);
