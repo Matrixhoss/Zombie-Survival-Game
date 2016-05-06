@@ -10,27 +10,42 @@ import java.util.logging.Logger;
 public class Zombie extends Character  {
     private String Type;
     Random r;
-    private MELEE m;
+//    private MELEE m;
+//    private MELEE2 m2;
+//    private MELEEFast m3;
     
-    public Zombie (int health,int speed,Weapons Weapon,String Type){
-        super(health,speed,Weapon);
+    public Zombie (int health,int speed,String Type){
+        super(health,speed);
         this.Type=Type;
         
+            switch (Type){
+            case "Normal":
+                this.setWeapon(new MELEE());
+                break;
+            case "Strong":
+                this.setWeapon(new MELEE2());
+                break;
+            case "Fast":
+                this.setWeapon(new MELEEFast());
+                break;
+            }
     }
-    public Zombie (int health,int speed,Weapons Weapon){
-    super(health,speed,Weapon);
+    public Zombie (int health,int speed){
+    super(health,speed);
           int rand=r.nextInt(3);
         switch (rand){
             case 1:
-                this.Type="Class C";
-                this.setWeapon(m);
+                this.Type="Normal";
+                this.setWeapon(new MELEE());
                 break;
             case 2:
-                this.Type="Class B";
+                this.Type="Strong";
+                this.setWeapon(new MELEE2());
                 break;
                 
             case 3:
-                this.Type="Class A";
+                this.Type="Fast";
+                this.setWeapon(new MELEEFast());
                 break;
                 
         }
@@ -47,7 +62,7 @@ public class Zombie extends Character  {
          try {
              this.finalize();
       } catch (Throwable ex) {
-          Logger.getLogger(Zombie.class.getName()).log(Level.SEVERE, null, ex);
+        System.out.print(ex);
       }
     
     }

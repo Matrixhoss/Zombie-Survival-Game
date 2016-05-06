@@ -13,6 +13,11 @@ public abstract class Character extends JLabel {
     this.health=h;
     this.weapon=W;
     }
+     public  Character(int s ,int h){
+    this.speed=s;
+    this.health=h;
+    
+    }
 
     
     
