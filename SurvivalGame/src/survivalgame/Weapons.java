@@ -1,13 +1,41 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package survivalgame;
 
 
 public class Weapons {
-    private int damage;
-    private int rateoffire;
-    private int ammo;
+     int damage;
+     int rateoffire;
+     int ammo;
+     int range;
+     int MAPSIZE=500;
+     boolean burstfire;
+    
+}
+
+ class Pistol extends Weapons{
+    Pistol (){
+         this.damage = 10;
+         this.rateoffire=10;
+         this.ammo=Integer.MAX_VALUE;
+         this.range=this.MAPSIZE*(3/4);
+         this.burstfire=false;
+     }
+ }
+class UZI extends Weapons{
+    UZI () {
+        this.damage=5;
+        this.rateoffire=50;
+        this.ammo=500;
+        this.range=this.MAPSIZE;
+        this.burstfire=false;
+    }
+    
+}
+class SHOTGUN extends Weapons{
+    SHOTGUN(){
+        this.damage = 50;
+        this.rateoffire = 5;
+        this.ammo=30;
+        this.range=this.MAPSIZE*(1/2);
+        this.burstfire=true;
+    }
 }
