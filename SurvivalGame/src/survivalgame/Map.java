@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 public class Map extends JFrame {
     
     private ImagePanel Background;
-    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map.jpg"));
+    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     public Map(){
         
      Background = new ImagePanel(MapIcn.getImage());
