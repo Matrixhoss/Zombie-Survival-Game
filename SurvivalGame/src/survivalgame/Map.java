@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Map extends JFrame {
-    private Zombie z ;
+    private ZombieNormal z ;
     private ImagePanel Background;
     
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
@@ -27,7 +27,7 @@ public class Map extends JFrame {
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setResizable(false);
     
-    z= new Zombie(100,200,"asd");
+    z= new ZombieNormal();
     z.setIcon(Zombierawr);
     z.setBounds(50,50, 200, 400);
     Background.add(z);

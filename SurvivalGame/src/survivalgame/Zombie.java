@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class Zombie extends Character  {
+public abstract class Zombie extends Character  {
     private String Type;
     Random r;
 //    private MELEE m;
@@ -20,13 +20,13 @@ public class Zombie extends Character  {
         
             switch (Type){
             case "Normal":
-                this.setWeapon(new MELEE());
+                
                 break;
             case "Strong":
-                this.setWeapon(new MELEE2());
+                
                 break;
             case "Fast":
-                this.setWeapon(new MELEEFast());
+                
                 break;
             }
     }
@@ -34,28 +34,16 @@ public class Zombie extends Character  {
     super(health,speed);
           int rand=r.nextInt(3);
         switch (rand){
-            case 1:
-                this.Type="Normal";
-                this.setWeapon(new MELEE());
-                break;
-            case 2:
-                this.Type="Strong";
-                this.setWeapon(new MELEE2());
-                break;
-                
+            case 1:  
+            case 2:  
             case 3:
-                this.Type="Fast";
-                this.setWeapon(new MELEEFast());
-                break;
-                
+        
         }
     }
+
     
     public void move(){
-    
-    
-    
-    }
+ }
     @Override
     public void die(){
       if (this.getHealth()==0)
@@ -64,15 +52,29 @@ public class Zombie extends Character  {
       } catch (Throwable ex) {
         System.out.print(ex);
       }
-    
+
     }
-    public void takeDamage(int d ){
-    
-    
-    }
-    public void setWeapon(){
-    
-    }
-    
-    
+    public void takeDamage(int d ){};
+    public void setWeapon(){};
 }
+  class ZombieNormal extends Zombie{
+    
+        public ZombieNormal(){
+        super(20,50,"Normal");
+        this.setWeapon(new MELEE());
+        }
+    }
+    class ZombieStrong extends Zombie{
+    
+        public ZombieStrong(){
+        super(40,40,"Strong");
+        this.setWeapon(new MELEE2());
+        }
+    }
+    class ZombieFast extends Zombie{
+
+        public ZombieFast(){
+         super(10,150,"Fast");
+        this.setWeapon(new MELEEFast());
+        }
+    }
