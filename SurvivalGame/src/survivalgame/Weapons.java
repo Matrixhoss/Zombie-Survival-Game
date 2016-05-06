@@ -10,7 +10,6 @@ public class Weapons {
      boolean burstfire;
     
 }
-//hi
  class Pistol extends Weapons{
     Pistol (){
          this.damage = 10;
@@ -35,6 +34,15 @@ class SHOTGUN extends Weapons{
         this.damage = 50;
         this.rateoffire = 5;
         this.ammo=30;
+        this.range=this.MAPSIZE*(1/2);
+        this.burstfire=true;
+    }
+}
+class MELEE extends Weapons{
+    MELEE(){
+        this.damage = 10;
+        this.rateoffire = 5;
+        this.ammo=
         this.range=this.MAPSIZE*(1/2);
         this.burstfire=true;
     }

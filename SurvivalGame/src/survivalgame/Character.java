@@ -11,11 +11,8 @@ public abstract class Character {
     this.health=h;
     this.weapon=W;
     }
-    
     public void move(){};
     public void die(){};
     public void takeDamage(){};
     public void setWeapon(){};
-    
-    
 }
