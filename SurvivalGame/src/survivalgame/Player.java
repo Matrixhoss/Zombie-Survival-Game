@@ -52,7 +52,7 @@ public class Player extends Character {
        }
 });
         
-       
+       //
     }
     public int getx(){
     return this.x;
