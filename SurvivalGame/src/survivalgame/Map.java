@@ -3,6 +3,7 @@ package survivalgame;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +27,7 @@ public class Map extends JFrame {
     ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     private Random r;
     private Random R;
+    private Dimension mapdim = new Dimension();
     public Map(){
  
   
@@ -33,12 +35,12 @@ public class Map extends JFrame {
     
     Background = new ImagePanel(MapIcn.getImage());
     c.add(Background);
-    
-       p = new Player (100,10,w,this,50,50);
+   
+       p = new Player (100,10,w,this,20,20);
        p.setIcon(Playericon);
-       p.setSize(200, 200);
+       p.setSize(100, 100);
        Background.add(p);
-       
+        mapdim=Background.getSize();
      
    
    try{ 
@@ -58,13 +60,13 @@ public class Map extends JFrame {
    }
     
    
-    Timer t=new Timer(1,new ActionListener(){
+    Timer t=new Timer(20,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
         
            //z.move();
-           p.move();
-           p.setLocation(p.getx()*p.getSpeed(), p.gety()*p.getSpeed());
+           p.move(mapdim);
+           p.setLocation(p.getx(), p.gety());
         }
    
    
