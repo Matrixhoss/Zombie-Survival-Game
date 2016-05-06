@@ -15,7 +15,7 @@ public class choose_map extends JFrame{
     ImageIcon background_img = new ImageIcon(getClass().getResource("misc/zm.png"));
     ImageIcon choose_btn = new ImageIcon(getClass().getResource("misc/cho.png"));
     ImageIcon first_map_btn = new ImageIcon(getClass().getResource("misc/Maps.png"));
-    ImageIcon second_map_btn = new ImageIcon(getClass().getResource("misc/dres.png"));
+    ImageIcon second_map_btn = new ImageIcon(getClass().getResource("misc/sass.png"));
     ImageIcon third_map_btn = new ImageIcon(getClass().getResource("misc/wds.png"));
     
     public choose_map(){

@@ -11,7 +11,7 @@ public class MAP2 extends JFrame {
     private Zombie z ;
     private ImagePanel Background;
     
-    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/dre.png"));
+    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Hillsides.png"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
     
     public MAP2(){
