@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import sun.audio.*;
+import javax.sound.sampled.*;
 
 public class main_menu extends JFrame{
     public JLabel background;
