@@ -3,8 +3,12 @@ package survivalgame;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.ImageObserver;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -44,7 +48,7 @@ public class Map extends JFrame {
         for (int i = 0; i < zg.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);
-            zg.z[i].setBounds(0, y, 100,100);
+            zg.z[i].setBounds(x, 780, 100,100);
             Background.add(zg.z[i]);
         }
    }
@@ -53,12 +57,7 @@ public class Map extends JFrame {
    
    }
     
-    z= new ZombieNormal();
-    z.setIcon(Zombierawr);
-    z.setBounds(50,50, 100, 100);
-    Background.add(z);
-    
-
+   
     Timer t=new Timer(50,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
