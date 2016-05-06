@@ -10,7 +10,7 @@ public class Weapons {
      boolean burstfire;
     
 }
-
+//hi
  class Pistol extends Weapons{
     Pistol (){
          this.damage = 10;
