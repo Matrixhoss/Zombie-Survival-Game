@@ -6,11 +6,15 @@ public abstract class Character {
     private int health;
     private Weapons weapon;
     
-    public Character(int s ,int h, Weapons W){
+    public  Character(int s ,int h, Weapons W){
     this.speed=s;
     this.health=h;
     this.weapon=W;
     }
+
+    
+    public int getHealth(){return this.health;};
+    public void setHealth(){};
     public void move(){};
     public void die(){};
     public void takeDamage(){};
