@@ -52,13 +52,13 @@ public class main_menu extends JFrame{
         exit.setBackground(Color.BLACK);
         exit.setBounds(310, 390, 200, 50);
         c.add(exit);
-        
+   
         background = new JLabel();
         background.setIcon(main_menu_logo);
         background.setBounds(0, 0, 800, 600);
         c.add(background);
         
-        start.addActionListener(
+        start.addActionListener(     
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
