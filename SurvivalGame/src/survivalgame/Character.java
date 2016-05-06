@@ -13,16 +13,15 @@ public abstract class Character {
     }
 
     
-    public int getHealth(){return this.health;};
+    
     public void setHealth(){};
     public void move(){};
     public void die(){};
     public void takeDamage(int d){};
     public void setWeapon(){};
-   
-    public int getHealth(){
-    return this.health;
-    }
+    
+    public int getHealth(){return this.health;};
+    
     public void sethealth(int h){
     this.health=h;
     }
