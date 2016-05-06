@@ -25,11 +25,11 @@ public class MAP3 extends JFrame {
     this.setVisible(true);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setResizable(false);
-    
-    z= new Zombie(100,200,"asd");
-    z.setIcon(Zombierawr);
-    z.setBounds(50,50, 200, 400);
-    Background.add(z);
+//    
+//    z= new Zombie(100,200,"asd");
+//    z.setIcon(Zombierawr);
+//    z.setBounds(50,50, 200, 400);
+//    Background.add(z);
     
     }
  }
