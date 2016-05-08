@@ -60,10 +60,11 @@ public class Map extends JFrame {
    }
     
    
-    Timer t=new Timer(20,new ActionListener(){
+    Timer t=new Timer(30,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
-        
+        for (int i = 0; i < zg.getZombieNumber(); i++)
+            zg.z[i].AI(p.getX(),p.getY());
            //z.move();
            p.move(mapdim);
            p.setLocation(p.getx(), p.gety());

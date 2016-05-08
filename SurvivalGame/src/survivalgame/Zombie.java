@@ -12,8 +12,11 @@ import static survivalgame.Constants.*;
 public abstract class Zombie extends Character  {
     
     private String Type;
-    Random r;
+    private Random r;
     ImageIcon shape;
+    private double angle;
+    private int sizeX;
+    private int sizeY;
     
     public Zombie (int health,int speed,String Type){
         super(health,speed);
@@ -40,6 +43,18 @@ public abstract class Zombie extends Character  {
         
       
     }
+    public void setSizeX(int x){
+        this.sizeX=x;
+    }
+    public void setSizeY(int y){
+        this.sizeY=y;
+    }
+    public int getSizeX(){
+        return this.sizeX;
+    }
+    public int getSizeY(){
+        return this.sizeY;
+    }
     public Zombie (int health,int speed){
     super(health,speed);
           int rand=r.nextInt(3);
@@ -51,12 +66,16 @@ public abstract class Zombie extends Character  {
         
         }
     }
+    public void AI(int xOfplayer,int yOfplayer){
+        int DiffX=xOfplayer-this.getX();
+        int DiffY=yOfplayer-this.getY();
+        angle=Math.atan2(DiffY, DiffX);
+        double SX=(this.getSpeed()*S*Math.cos(angle));
+        double SY=(this.getSpeed()*S*Math.sin(angle));        
+        this.setBounds(this.getX()+(int)SX,this.getY()+(int)SY,this.getWidth(),this.getHeight());
 
-    
-    public void move(int xOfplayer,int yOfplayer){
-        
-        
     }
+    
     @Override
     public void die(){
       if (this.getHealth()==0)
@@ -74,7 +93,9 @@ public abstract class Zombie extends Character  {
         
         public ZombieNormal(){  
         super("ZombieNormal");
-         shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
+        this.setSizeX(100);
+        this.setSizeY(100);
+        shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
         this.setWeapon(new MELEE());
         this.setIcon(shape);
         }
