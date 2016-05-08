@@ -36,7 +36,7 @@ public abstract class Zombie extends Character  {
                 break;
             case"ZombieFast":
                 this.sethealth(10);
-                this.setSpeed(110);
+                this.setSpeed(50);
                   break;
                         
         }
@@ -55,17 +55,17 @@ public abstract class Zombie extends Character  {
     public int getSizeY(){
         return this.sizeY;
     }
-    public Zombie (int health,int speed){
-    super(health,speed);
-          int rand=r.nextInt(3);
-        switch (rand){
-            case 1: 
-                
-            case 2:  
-            case 3:
-        
-        }
-    }
+//    public Zombie (int health,int speed){
+//    super(health,speed);
+//          int rand=r.nextInt(3);
+//        switch (rand){
+//            case 1: 
+//                
+//            case 2:  
+//            case 3:
+//        
+//        }
+//    }
     public void AI(int xOfplayer,int yOfplayer){
         int DiffX=xOfplayer-this.getX();
         int DiffY=yOfplayer-this.getY();

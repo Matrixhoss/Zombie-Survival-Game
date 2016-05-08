@@ -29,6 +29,7 @@ public class Map extends JFrame {
     private Random r;
     private Random R;
     private Dimension mapdim = new Dimension();
+    private Waves wave;
     public Map(){
  
   
@@ -54,12 +55,12 @@ public class Map extends JFrame {
             zn.z[i].setBounds(x, 780, 100,100);
             Background.add(zn.z[i]);
         }
-        zn=new ZombieGenerator("ZombieFast");
-        for (int i = 0; i < zn.getZombieNumber(); i++) {
+        zf=new ZombieGenerator("ZombieFast");
+        for (int i = 0; i < zf.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);
-            zn.z[i].setBounds(x, 780, 100,100);
-            Background.add(zn.z[i]);
+            zf.z[i].setBounds(0, y, 100,100);
+            Background.add(zf.z[i]);
         }
    }
    catch(Exception ex){
@@ -71,12 +72,15 @@ public class Map extends JFrame {
     Timer t=new Timer(30,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < zn.getZombieNumber(); i++)
+        for (int i = 0; i < zn.getZombieNumber(); i++){
             zn.z[i].AI(p.getX(),p.getY());
+            zf.z[i].AI(p.getX(),p.getY());}
            //z.move();
            p.move(mapdim);
            p.setLocation(p.getx(), p.gety());
         }
+        
+        
    
    
     });
