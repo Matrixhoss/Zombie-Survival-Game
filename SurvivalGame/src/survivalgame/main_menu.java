@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.io.*;
 import sun.audio.*;
 import javax.sound.sampled.*;
+import java.applet.*;
+import java.net.*;
 
 public class main_menu extends JFrame{
     public JLabel background;
@@ -82,30 +84,14 @@ public class main_menu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    InputStream in;
-                    try { 
-                        File soundFile = new File(getClass().getResource("misc/Theme.mp4").getFile());
-                        AudioInputStream sound = AudioSystem.getAudioInputStream(soundFile);
-                       
-                        //DataLine.Info info = new DataLine.Info(Clip.class, sound.getFormat());
-                        Clip clip = AudioSystem.getClip();
-                        clip.open(sound);
-                        
-//                        clip.addLineListener(new LineListener() {
-//                            public void update(LineEvent event) {
-//                                if (event.getType() == LineEvent.Type.STOP) {
-//                                    event.getLine().close();
-//                                    System.exit(0);
-//                                }
-//                            }
-//                        });
-        clip.start();
-//                        in = new FileInputStream(new File("misc/Theme.m4a"));
-//                        AudioStream audios = new AudioStream(in);
-//                        AudioPlayer.player.start(audios);
+                    try{
+                        File file = new File("Main Menu Theme.m4a");
+                        Clip clip1 = AudioSystem.getClip();
+                        clip1.open(AudioSystem.getAudioInputStream(file));
+                        clip1.start();
                     }
-                    catch(Exception ex){
-                        System.out.println(ex);
+                    catch(Exception h){
+                        System.err.println(h.getMessage());
                     }
                 }
             }
@@ -119,5 +105,16 @@ public class main_menu extends JFrame{
                 }
             }
         );
+    }
+    public static void playback(){
+        try{
+            File file = new File("misc/Main Menu Theme.m4a");
+            Clip clip1 = AudioSystem.getClip();
+            clip1.open(AudioSystem.getAudioInputStream(file));
+            clip1.start();
+        }
+        catch(Exception e){
+            System.err.println(e.getMessage());
+        }
     }
 }
