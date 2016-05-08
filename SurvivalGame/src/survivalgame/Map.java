@@ -19,7 +19,8 @@ import javax.swing.Timer;
 public class Map extends JFrame {
     private ZombieNormal z ;
     private ImagePanel Background;
-    private ZombieGenerator zg;
+    private ZombieGenerator zn;
+    private ZombieGenerator zf;
     private Player p ;
     private Weapons w = new Weapons ();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
@@ -46,12 +47,19 @@ public class Map extends JFrame {
    try{ 
        r= new Random();
  
-    zg=new ZombieGenerator("ZombieNormal");
-        for (int i = 0; i < zg.getZombieNumber(); i++) {
+    zn=new ZombieGenerator("ZombieNormal");
+        for (int i = 0; i < zn.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);
-            zg.z[i].setBounds(x, 780, 100,100);
-            Background.add(zg.z[i]);
+            zn.z[i].setBounds(x, 780, 100,100);
+            Background.add(zn.z[i]);
+        }
+        zn=new ZombieGenerator("ZombieFast");
+        for (int i = 0; i < zn.getZombieNumber(); i++) {
+              int x = r.nextInt(1400);
+              int y= r.nextInt(800);
+            zn.z[i].setBounds(x, 780, 100,100);
+            Background.add(zn.z[i]);
         }
    }
    catch(Exception ex){
@@ -63,8 +71,8 @@ public class Map extends JFrame {
     Timer t=new Timer(30,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < zg.getZombieNumber(); i++)
-            zg.z[i].AI(p.getX(),p.getY());
+        for (int i = 0; i < zn.getZombieNumber(); i++)
+            zn.z[i].AI(p.getX(),p.getY());
            //z.move();
            p.move(mapdim);
            p.setLocation(p.getx(), p.gety());
