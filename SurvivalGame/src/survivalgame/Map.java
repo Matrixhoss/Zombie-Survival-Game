@@ -23,7 +23,7 @@ public class Map extends JFrame {
     private ZombieGenerator zf;
     private Player p ;
     private Weapons w = new Weapons ();
-    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
+    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
     ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     private Random r;
