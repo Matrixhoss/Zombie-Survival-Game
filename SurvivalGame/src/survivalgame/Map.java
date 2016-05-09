@@ -107,6 +107,7 @@ public class Map extends JFrame {
     this.setVisible(true);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setResizable(false);
+    this.setSize(1280, 720);
     }
        public void GenerateNormal(){
 //       zn=new ZombieGenerator("ZombieNormal");
