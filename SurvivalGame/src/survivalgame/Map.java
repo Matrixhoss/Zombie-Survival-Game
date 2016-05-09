@@ -43,10 +43,11 @@ public class Map extends JFrame {
         
      
    
-   try{ 
+   
        r= new Random();
- 
-    zn=new ZombieGenerator("ZombieNormal");
+    
+
+      zn=new ZombieGenerator("ZombieNormal");
         for (int i = 0; i < zn.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);
@@ -63,20 +64,11 @@ public class Map extends JFrame {
                               break;
                   }
             Background.add(zn.z.get(i));
-        }
-//        zf=new ZombieGenerator("ZombieFast");
-//        for (int i = 0; i < zf.getZombieNumber(); i++) {
-//              int x = r.nextInt(1400);
-//              int y= r.nextInt(800);
-//            zf.z.get(i).setBounds(0, y, 100,100);
-//            Background.add(zf.z.get(i));
-//        }
+        }  
+//    
         
-   }
-   catch(Exception ex){
-       System.out.print(ex);
+ 
    
-   }
     p = new Player (100,10,this,20,20,Background,mapdim,zn);
        p.setIcon(Playericon);
        p.setSize(100, 100);
@@ -90,10 +82,15 @@ public class Map extends JFrame {
             zn.z.get(i).AI(p.getX(),p.getY());
 //            zf.z.get(i).AI(p.getX(),p.getY());
         }
+        if (zn.z.isEmpty()){
+            Waves.setNextWave();
+            GenerateNormal();
+        }
            //z.move();
            p.move(mapdim);
            p.FireHandling();
            p.setLocation(p.getx(), p.gety());
+           System.out.println(Waves.getWave());
         }
         
         
@@ -106,4 +103,23 @@ public class Map extends JFrame {
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setResizable(false);
     }
+       public void GenerateNormal(){
+       zn=new ZombieGenerator("ZombieNormal");
+        for (int i = 0; i < zn.getZombieNumber(); i++) {
+              int x = r.nextInt(1400);
+              int y= r.nextInt(800);
+              int loc=r.nextInt(5);
+              
+                  switch (loc){
+                      case 1 : zn.z.get(i).setBounds(x, 780, 100,100);
+                              break;
+                      case 2:zn.z.get(i).setBounds(0, y, 100,100);
+                              break;
+                      case 3 :zn.z.get(i).setBounds(x, 0, 100,100);
+                              break;
+                      case 4: zn.z.get(i).setBounds(1200, y, 100,100);
+                              break;
+                  }
+            Background.add(zn.z.get(i));
+        }}
  }
