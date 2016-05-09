@@ -4,6 +4,7 @@ package survivalgame;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,7 +25,7 @@ public class Map extends JFrame {
     private Player p ;
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
-    ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
+    //ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     private Random r;
     private Random R;
     private Dimension mapdim = new Dimension();
@@ -70,7 +71,7 @@ public class Map extends JFrame {
  
    
     p = new Player (100,10,this,20,20,Background,mapdim,zn);
-       p.setIcon(Playericon);
+      // p.setIcon(Playericon);
        p.setSize(100, 100);
        Background.add(p);
         
@@ -89,9 +90,12 @@ public class Map extends JFrame {
         }
            //z.move();
            p.move(mapdim);
+           
            p.FireHandling();
+           
            p.setLocation(p.getx(), p.gety());
            System.out.println(Waves.getWave());
+           repaint();
         }
         
         
@@ -123,4 +127,12 @@ public class Map extends JFrame {
                   }
             Background.add(zn.z.get(i));
         }}
+
+    @Override
+    public void paint(Graphics g) {
+        super.printComponents(g);
+        Graphics2D g2d  = (Graphics2D)g ;
+        p.drow(g2d);
+    }
+      
  }
