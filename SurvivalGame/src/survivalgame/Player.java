@@ -13,7 +13,7 @@ bullet (int x, int y){
     b = new Rectangle (x,y,10,10);
     ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
     this.setIcon(BulletImage);
-    this.setSize(100,100);
+    this.setSize(20,20);
 }    
 void MoveBulletBy(int x,int y){
     b.x+=x;
@@ -140,20 +140,20 @@ public class Player extends Character {
             bullets.set(i, temp);
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
             for(int j=0;j<zombies.z.size();j++){
-                if((Math.abs(temp.getX()-zombies.z.get(j).getX())<=5) && (Math.abs(temp.getX()-zombies.z.get(j).getX())<=5)){
-                   
-                   drawpanel.remove(zombies.z.get(j));
+                if((Math.abs(temp.getX()-zombies.z.get(j).getX())<=50) && (Math.abs(temp.getY()-zombies.z.get(j).getY())<=50)){
+                   Zombie z=zombies.z.get(j);
                    zombies.z.remove(j);
+                   drawpanel.remove(z);
                    bullets.remove(i);
                    drawpanel.remove(temp);
                    j=-1;
+                   i=-1;
                    break;
                 }
             }
-            if((temp.b.getX()>=mapdim.width)||(temp.b.getY()>=mapdim.height)){
+            if((temp.b.getX()>mapdim.width)||(temp.b.getY()>mapdim.height)){
                     bullets.remove(i);
                     drawpanel.remove(temp);
-                    continue;
                 }
         }
     }
