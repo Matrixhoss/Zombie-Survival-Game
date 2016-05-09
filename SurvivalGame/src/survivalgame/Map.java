@@ -49,23 +49,7 @@ public class Map extends JFrame {
     
 
       zn=new ZombieGenerator("ZombieNormal");
-        for (int i = 0; i < zn.getZombieNumber(); i++) {
-              int x = r.nextInt(1400);
-              int y= r.nextInt(800);
-              int loc=r.nextInt(5);
-              
-                  switch (loc){
-                      case 1 : zn.z.get(i).setBounds(x, 780, 100,100);
-                              break;
-                      case 2:zn.z.get(i).setBounds(0, y, 100,100);
-                              break;
-                      case 3 :zn.z.get(i).setBounds(x, 0, 100,100);
-                              break;
-                      case 4: zn.z.get(i).setBounds(1200, y, 100,100);
-                              break;
-                  }
-            Background.add(zn.z.get(i));
-        }  
+      GenerateZombie(zn);
 //    
         
  
@@ -84,10 +68,11 @@ public class Map extends JFrame {
             zn.z.get(i).rotation();
 //            zf.z.get(i).AI(p.getX(),p.getY());
         }
-        if (zn.z.isEmpty()){
+        TotalNumberOfZombies=zn.z.size();
+        if (TotalNumberOfZombies==0){
             Waves.setNextWave();
             zn.updateZombie("ZombieNormal");
-            GenerateNormal();
+            GenerateZombie(zn);
         }
            //z.move();
            p.move(mapdim);
@@ -110,8 +95,8 @@ public class Map extends JFrame {
     this.setResizable(false);
     this.setSize(1280, 720);
     }
-       public void GenerateNormal(){
-//       zn=new ZombieGenerator("ZombieNormal");
+       public void GenerateZombie(ZombieGenerator zn){
+
         for (int i = 0; i < zn.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);

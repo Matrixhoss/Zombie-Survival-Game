@@ -95,7 +95,6 @@ public abstract class Zombie extends Character  {
             this.setLocation(this.getX()+(int)SX,this.getY()+(int)SY);
             
         }
-        System.out.println(Math.toDegrees(angle)+"                "+"\n");
     }
     
     @Override
