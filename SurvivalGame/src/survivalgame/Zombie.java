@@ -102,6 +102,7 @@ public abstract class Zombie extends Character  {
       if (this.getHealth()==0)
          try {
              this.finalize();
+            
              
       } catch (Throwable ex) {
         System.out.print(ex);
