@@ -88,14 +88,7 @@ public class Player extends Character {
                     break;  
                 case KeyEvent.VK_F:
                 if(Fired==false){
-                if(right)
-                    direction=1;
-                if(left)
-                    direction=2;
-                if(up)
-                    direction=3;
-                if(down)
-                    direction=4;
+                
                 bullets.add(new bullet(x,y,direction));
                 drawpanel.add(bullets.get(bullets.size()-1));
                 bullets.get(bullets.size()-1).setLocation(x,y);
@@ -104,6 +97,22 @@ public class Player extends Character {
                 break;
                 }
             }
+            if(right)
+                    direction=1;
+                if(left)
+                    direction=2;
+                if(up)
+                    direction=3;
+                if(down)
+                    direction=4;
+                if(up&&right)
+                    direction=5;
+                if(up&&left)
+                    direction=6;
+                if(down&&right)
+                    direction=7;
+                if(down&&left)
+                    direction=8;
         }
 
        @Override
@@ -189,6 +198,19 @@ public class Player extends Character {
                 case 4://down
                     temp.MoveBulletBy(0, 50);
                     break;
+                case 5://up and right
+                    temp.MoveBulletBy(50,-50);
+                    break;
+                case 6://up and left
+                    temp.MoveBulletBy(-50, -50);
+                    break;
+                case 7: //down and right
+                    temp.MoveBulletBy(50, 50);
+                    break;
+                case 8: //down and left
+                    temp.MoveBulletBy(-50, 50);
+                    break;
+                    
             }
             bullets.set(i, temp);
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
@@ -204,7 +226,7 @@ public class Player extends Character {
                    break;
                 }
             }
-            if((temp.b.getX()>mapdim.width)||(temp.b.getY()>mapdim.height)){
+            if((temp.b.getX()>mapdim.width+100)||(temp.b.getY()>mapdim.height+100)){
                     bullets.remove(i);
                     drawpanel.remove(temp);
                 }
