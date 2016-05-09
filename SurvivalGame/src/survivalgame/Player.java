@@ -4,15 +4,20 @@ package survivalgame;
 import java.awt.Dimension;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 class bullet extends JLabel{
     public Rectangle b;
 bullet (int x, int y){
     b = new Rectangle (x,y,10,10);
-    ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
-    this.setIcon(BulletImage);
+    //ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
+    //this.setIcon(BulletImage);
     this.setSize(20,20);
 }    
 void MoveBulletBy(int x,int y){
@@ -26,9 +31,13 @@ Rectangle GetBullet(){
 public class Player extends Character {
     // position on axis
    private   int x = 0 ;
+
    private   int y = 0 ;
+ 
    // boolean of arros
    private   boolean up , down , right , left ;
+   // angle of rotation
+   private int angle = 40 ;
    private Weapons[] PWeapon = new Weapons[3];
    private int CurrentWeapon;
    private boolean Firing;
@@ -112,24 +121,49 @@ public class Player extends Character {
         // check of boolean of arrow is true or false if and check bounds 
         // if true set the new value of axis * speed 
      if (up) {
-         if (!(y < 0))
-             
-          y = (y)-(this.getSpeed());
+         //if (!(y < 0))
+        // y = (y)-(this.getSpeed());
+        x =x-(int)(getSpeed()*Math.sin(Math.toRadians(angle*-1)));
+        y =y - (int)(getSpeed()*Math.cos(Math.toRadians(angle*-1))) ;
         }
         if (down) {
-          if (!(y > mapdim.height-this.getSize().height))
-            y = (y)+(this.getSpeed());
+         // if (!(y > mapdim.height-this.getSize().height))
+          //  y = (y)+(this.getSpeed());
+         x =x+(int)(getSpeed()*Math.sin(Math.toRadians(angle*-1)));
+        y =y+(int)(getSpeed()*Math.cos(Math.toRadians(angle*-1))) ;
         }
         if (right) {
-           if (!(x > mapdim.width-this.getSize().width))
-              x = (x)+(this.getSpeed());
+          // if (!(x > mapdim.width-this.getSize().width))
+            //  x = (x)+(this.getSpeed());
+            angle += 2;
         }
         if (left) {
-          if (!(x < 0))
-             x = (x)-(this.getSpeed());
+          //if (!(x < 0))
+           //  x = (x)-(this.getSpeed());
+           angle -= 2;
         }
     
         //this.setLocation(x, y);
+    }
+    public void drow(Graphics2D g2d){
+        //  AffineTransform at = new AffineTransform();
+        BufferedImage bi = getImage();
+        AffineTransform at = AffineTransform.getTranslateInstance(this.x, this.y);
+        at.rotate(Math.toRadians(angle),bi.getWidth()/2,bi.getHeight()/1.5);
+        
+        g2d.drawImage(bi, at, null);
+   
+    }
+    public BufferedImage getImage(){
+        try {
+       
+            BufferedImage bi = ImageIO.read(new File("C:\\Users\\Hossam\\Documents\\NetBeansProjects\\asuprogrammingproject\\SurvivalGame\\build\\classes\\survivalgame\\misc\\Sprites\\Soldier.png")); 
+            return bi ;
+        }
+        catch (IOException e){
+        
+        }
+         return null;
     }
     public void FireHandling (){
         
