@@ -25,7 +25,7 @@ public class Map extends JFrame {
     private Player p ;
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
-    ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
+    //ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     private Random r;
     private Random R;
     private Dimension mapdim = new Dimension();
@@ -71,10 +71,10 @@ public class Map extends JFrame {
  
    
     p = new Player (100,10,this,20,20,Background,mapdim,zn);
-       p.setIcon(Playericon);
+      // p.setIcon(Playericon);
        p.setSize(100, 100);
        Background.add(p);
-        
+        p.setVisible(false);
    
     Timer t=new Timer(30,new ActionListener(){
         @Override
@@ -127,8 +127,13 @@ public class Map extends JFrame {
                   }
             Background.add(zn.z.get(i));
         }}
+       
 
-    
+    @Override
+    public void paint(Graphics g) {
+        super.printComponents(g);
+        Graphics2D g2d  = (Graphics2D)g ;
+        p.drow(g2d);
+    }
       
  }
-
