@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 
 public class ZombieGenerator {
    
-    private int ZombieNumber=5;
+    private int ZombieNumber;
      
         public ArrayList<Zombie>z=new ArrayList<Zombie>();
     Random r;
@@ -16,15 +16,20 @@ public class ZombieGenerator {
         
        switch (Type){
        case "ZombieNormal":
-          
+           ZombieNumber=10*Waves.getWave();
            for (int i = 0; i < ZombieNumber; i++) {
+                 
                   z.add(new ZombieNormal());
                   if (z.get(i).isDead())
                       ZombieNumber-=1;
                }
            break;
        case "ZombieStrong":
+//           if (Waves.getWave()==2);
+//            ZombieNumber=3*Waves.getWave();
            for (int i = 0; i < ZombieNumber; i++) {
+                     if(Waves.getWave()==2)
+                         
                      z.add(new ZombieStrong());
                      if (z.get(i).isDead())
                       ZombieNumber-=1;

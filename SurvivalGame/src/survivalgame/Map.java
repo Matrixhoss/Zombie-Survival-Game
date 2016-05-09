@@ -28,7 +28,8 @@ public class Map extends JFrame {
     private Random r;
     private Random R;
     private Dimension mapdim = new Dimension();
-    private Waves wave;
+    
+    
     private int TotalNumberOfZombies;
     public Map(){
  
@@ -49,16 +50,27 @@ public class Map extends JFrame {
         for (int i = 0; i < zn.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);
-            zn.z.get(i).setBounds(x, 780, 100,100);
+              int loc=r.nextInt(5);
+              
+                  switch (loc){
+                      case 1 : zn.z.get(i).setBounds(x, 780, 100,100);
+                              break;
+                      case 2:zn.z.get(i).setBounds(0, y, 100,100);
+                              break;
+                      case 3 :zn.z.get(i).setBounds(x, 0, 100,100);
+                              break;
+                      case 4: zn.z.get(i).setBounds(1200, y, 100,100);
+                              break;
+                  }
             Background.add(zn.z.get(i));
         }
-        zf=new ZombieGenerator("ZombieFast");
-        for (int i = 0; i < zf.getZombieNumber(); i++) {
-              int x = r.nextInt(1400);
-              int y= r.nextInt(800);
-            zf.z.get(i).setBounds(0, y, 100,100);
-            Background.add(zf.z.get(i));
-        }
+//        zf=new ZombieGenerator("ZombieFast");
+//        for (int i = 0; i < zf.getZombieNumber(); i++) {
+//              int x = r.nextInt(1400);
+//              int y= r.nextInt(800);
+//            zf.z.get(i).setBounds(0, y, 100,100);
+//            Background.add(zf.z.get(i));
+//        }
         
    }
    catch(Exception ex){
@@ -76,7 +88,8 @@ public class Map extends JFrame {
         public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
-            zf.z.get(i).AI(p.getX(),p.getY());}
+//            zf.z.get(i).AI(p.getX(),p.getY());
+        }
            //z.move();
            p.move(mapdim);
            p.FireHandling();
