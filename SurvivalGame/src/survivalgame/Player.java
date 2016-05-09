@@ -46,8 +46,6 @@ public class Player extends Character {
  
    // boolean of arros
    private   boolean up , down , right , left ;
-   // angle of rotation
-   private int angle = 0 ;
    private int direction=1;
    private Weapons[] PWeapon = new Weapons[3];
    private int CurrentWeapon;
@@ -67,7 +65,6 @@ public class Player extends Character {
         PWeapon[0] = new Pistol();
         CurrentWeapon=0;
         this.zombies=zombies;
-       
         // key listener for arrowkeys
         frame.addKeyListener(new KeyAdapter() {
         @Override
@@ -90,7 +87,7 @@ public class Player extends Character {
                 case KeyEvent.VK_F:
                 if(Fired==false){
                 
-                bullets.add(new bullet(x,y,stopPosition));
+                bullets.add(new bullet(x+25 ,y+25,stopPosition));
                 drawpanel.add(bullets.get(bullets.size()-1));
                 Firing=PWeapon[CurrentWeapon].Fire();
                 Fired=true;
@@ -218,7 +215,7 @@ public class Player extends Character {
         }
     }
     public void animation (){
-        
+        // annimation of player
         if  (up && right){
         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierUpRight.gif")));
         stopPosition  = 1 ;
@@ -251,22 +248,22 @@ public class Player extends Character {
          this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierLeft.gif")));
          stopPosition  = 8 ;
         }
-        else{
-            if(stopPosition  == 1)
+        else{ // when player  not move 
+            if(stopPosition  == 1)// Up and right
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/UpRight.png")));
-           if(stopPosition  == 2)
+           if(stopPosition  == 2)// up and left 
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/UpLeft.png")));
-           if(stopPosition  == 3)
+           if(stopPosition  == 3) // down and right 
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/DownRight.png")));
-           if(stopPosition  == 4)
+           if(stopPosition  == 4) // down amd left 
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/DownLeft.png")));
-           if(stopPosition  == 5)
+           if(stopPosition  == 5) // up
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png")));
-           if(stopPosition  == 6)
+           if(stopPosition  == 6) // down
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Down.png")));
-           if(stopPosition  == 7)
+           if(stopPosition  == 7) // right 
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Right.png")));
-           if(stopPosition  == 8)
+           if(stopPosition  == 8) // left 
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Left.png")));
            //
         }

@@ -33,8 +33,7 @@ public class MAP2 extends JFrame {
     
     private int TotalNumberOfZombies;
     public MAP2(){
- 
-  
+    
     Container c = this.getContentPane();
     
     Background = new ImagePanel(MapIcn.getImage());
@@ -49,29 +48,18 @@ public class MAP2 extends JFrame {
     
 
       zn=new ZombieGenerator("ZombieNormal");
-        for (int i = 0; i < zn.getZombieNumber(); i++) {
-              int x = r.nextInt(1400);
-              int y= r.nextInt(800);
-              int loc=r.nextInt(5);
-              
-                  switch (loc){
-                      case 1 : zn.z.get(i).setBounds(x, 780, 100,100);
-                              break;
-                      case 2:zn.z.get(i).setBounds(0, y, 100,100);
-                              break;
-                      case 3 :zn.z.get(i).setBounds(x, 0, 100,100);
-                              break;
-                      case 4: zn.z.get(i).setBounds(1200, y, 100,100);
-                              break;
-                  }
-            Background.add(zn.z.get(i));
-        }  
-//    
+      GenerateZombie(zn);
+       zf=new ZombieGenerator("ZombieFast");
+      GenerateZombie(zf);
+ 
+//      zf=new ZombieGenerator("ZombieFast");
+//      GenerateZombie(zf);
+    
         
  
    
     p = new Player (100,10,this,20,20,Background,mapdim,zn);
-      p.setIcon(Playericon);
+     p.setIcon(Playericon);
        p.setSize(100, 100);
        Background.add(p);
        
@@ -81,16 +69,27 @@ public class MAP2 extends JFrame {
         public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
-//            zf.z.get(i).AI(p.getX(),p.getY());
+            zn.z.get(i).rotation();
         }
-        if (zn.z.isEmpty()){
+        
+        for (int i = 0; i < zf.z.size(); i++){
+            zf.z.get(i).AI(p.getX(),p.getY());
+//             zf.z.get(i).rotation();
+        }
+        TotalNumberOfZombies=zn.z.size()+zf.z.size();
+        
+        if (TotalNumberOfZombies==0){
             Waves.setNextWave();
             zn.updateZombie("ZombieNormal");
-            GenerateNormal();
+            GenerateZombie(zn);
+            if(Waves.getWave()<2){
+                zf.updateZombie("ZombieFast");
+            GenerateZombie(zf);
+        }
         }
            //z.move();
            p.move(mapdim);
-           
+           p.animation();
            p.FireHandling();
            
            p.setLocation(p.getx(), p.gety());
@@ -109,27 +108,26 @@ public class MAP2 extends JFrame {
     this.setResizable(false);
     this.setSize(1280, 720);
     }
-       public void GenerateNormal(){
-//       zn=new ZombieGenerator("ZombieNormal");
+       public void GenerateZombie(ZombieGenerator zn){
+
         for (int i = 0; i < zn.getZombieNumber(); i++) {
-              int x = r.nextInt(1400);
-              int y= r.nextInt(800);
-              int loc=r.nextInt(5);
+              int x = r.nextInt(1280);
+              int y= r.nextInt(720);
+              int loc=r.nextInt(4);
               
                   switch (loc){
-                      case 1 : zn.z.get(i).setBounds(x, 780, 100,100);
+                      case 0: zn.z.get(i).setBounds(x, 780, 100,100);
                               break;
-                      case 2:zn.z.get(i).setBounds(0, y, 100,100);
+                      case 1:zn.z.get(i).setBounds(0, y, 100,100);
                               break;
-                      case 3 :zn.z.get(i).setBounds(x, 0, 100,100);
+                      case 2 :zn.z.get(i).setBounds(x, 0, 100,100);
                               break;
-                      case 4: zn.z.get(i).setBounds(1200, y, 100,100);
+                      case 3: zn.z.get(i).setBounds(1200, y, 100,100);
                               break;
                   }
             Background.add(zn.z.get(i));
         }}
-       
-
+      
     
       
  }
