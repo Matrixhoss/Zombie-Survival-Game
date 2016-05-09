@@ -165,7 +165,7 @@ public class Player extends Character {
     public BufferedImage getImage(){
         try {
        
-            BufferedImage bi = ImageIO.read(new File("C:\\Users\\Hossam\\Documents\\NetBeansProjects\\asuprogrammingproject\\SurvivalGame\\build\\classes\\survivalgame\\misc\\Sprites\\Soldier.png")); 
+            BufferedImage bi = ImageIO.read(new File("C:\\Users\\user1\\Documents\\NetBeansProjects\\asuprogrammingproject\\SurvivalGame\\src\\survivalgame\\misc\\Sprites\\Soldier.png")); 
             return bi ;
         }
         catch (IOException e){

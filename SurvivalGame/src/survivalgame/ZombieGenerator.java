@@ -22,6 +22,7 @@ public class ZombieGenerator {
                   z.add(new ZombieNormal());
                   if (z.get(i).isDead())
                       ZombieNumber-=1;
+                
                }
            break;
        case "ZombieStrong":
