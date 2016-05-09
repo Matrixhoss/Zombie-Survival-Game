@@ -81,9 +81,15 @@ public abstract class Zombie extends Character  {
         int DiffY=yOfplayer-this.getY();
         angle=Math.atan2(DiffY, DiffX);
         double SX=(this.getSpeed()*S*Math.cos(angle));
-        double SY=(this.getSpeed()*S*Math.sin(angle));        
-        this.setLocation(this.getX()+(int)SX,this.getY()+(int)SY);
-
+        double SY=(this.getSpeed()*S*Math.sin(angle));
+        if((DiffX>-50&&DiffX<50)&&(DiffY>-50&&DiffY<50)){
+//            System.out.println(DiffX+"                "+DiffY+"\n");
+        }
+        else 
+            this.setLocation(this.getX()+(int)SX,this.getY()+(int)SY);
+            
+        
+    
     }
     
     @Override
