@@ -21,7 +21,7 @@ bullet (int x, int y){
     b = new Rectangle (x,y,10,10);
     ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
     this.setIcon(BulletImage);
-    this.setSize(20,20);
+    this.setSize(10,10);
 }    
 bullet (int x, int y,int direction){
     b = new Rectangle (x,y,10,10);
@@ -92,7 +92,6 @@ public class Player extends Character {
                 
                 bullets.add(new bullet(x,y,stopPosition));
                 drawpanel.add(bullets.get(bullets.size()-1));
-                bullets.get(bullets.size()-1).setLocation(x,y);
                 Firing=PWeapon[CurrentWeapon].Fire();
                 Fired=true;
                 break;
