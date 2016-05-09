@@ -24,8 +24,10 @@ Rectangle GetBullet(){
 }
 }
 public class Player extends Character {
+    // position on axis
    private   int x = 0 ;
    private   int y = 0 ;
+   // boolean of arros
    private   boolean up , down , right , left ;
    private Weapons[] PWeapon = new Weapons[3];
    private int CurrentWeapon;
@@ -41,9 +43,11 @@ public class Player extends Character {
         this.y = yL ;
         PWeapon[0] = new Pistol();
         CurrentWeapon=0;
+        // key listener for arrowkeys
         frame.addKeyListener(new KeyAdapter() {
         @Override
         public void keyPressed(KeyEvent ke) {
+            // when press key of arrows set its boolean true 
             switch (ke.getKeyCode()){
                 case KeyEvent.VK_RIGHT :
                     right = true ;
@@ -69,6 +73,7 @@ public class Player extends Character {
 
        @Override
        public void keyReleased(KeyEvent ke) {
+            // when releas key of arrows set its boolean false
             switch (ke.getKeyCode()){
                 case KeyEvent.VK_RIGHT :
                     right = false ;
@@ -88,17 +93,22 @@ public class Player extends Character {
         
        //
     }
+    // get x of player
     public int getx(){
     return this.x;
     }
+    // get y of player 
     public int gety(){
     return this.y;
     }
+    // get speed of player 
     public int getSpeed (){
     return super.getSpeed();
     }
-
+// move palyer 
     public void move (Dimension d){
+        // check of boolean of arrow is true or false if 
+        // if true set the new value of axis * speed 
      if (up) {
          if (!(y < 0))
              
