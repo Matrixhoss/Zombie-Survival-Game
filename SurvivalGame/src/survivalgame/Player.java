@@ -15,12 +15,21 @@ import javax.swing.Timer;
 
 class bullet extends JLabel{
     public Rectangle b;
+    public int direction;
+    
 bullet (int x, int y){
     b = new Rectangle (x,y,10,10);
-    //ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
-    //this.setIcon(BulletImage);
+    ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
+    this.setIcon(BulletImage);
     this.setSize(20,20);
 }    
+bullet (int x, int y,int direction){
+    b = new Rectangle (x,y,10,10);
+    ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
+    this.setIcon(BulletImage);
+    this.setSize(20,20);
+    this.direction=direction;
+}  
 void MoveBulletBy(int x,int y){
     b.x+=x;
     b.y+=y;
@@ -39,6 +48,7 @@ public class Player extends Character {
    private   boolean up , down , right , left ;
    // angle of rotation
    private int angle = 0 ;
+   private int direction=1;
    private Weapons[] PWeapon = new Weapons[3];
    private int CurrentWeapon;
    private boolean Fired,Firing;
@@ -77,7 +87,15 @@ public class Player extends Character {
                     break;  
                 case KeyEvent.VK_F:
                 if(Fired==false){
-                bullets.add(new bullet(x,y));
+                if(right)
+                    direction=1;
+                if(left)
+                    direction=2;
+                if(up)
+                    direction=3;
+                if(down)
+                    direction=4;
+                bullets.add(new bullet(x,y,direction));
                 drawpanel.add(bullets.get(bullets.size()-1));
                 bullets.get(bullets.size()-1).setLocation(x,y);
                 Firing=PWeapon[CurrentWeapon].Fire();
@@ -157,7 +175,20 @@ public class Player extends Character {
         
         for(int i=0;i<bullets.size();i++){
             bullet temp = bullets.get(i);
-            temp.MoveBulletBy(50, 0);
+            switch(temp.direction){
+                case 1://right
+                    temp.MoveBulletBy(50, 0);
+                    break;
+                case 2://left
+                    temp.MoveBulletBy(-50, 0);
+                    break;
+                case 3://up
+                    temp.MoveBulletBy(0, -50);
+                    break;
+                case 4://down
+                    temp.MoveBulletBy(0, 50);
+                    break;
+            }
             bullets.set(i, temp);
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
             for(int j=0;j<zombies.z.size();j++){
