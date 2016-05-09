@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.ImageObserver;
+import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class MAP3 extends JFrame {
-    private ZombieNormal z ;
+        private ZombieNormal z ;
     private ImagePanel Background;
     private ZombieGenerator zn;
     private ZombieGenerator zf;
@@ -29,8 +30,8 @@ public class MAP3 extends JFrame {
     private Random r;
     private Random R;
     private Dimension mapdim = new Dimension();
-    
-    
+     public static ArrayList<Zombie>AllZombies=new ArrayList<Zombie>();
+     
     private int TotalNumberOfZombies;
     public MAP3(){
     
@@ -46,14 +47,14 @@ public class MAP3 extends JFrame {
    
        r= new Random();
     
-
-      zn=new ZombieGenerator("ZombieNormal");
+       
+      zn=new ZombieGenerator();
       GenerateZombie(zn);
-       zf=new ZombieGenerator("ZombieFast");
-      GenerateZombie(zf);
+      
+    
+    
  
-//      zf=new ZombieGenerator("ZombieFast");
-//      GenerateZombie(zf);
+
     
         
  
@@ -69,23 +70,14 @@ public class MAP3 extends JFrame {
         public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
-            zn.z.get(i).rotation();
+//            zn.z.get(i).rotation();
         }
         
-        for (int i = 0; i < zf.z.size(); i++){
-            zf.z.get(i).AI(p.getX(),p.getY());
-//             zf.z.get(i).rotation();
-        }
-        TotalNumberOfZombies=zn.z.size()+zf.z.size();
-        
-        if (TotalNumberOfZombies==0){
+        if (zn.z.isEmpty()){
             Waves.setNextWave();
-            zn.updateZombie("ZombieNormal");
+            zn.updateZombie();
             GenerateZombie(zn);
-            if(Waves.getWave()<2){
-                zf.updateZombie("ZombieFast");
-            GenerateZombie(zf);
-        }
+           
         }
            //z.move();
            p.move(mapdim);
@@ -125,6 +117,7 @@ public class MAP3 extends JFrame {
                       case 3: zn.z.get(i).setBounds(1200, y, 100,100);
                               break;
                   }
+                 
             Background.add(zn.z.get(i));
         }}
       
