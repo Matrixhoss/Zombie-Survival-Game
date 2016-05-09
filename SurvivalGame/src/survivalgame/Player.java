@@ -73,6 +73,7 @@ public class Player extends Character {
         @Override
         public void keyPressed(KeyEvent ke) {
             // when press key of arrows set its boolean true 
+            
             switch (ke.getKeyCode()){
                 case KeyEvent.VK_RIGHT :
                     right = true ;
@@ -89,30 +90,15 @@ public class Player extends Character {
                 case KeyEvent.VK_F:
                 if(Fired==false){
                 
-                bullets.add(new bullet(x,y,direction));
+                bullets.add(new bullet(x,y,stopPosition));
                 drawpanel.add(bullets.get(bullets.size()-1));
                 bullets.get(bullets.size()-1).setLocation(x,y);
                 Firing=PWeapon[CurrentWeapon].Fire();
                 Fired=true;
                 break;
                 }
-            }
-            if(right)
-                    direction=1;
-                if(left)
-                    direction=2;
-                if(up)
-                    direction=3;
-                if(down)
-                    direction=4;
-                if(up&&right)
-                    direction=5;
-                if(up&&left)
-                    direction=6;
-                if(down&&right)
-                    direction=7;
-                if(down&&left)
-                    direction=8;
+            
+        }
         }
 
        @Override
@@ -186,28 +172,28 @@ public class Player extends Character {
         for(int i=0;i<bullets.size();i++){
             bullet temp = bullets.get(i);
             switch(temp.direction){
-                case 1://right
+                case 7://right
                     temp.MoveBulletBy(50, 0);
                     break;
-                case 2://left
+                case 8://left
                     temp.MoveBulletBy(-50, 0);
                     break;
-                case 3://up
+                case 5://up
                     temp.MoveBulletBy(0, -50);
                     break;
-                case 4://down
+                case 6://down
                     temp.MoveBulletBy(0, 50);
                     break;
-                case 5://up and right
+                case 1://up and right
                     temp.MoveBulletBy(50,-50);
                     break;
-                case 6://up and left
+                case 2://up and left
                     temp.MoveBulletBy(-50, -50);
                     break;
-                case 7: //down and right
+                case 3: //down and right
                     temp.MoveBulletBy(50, 50);
                     break;
-                case 8: //down and left
+                case 4: //down and left
                     temp.MoveBulletBy(-50, 50);
                     break;
                     
