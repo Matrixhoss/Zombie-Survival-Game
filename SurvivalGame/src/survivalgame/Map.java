@@ -71,7 +71,7 @@ public class Map extends JFrame {
  
    
     p = new Player (100,10,this,20,20,Background,mapdim,zn);
-      p.setIcon(Playericon);
+     p.setIcon(Playericon);
        p.setSize(100, 100);
        Background.add(p);
        
@@ -90,7 +90,7 @@ public class Map extends JFrame {
         }
            //z.move();
            p.move(mapdim);
-           
+           p.animation();
            p.FireHandling();
            
            p.setLocation(p.getx(), p.gety());
@@ -128,8 +128,7 @@ public class Map extends JFrame {
                   }
             Background.add(zn.z.get(i));
         }}
-       
-
+      
     
       
  }
