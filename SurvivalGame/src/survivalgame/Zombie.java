@@ -26,10 +26,12 @@ public abstract class Zombie extends Character  {
     }
     public Zombie (String T){
         super(20,50);
+        r=new Random();
+        int RandS=r.nextInt(5);//RandS to make zombies have different value
         switch (T){
             case "ZombieNormal":
                 this.setHealth(20);
-                this.setSpeed(40);
+                this.setSpeed(40+RandS);
                 break;
             case"ZombieStrong":
                 this.setHealth(40);
@@ -81,9 +83,15 @@ public abstract class Zombie extends Character  {
         int DiffY=yOfplayer-this.getY();
         angle=Math.atan2(DiffY, DiffX);
         double SX=(this.getSpeed()*S*Math.cos(angle));
-        double SY=(this.getSpeed()*S*Math.sin(angle));        
-        this.setLocation(this.getX()+(int)SX,this.getY()+(int)SY);
-
+        double SY=(this.getSpeed()*S*Math.sin(angle));
+        if((DiffX>-50&&DiffX<50)&&(DiffY>-50&&DiffY<50)){
+//            System.out.println(DiffX+"                "+DiffY+"\n");
+        }
+        else 
+            this.setLocation(this.getX()+(int)SX,this.getY()+(int)SY);
+            
+        
+    
     }
     
     @Override
