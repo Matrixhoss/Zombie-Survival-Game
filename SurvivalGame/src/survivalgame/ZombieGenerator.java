@@ -27,16 +27,10 @@ public class ZombieGenerator {
            for (int i = 0; i < ZombieNumber; i++) {
                    z[i]=new ZombieFast();
                }
-           
            break;
-      
-       
-       
+ 
        }
-        
-   
-    
-    }
+ }
     public int getZombieNumber(){
     return this.ZombieNumber;
     }
