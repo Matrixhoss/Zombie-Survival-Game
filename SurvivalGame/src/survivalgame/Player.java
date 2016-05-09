@@ -41,7 +41,7 @@ Rectangle GetBullet(){
 public class Player extends Character {
     // position on axis
    private   int x = 0 ;
-
+   private int stopPosition  = 5  ;
    private   int y = 0 ;
  
    // boolean of arros
@@ -67,6 +67,7 @@ public class Player extends Character {
         PWeapon[0] = new Pistol();
         CurrentWeapon=0;
         this.zombies=zombies;
+       
         // key listener for arrowkeys
         frame.addKeyListener(new KeyAdapter() {
         @Override
@@ -209,5 +210,59 @@ public class Player extends Character {
                 }
         }
     }
+    public void animation (){
+        int stopPosition  = 5  ;
+        if  (up && right){
+        this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierUpRight.gif")));
+        stopPosition  = 1 ;
+        }
+        else if  (up && left){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierUpLeft.gif")));
+         stopPosition  = 2 ;
+        } 
+        else if  (down && right){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierDownRight.gif")));
+         stopPosition  = 3;
+        }
+        else if  (down && left){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierDownLeft.gif")));
+         stopPosition  = 4;
+        }
+        else if  (up){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierGif.gif")));
+         stopPosition  = 5;
+        }
+        else if  (down){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierDown.gif")));
+         stopPosition  = 6;
+        }
+        else if  (right){
+        this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierRight.gif")));
+        stopPosition  = 7;
+        }
+        else if  (left){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierLeft.gif")));
+         stopPosition  = 8 ;
+        }
+        else{
+            if(stopPosition  == 1){
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/UpRight.png")));
+           if(stopPosition  == 2)
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/UpLeft.png")));
+           if(stopPosition  == 3)
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/DownRight.png")));
+           if(stopPosition  == 4)
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/DownLeft.png")));
+           if(stopPosition  == 5)
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png")));
+           if(stopPosition  == 6)
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Down.png")));
+           if(stopPosition  == 7)
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Right.png")));
+           if(stopPosition  == 8)
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Left.png")));
+           
+        }
     
+}
 }
