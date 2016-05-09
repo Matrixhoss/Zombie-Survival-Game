@@ -35,7 +35,8 @@ public class Player extends Character {
    private Dimension mapdim;
    private ImagePanel drawpanel;
    private ArrayList<bullet> bullets = new ArrayList();
-    Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim){
+   private ZombieGenerator zombies;
+    Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies){
         super(S,H);
         this.drawpanel=drawpanel;
         this.mapdim=mapdim;
@@ -43,6 +44,7 @@ public class Player extends Character {
         this.y = yL ;
         PWeapon[0] = new Pistol();
         CurrentWeapon=0;
+        this.zombies=zombies;
         // key listener for arrowkeys
         frame.addKeyListener(new KeyAdapter() {
         @Override
@@ -130,18 +132,27 @@ public class Player extends Character {
         //this.setLocation(x, y);
     }
     public void FireHandling (){
-        int i=0;
         
-        for(;i<bullets.size();i++){
+        
+        for(int i=0;i<bullets.size();i++){
             bullet temp = bullets.get(i);
             temp.MoveBulletBy(50, 0);
-            if((temp.b.getX()>=mapdim.width-600)||(temp.b.getY()>=mapdim.height)){
+            bullets.set(i, temp);
+            bullets.get(i).setLocation(temp.b.x,temp.b.y);
+            for(int j=0;j<zombies.z.size();j++){
+                if((Math.abs(temp.getX()-zombies.z.get(j).getX())<=10) && (Math.abs(temp.getX()-zombies.z.get(j).getX())<=10)){
+                   
+                   drawpanel.remove(zombies.z.get(j));
+                   zombies.z.remove(j);
+                   bullets.remove(i);
+                   drawpanel.remove(temp);
+                }
+            }
+            if((temp.b.getX()>=mapdim.width)||(temp.b.getY()>=mapdim.height)){
                     bullets.remove(i);
                     drawpanel.remove(temp);
                     continue;
                 }
-            bullets.set(i, temp);
-            bullets.get(i).setLocation(temp.b.x,temp.b.y);
         }
     }
 }

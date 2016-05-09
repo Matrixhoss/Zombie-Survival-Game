@@ -39,7 +39,7 @@ public class Map extends JFrame {
     Background = new ImagePanel(MapIcn.getImage());
     c.add(Background);
     mapdim=Background.getSize();
-       p = new Player (100,10,this,20,20,Background,mapdim);
+       p = new Player (100,10,this,20,20,Background,mapdim,zn);
        p.setIcon(Playericon);
        p.setSize(100, 100);
        Background.add(p);
