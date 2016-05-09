@@ -263,6 +263,6 @@ public class Player extends Character {
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Left.png")));
            //
         }
-    
+    //
 }
     }
