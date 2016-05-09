@@ -14,7 +14,6 @@ import java.awt.image.ImageObserver;
 import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -24,7 +23,7 @@ public class MAP2 extends JFrame {
     private ZombieGenerator zn;
     private ZombieGenerator zf;
     private Player p ;
-    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Hillsides.jpg"));
+    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Hillsides.png"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
     ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     private Random r;
