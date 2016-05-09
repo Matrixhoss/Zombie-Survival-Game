@@ -135,7 +135,7 @@ public class Player extends Character {
         for(;i<bullets.size();i++){
             bullet temp = bullets.get(i);
             temp.MoveBulletBy(50, 0);
-            if((temp.b.getX()>=mapdim.width-600)||(temp.b.getY()>=mapdim.height)){
+            if((temp.b.getX()>=mapdim.width)||(temp.b.getY()>=mapdim.height)){
                     bullets.remove(i);
                     drawpanel.remove(temp);
                     continue;
