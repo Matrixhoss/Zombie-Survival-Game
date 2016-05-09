@@ -21,7 +21,7 @@ bullet (int x, int y){
     b = new Rectangle (x,y,10,10);
     ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
     this.setIcon(BulletImage);
-    this.setSize(20,20);
+    this.setSize(10,10);
 }    
 bullet (int x, int y,int direction){
     b = new Rectangle (x,y,10,10);
@@ -73,6 +73,7 @@ public class Player extends Character {
         @Override
         public void keyPressed(KeyEvent ke) {
             // when press key of arrows set its boolean true 
+            
             switch (ke.getKeyCode()){
                 case KeyEvent.VK_RIGHT :
                     right = true ;
@@ -88,22 +89,15 @@ public class Player extends Character {
                     break;  
                 case KeyEvent.VK_F:
                 if(Fired==false){
-                if(right)
-                    direction=1;
-                if(left)
-                    direction=2;
-                if(up)
-                    direction=3;
-                if(down)
-                    direction=4;
-                bullets.add(new bullet(x,y,direction));
+                
+                bullets.add(new bullet(x,y,stopPosition));
                 drawpanel.add(bullets.get(bullets.size()-1));
-                bullets.get(bullets.size()-1).setLocation(x,y);
                 Firing=PWeapon[CurrentWeapon].Fire();
                 Fired=true;
                 break;
                 }
-            }
+            
+        }
         }
 
        @Override
@@ -177,18 +171,31 @@ public class Player extends Character {
         for(int i=0;i<bullets.size();i++){
             bullet temp = bullets.get(i);
             switch(temp.direction){
-                case 1://right
+                case 7://right
                     temp.MoveBulletBy(50, 0);
                     break;
-                case 2://left
+                case 8://left
                     temp.MoveBulletBy(-50, 0);
                     break;
-                case 3://up
+                case 5://up
                     temp.MoveBulletBy(0, -50);
                     break;
-                case 4://down
+                case 6://down
                     temp.MoveBulletBy(0, 50);
                     break;
+                case 1://up and right
+                    temp.MoveBulletBy(50,-50);
+                    break;
+                case 2://up and left
+                    temp.MoveBulletBy(-50, -50);
+                    break;
+                case 3: //down and right
+                    temp.MoveBulletBy(50, 50);
+                    break;
+                case 4: //down and left
+                    temp.MoveBulletBy(-50, 50);
+                    break;
+                    
             }
             bullets.set(i, temp);
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
@@ -204,7 +211,7 @@ public class Player extends Character {
                    break;
                 }
             }
-            if((temp.b.getX()>mapdim.width)||(temp.b.getY()>mapdim.height)){
+            if((temp.b.getX()>mapdim.width+100)||(temp.b.getY()>mapdim.height+100)){
                     bullets.remove(i);
                     drawpanel.remove(temp);
                 }
