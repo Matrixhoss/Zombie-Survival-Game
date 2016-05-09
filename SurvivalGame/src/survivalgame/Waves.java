@@ -11,9 +11,5 @@ public  class Waves {
     public int getWave(){
     return this.WaveNumber;
     }
-
-
-
-    
-    
+ 
 }
