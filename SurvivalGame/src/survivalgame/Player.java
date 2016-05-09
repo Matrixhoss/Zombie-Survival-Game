@@ -140,7 +140,7 @@ public class Player extends Character {
             bullets.set(i, temp);
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
             for(int j=0;j<zombies.z.size();j++){
-                if((Math.abs(temp.getX()-zombies.z.get(j).getX())<=10) && (Math.abs(temp.getX()-zombies.z.get(j).getX())<=10)){
+                if((Math.abs(temp.getX()-zombies.z.get(j).getX())<=5) && (Math.abs(temp.getX()-zombies.z.get(j).getX())<=5)){
                    
                    drawpanel.remove(zombies.z.get(j));
                    zombies.z.remove(j);
