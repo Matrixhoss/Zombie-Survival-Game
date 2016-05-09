@@ -261,7 +261,7 @@ public class Player extends Character {
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Right.png")));
            if(stopPosition  == 8)
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Left.png")));
-           
+           //
         }
     
 }
