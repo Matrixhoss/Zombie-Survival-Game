@@ -4,6 +4,7 @@ package survivalgame;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +24,7 @@ public class MAP2 extends JFrame {
     private ZombieGenerator zn;
     private ZombieGenerator zf;
     private Player p ;
-    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Hillsides.png"));
+    ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
     ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     private Random r;
@@ -71,10 +72,10 @@ public class MAP2 extends JFrame {
  
    
     p = new Player (100,10,this,20,20,Background,mapdim,zn);
-       p.setIcon(Playericon);
+      p.setIcon(Playericon);
        p.setSize(100, 100);
        Background.add(p);
-        
+       
    
     Timer t=new Timer(30,new ActionListener(){
         @Override
@@ -90,9 +91,12 @@ public class MAP2 extends JFrame {
         }
            //z.move();
            p.move(mapdim);
+           
            p.FireHandling();
+           
            p.setLocation(p.getx(), p.gety());
            System.out.println(Waves.getWave());
+           repaint();
         }
         
         
@@ -104,6 +108,7 @@ public class MAP2 extends JFrame {
     this.setVisible(true);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setResizable(false);
+    this.setSize(1280, 720);
     }
        public void GenerateNormal(){
 //       zn=new ZombieGenerator("ZombieNormal");
@@ -124,4 +129,8 @@ public class MAP2 extends JFrame {
                   }
             Background.add(zn.z.get(i));
         }}
+       
+
+    
+      
  }
