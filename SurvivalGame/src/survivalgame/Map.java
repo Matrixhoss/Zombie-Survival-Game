@@ -29,6 +29,7 @@ public class Map extends JFrame {
     private Random R;
     private Dimension mapdim = new Dimension();
     private Waves wave;
+    private int TotalNumberOfZombies;
     public Map(){
  
   
@@ -62,6 +63,7 @@ public class Map extends JFrame {
             zf.z.get(i).setBounds(0, y, 100,100);
             Background.add(zf.z.get(i));
         }
+        
    }
    catch(Exception ex){
        System.out.print(ex);
