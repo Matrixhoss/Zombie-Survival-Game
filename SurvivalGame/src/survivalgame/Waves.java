@@ -3,13 +3,13 @@ package survivalgame;
 
 
 public  class Waves {
-    private int WaveNumber;
+    private static int WaveNumber;
     
-    public void setWave(int x){
-    this.WaveNumber=x;
+    public static void setNextWave(){
+    Waves.WaveNumber+=1;
     }
     public int getWave(){
-    return this.WaveNumber;
+    return Waves.WaveNumber;
     }
  
 }
