@@ -84,6 +84,7 @@ public class Map extends JFrame {
         }
         if (zn.z.isEmpty()){
             Waves.setNextWave();
+            zn.updateZombie("ZombieNormal");
             GenerateNormal();
         }
            //z.move();
@@ -104,7 +105,7 @@ public class Map extends JFrame {
     this.setResizable(false);
     }
        public void GenerateNormal(){
-       zn=new ZombieGenerator("ZombieNormal");
+//       zn=new ZombieGenerator("ZombieNormal");
         for (int i = 0; i < zn.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);

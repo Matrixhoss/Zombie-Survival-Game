@@ -41,7 +41,6 @@ public abstract class Zombie extends Character  {
                   break;
                         
         }
-        
       
     }
     public boolean isDead(){
@@ -83,7 +82,7 @@ public abstract class Zombie extends Character  {
         angle=Math.atan2(DiffY, DiffX);
         double SX=(this.getSpeed()*S*Math.cos(angle));
         double SY=(this.getSpeed()*S*Math.sin(angle));        
-        this.setBounds(this.getX()+(int)SX,this.getY()+(int)SY,this.getWidth(),this.getHeight());
+        this.setLocation(this.getX()+(int)SX,this.getY()+(int)SY);
 
     }
     
