@@ -26,8 +26,7 @@ public class ZombieGenerator {
                }
            break;
        case "ZombieStrong":
-           if (Waves.getWave()>=2);
-            ZombieNumber=3*Waves.getWave();
+          
            for (int i = 0; i < ZombieNumber; i++) {
                      if(Waves.getWave()==2)
                          
@@ -37,6 +36,8 @@ public class ZombieGenerator {
                }
            break;
        case "ZombieFast":
+           
+            ZombieNumber=3*Waves.getWave();
            for (int i = 0; i < ZombieNumber; i++) {
                     z.add(new ZombieFast());
                     if (z.get(i).isDead())
@@ -64,8 +65,7 @@ public class ZombieGenerator {
                }
            break;
        case "ZombieStrong":
-           if (Waves.getWave()>=2);
-            ZombieNumber=3*Waves.getWave();
+        
            for (int i = 0; i < ZombieNumber; i++) {
                      if(Waves.getWave()==2)
                          
@@ -75,6 +75,8 @@ public class ZombieGenerator {
                }
            break;
        case "ZombieFast":
+           
+            ZombieNumber=3*Waves.getWave();
            for (int i = 0; i < ZombieNumber; i++) {
                     z.add(new ZombieFast());
                     if (z.get(i).isDead())

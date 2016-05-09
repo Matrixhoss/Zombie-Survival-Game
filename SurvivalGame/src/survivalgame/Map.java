@@ -33,8 +33,7 @@ public class Map extends JFrame {
     
     private int TotalNumberOfZombies;
     public Map(){
- 
-  
+    
     Container c = this.getContentPane();
     
     Background = new ImagePanel(MapIcn.getImage());
@@ -50,7 +49,12 @@ public class Map extends JFrame {
 
       zn=new ZombieGenerator("ZombieNormal");
       GenerateZombie(zn);
-//    
+       zf=new ZombieGenerator("ZombieFast");
+      GenerateZombie(zf);
+ 
+//      zf=new ZombieGenerator("ZombieFast");
+//      GenerateZombie(zf);
+    
         
  
    
@@ -66,13 +70,22 @@ public class Map extends JFrame {
         for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
             zn.z.get(i).rotation();
-//            zf.z.get(i).AI(p.getX(),p.getY());
         }
-        TotalNumberOfZombies=zn.z.size();
+        
+        for (int i = 0; i < zf.z.size(); i++){
+            zf.z.get(i).AI(p.getX(),p.getY());
+//             zf.z.get(i).rotation();
+        }
+        TotalNumberOfZombies=zn.z.size()+zf.z.size();
+        
         if (TotalNumberOfZombies==0){
             Waves.setNextWave();
             zn.updateZombie("ZombieNormal");
             GenerateZombie(zn);
+            if(Waves.getWave()<2){
+                zf.updateZombie("ZombieFast");
+            GenerateZombie(zf);
+        }
         }
            //z.move();
            p.move(mapdim);
