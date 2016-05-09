@@ -1,17 +1,24 @@
 package survivalgame;
 
 
-public class Weapons {
+public abstract class Weapons {
      int damage;
      int rateoffire;
      int ammo;
      int range;
      int MAPSIZE=500;
      boolean burstfire;
+     
+    public void RefillAmmo(){};
+    public boolean Fire(){
+        this.ammo--;
+        return true;
+    }
     
 }
  class Pistol extends Weapons{
     Pistol (){
+        super();
          this.damage = 10;
          this.rateoffire=10;
          this.ammo=Integer.MAX_VALUE;

@@ -2,19 +2,45 @@
 package survivalgame;
 
 import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 import javax.swing.*;
 
-
+class bullet extends JLabel{
+    public Rectangle b;
+bullet (int x, int y){
+    b = new Rectangle (x,y,10,10);
+    ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
+    this.setIcon(BulletImage);
+    this.setSize(100,100);
+}    
+void MoveBulletBy(int x,int y){
+    b.x+=x;
+    b.y+=y;
+}
+Rectangle GetBullet(){
+    return b;
+}
+}
 public class Player extends Character {
    private   int x = 0 ;
    private   int y = 0 ;
    private   boolean up , down , right , left ;
-    Player(int H,int S,Weapons W,JFrame frame, int x , int y){
-        super(S,H,W);
-        this.x = x ;
-        this.y = y ;
-        
+   private Weapons[] PWeapon = new Weapons[3];
+   private int CurrentWeapon;
+   private boolean Firing;
+   private Dimension mapdim;
+   private ImagePanel drawpanel;
+   private ArrayList<bullet> bullets = new ArrayList();
+    Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim){
+        super(S,H);
+        this.drawpanel=drawpanel;
+        this.mapdim=mapdim;
+        this.x = xL ;
+        this.y = yL ;
+        PWeapon[0] = new Pistol();
+        CurrentWeapon=0;
         frame.addKeyListener(new KeyAdapter() {
         @Override
         public void keyPressed(KeyEvent ke) {
@@ -30,7 +56,14 @@ public class Player extends Character {
                     break;     
                 case KeyEvent.VK_DOWN :
                     down = true ;
-                    break;    
+                    break;  
+                case KeyEvent.VK_F:
+                bullets.add(new bullet(x,y));
+                drawpanel.add(bullets.get(bullets.size()-1));
+                bullets.get(bullets.size()-1).setLocation(x,y);
+                Firing=PWeapon[CurrentWeapon].Fire();
+                break;
+                
             }
         }
 
@@ -64,6 +97,7 @@ public class Player extends Character {
     public int getSpeed (){
     return super.getSpeed();
     }
+
     public void move (Dimension d){
      if (up) {
          if (!(y < 0))
@@ -84,5 +118,18 @@ public class Player extends Character {
         }
     
         //this.setLocation(x, y);
+    }
+    public void FireHandling (){
+        for(int i=0;i<bullets.size();i++){
+            bullet temp = bullets.get(i);
+            temp.MoveBulletBy(50, 0);
+            if((temp.b.getX()>=mapdim.width-500)||(temp.b.getY()>=mapdim.height)){
+                    drawpanel.remove()
+                    bullets.remove(i);
+                    continue;
+                }
+            bullets.set(i, temp);
+            bullets.get(i).setLocation(temp.b.x,temp.b.y);
+        }
     }
 }

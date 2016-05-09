@@ -17,6 +17,7 @@ public abstract class Zombie extends Character  {
     private double angle;
     private int sizeX;
     private int sizeY;
+    private Weapons weapon;
     
     public Zombie (int health,int speed,String Type){
         super(health,speed);
@@ -45,6 +46,13 @@ public abstract class Zombie extends Character  {
     }
     public void setSizeX(int x){
         this.sizeX=x;
+    }
+     public void setWeapon(Weapons w){
+    this.weapon=w;
+    }
+    
+    public Weapons getWeapon(){
+    return this.weapon;
     }
     public void setSizeY(int y){
         this.sizeY=y;

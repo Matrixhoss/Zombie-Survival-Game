@@ -6,17 +6,10 @@ public abstract class Character extends JLabel {
     
     private int speed;
     private int health;
-    private Weapons weapon;
     
-    public  Character(int s ,int h, Weapons W){
+    public  Character(int s ,int h){
     this.speed=s;
     this.health=h;
-    this.weapon=W;
-    }
-     public  Character(int s ,int h){
-    this.speed=s;
-    this.health=h;
-    
     }
     
 
@@ -34,13 +27,7 @@ public abstract class Character extends JLabel {
     this.health=h;
     }
     
-    public void setWeapon(Weapons w){
-    this.weapon=w;
-    }
-    
-    public Weapons getWeapon(){
-    return this.weapon;
-    }  public int getSpeed(){
+    public int getSpeed(){
         return speed;
     }
     public void setSpeed(int s){

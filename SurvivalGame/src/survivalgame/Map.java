@@ -21,7 +21,6 @@ public class Map extends JFrame {
     private ImagePanel Background;
     private ZombieGenerator zg;
     private Player p ;
-    private Weapons w = new Weapons ();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
     ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
@@ -35,12 +34,13 @@ public class Map extends JFrame {
     
     Background = new ImagePanel(MapIcn.getImage());
     c.add(Background);
-   
-       p = new Player (100,10,w,this,20,20);
+    mapdim=Background.getSize();
+       p = new Player (100,10,this,20,20,Background,mapdim);
        p.setIcon(Playericon);
        p.setSize(100, 100);
        Background.add(p);
-        mapdim=Background.getSize();
+        
+        
      
    
    try{ 
@@ -67,6 +67,7 @@ public class Map extends JFrame {
             zg.z[i].AI(p.getX(),p.getY());
            //z.move();
            p.move(mapdim);
+           p.FireHandling();
            p.setLocation(p.getx(), p.gety());
         }
    
