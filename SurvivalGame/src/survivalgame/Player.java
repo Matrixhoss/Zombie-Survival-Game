@@ -211,7 +211,7 @@ public class Player extends Character {
         }
     }
     public void animation (){
-        int stopPosition  = 5  ;
+        
         if  (up && right){
         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierUpRight.gif")));
         stopPosition  = 1 ;
@@ -245,7 +245,7 @@ public class Player extends Character {
          stopPosition  = 8 ;
         }
         else{
-            if(stopPosition  == 1){
+            if(stopPosition  == 1)
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/UpRight.png")));
            if(stopPosition  == 2)
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/UpLeft.png")));
@@ -265,4 +265,4 @@ public class Player extends Character {
         }
     
 }
-    }}
+    }
