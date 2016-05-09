@@ -85,7 +85,7 @@ public class main_menu extends JFrame{
 //                @Override
 //                public void actionPerformed(ActionEvent e) {
 //                    try{
-//                        File file = new File("asd.m4a");
+//                        File file = new File("rules.wav");
 //                        Clip clip1 = AudioSystem.getClip();
 //                        clip1.open(AudioSystem.getAudioInputStream(file));
 //                        clip1.start();
@@ -108,7 +108,7 @@ public class main_menu extends JFrame{
     }
     public static void playback(){
         try{
-            File file = new File("asd.m4a");
+            File file = new File("rules.wav");
             Clip clip1 = AudioSystem.getClip();
             clip1.open(AudioSystem.getAudioInputStream(file));
             clip1.start();
