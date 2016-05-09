@@ -19,7 +19,8 @@ import javax.swing.Timer;
 public class Map extends JFrame {
     private ZombieNormal z ;
     private ImagePanel Background;
-    private ZombieGenerator zg;
+    private ZombieGenerator zn;
+    private ZombieGenerator zf;
     private Player p ;
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
@@ -27,6 +28,7 @@ public class Map extends JFrame {
     private Random r;
     private Random R;
     private Dimension mapdim = new Dimension();
+    private Waves wave;
     public Map(){
  
   
@@ -46,12 +48,19 @@ public class Map extends JFrame {
    try{ 
        r= new Random();
  
-    zg=new ZombieGenerator("ZombieNormal");
-        for (int i = 0; i < zg.getZombieNumber(); i++) {
+    zn=new ZombieGenerator("ZombieNormal");
+        for (int i = 0; i < zn.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);
-            zg.z[i].setBounds(x, 780, 100,100);
-            Background.add(zg.z[i]);
+            zn.z[i].setBounds(x, 780, 100,100);
+            Background.add(zn.z[i]);
+        }
+        zf=new ZombieGenerator("ZombieFast");
+        for (int i = 0; i < zf.getZombieNumber(); i++) {
+              int x = r.nextInt(1400);
+              int y= r.nextInt(800);
+            zf.z[i].setBounds(0, y, 100,100);
+            Background.add(zf.z[i]);
         }
    }
    catch(Exception ex){
@@ -63,13 +72,16 @@ public class Map extends JFrame {
     Timer t=new Timer(30,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < zg.getZombieNumber(); i++)
-            zg.z[i].AI(p.getX(),p.getY());
+        for (int i = 0; i < zn.getZombieNumber(); i++){
+            zn.z[i].AI(p.getX(),p.getY());
+            zf.z[i].AI(p.getX(),p.getY());}
            //z.move();
            p.move(mapdim);
            p.FireHandling();
            p.setLocation(p.getx(), p.gety());
         }
+        
+        
    
    
     });

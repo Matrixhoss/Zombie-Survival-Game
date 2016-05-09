@@ -22,6 +22,7 @@ public class diffculty extends JFrame{
     public diffculty(){
         this.setTitle("Option");
         this.setSize(800, 600);
+        this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         Container c = this.getContentPane();

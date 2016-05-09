@@ -80,22 +80,22 @@ public class main_menu extends JFrame{
             }
         );
         
-        music.addActionListener(
-            new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try{
-                        File file = new File("Main Menu Theme.m4a");
-                        Clip clip1 = AudioSystem.getClip();
-                        clip1.open(AudioSystem.getAudioInputStream(file));
-                        clip1.start();
-                    }
-                    catch(Exception h){
-                        System.err.println(h.getMessage());
-                    }
-                }
-            }
-        );
+//        music.addActionListener(
+//            new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    try{
+//                        File file = new File("asd.m4a");
+//                        Clip clip1 = AudioSystem.getClip();
+//                        clip1.open(AudioSystem.getAudioInputStream(file));
+//                        clip1.start();
+//                    }
+//                    catch(Exception h){
+//                        System.err.println(h.getMessage());
+//                    }
+//                }
+//            }
+//        );
                 
         exit.addActionListener(
             new ActionListener() {
@@ -108,7 +108,7 @@ public class main_menu extends JFrame{
     }
     public static void playback(){
         try{
-            File file = new File("misc/Main Menu Theme.m4a");
+            File file = new File("asd.m4a");
             Clip clip1 = AudioSystem.getClip();
             clip1.open(AudioSystem.getAudioInputStream(file));
             clip1.start();
