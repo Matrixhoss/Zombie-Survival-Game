@@ -105,11 +105,11 @@ public class Player extends Character {
           y = (y)-(this.getSpeed());
         }
         if (down) {
-          if (!(y > 650))
+          if (!(y > mapdim.height-this.getSize().height))
             y = (y)+(this.getSpeed());
         }
         if (right) {
-           if (!(x > 1300))
+           if (!(x > mapdim.width-this.getSize().width))
               x = (x)+(this.getSpeed());
         }
         if (left) {
