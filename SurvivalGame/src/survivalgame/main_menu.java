@@ -112,6 +112,7 @@ public class main_menu extends JFrame{
             Clip clip1 = AudioSystem.getClip();
             clip1.open(AudioSystem.getAudioInputStream(file));
             clip1.start();
+     
         }
         catch(Exception e){
             System.err.println(e.getMessage());
