@@ -146,6 +146,8 @@ public class Player extends Character {
                    zombies.z.remove(j);
                    bullets.remove(i);
                    drawpanel.remove(temp);
+                   j=-1;
+                   break;
                 }
             }
             if((temp.b.getX()>=mapdim.width)||(temp.b.getY()>=mapdim.height)){
