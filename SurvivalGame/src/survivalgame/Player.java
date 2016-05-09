@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.Timer;
 
 class bullet extends JLabel{
     public Rectangle b;
@@ -31,7 +32,7 @@ public class Player extends Character {
    private   boolean up , down , right , left ;
    private Weapons[] PWeapon = new Weapons[3];
    private int CurrentWeapon;
-   private boolean Firing;
+   private boolean Fired,Firing;
    private Dimension mapdim;
    private ImagePanel drawpanel;
    private ArrayList<bullet> bullets = new ArrayList();
@@ -42,6 +43,8 @@ public class Player extends Character {
         this.mapdim=mapdim;
         this.x = xL ;
         this.y = yL ;
+        Fired=false;
+        Firing=false;
         PWeapon[0] = new Pistol();
         CurrentWeapon=0;
         this.zombies=zombies;
@@ -64,12 +67,14 @@ public class Player extends Character {
                     down = true ;
                     break;  
                 case KeyEvent.VK_F:
+                if(Fired==false){
                 bullets.add(new bullet(x,y));
                 drawpanel.add(bullets.get(bullets.size()-1));
                 bullets.get(bullets.size()-1).setLocation(x,y);
                 Firing=PWeapon[CurrentWeapon].Fire();
+                Fired=true;
                 break;
-                
+                }
             }
         }
 
@@ -89,6 +94,9 @@ public class Player extends Character {
                 case KeyEvent.VK_DOWN :
                     down = false ;
                     break;       
+                case KeyEvent.VK_F :
+                    Fired=false;
+                    break;  
             }
        }
 });
@@ -157,4 +165,5 @@ public class Player extends Character {
                 }
         }
     }
+    
 }
