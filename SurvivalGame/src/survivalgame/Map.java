@@ -38,11 +38,7 @@ public class Map extends JFrame {
     Background = new ImagePanel(MapIcn.getImage());
     c.add(Background);
     mapdim=Background.getSize();
-       p = new Player (100,10,this,20,20,Background,mapdim,zn);
-       p.setIcon(Playericon);
-       p.setSize(100, 100);
-       Background.add(p);
-        
+       
         
      
    
@@ -69,12 +65,16 @@ public class Map extends JFrame {
        System.out.print(ex);
    
    }
-    
+    p = new Player (100,10,this,20,20,Background,mapdim,zn);
+       p.setIcon(Playericon);
+       p.setSize(100, 100);
+       Background.add(p);
+        
    
     Timer t=new Timer(30,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < zn.getZombieNumber(); i++){
+        for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
             zf.z.get(i).AI(p.getX(),p.getY());}
            //z.move();
