@@ -28,15 +28,15 @@ public abstract class Zombie extends Character  {
         super(20,50);
         switch (T){
             case "ZombieNormal":
-                this.sethealth(20);
+                this.setHealth(20);
                 this.setSpeed(40);
                 break;
             case"ZombieStrong":
-                this.sethealth(40);
+                this.setHealth(40);
                 this.setSpeed(30);
                 break;
             case"ZombieFast":
-                this.sethealth(10);
+                this.setHealth(10);
                 this.setSpeed(50);
                   break;
                         
@@ -44,6 +44,9 @@ public abstract class Zombie extends Character  {
         
       
     }
+    public boolean isDead(){
+        return this.getHealth()==0;
+        }
     public void setSizeX(int x){
         this.sizeX=x;
     }
@@ -89,6 +92,7 @@ public abstract class Zombie extends Character  {
       if (this.getHealth()==0)
          try {
              this.finalize();
+             
       } catch (Throwable ex) {
         System.out.print(ex);
       }
@@ -123,4 +127,5 @@ public abstract class Zombie extends Character  {
         this.setWeapon(new MELEEFast());
         this.setIcon(shape);
         }
+        
     }

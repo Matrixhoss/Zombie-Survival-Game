@@ -15,7 +15,7 @@ public abstract class Character extends JLabel {
 
     
     
-    public void setHealth(){};
+  
     public void move(){};
     public void die(){};
     public void takeDamage(int d){};
@@ -23,7 +23,7 @@ public abstract class Character extends JLabel {
     
     public int getHealth(){return this.health;};
     
-    public void sethealth(int h){
+    public void setHealth(int h){
     this.health=h;
     }
     

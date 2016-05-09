@@ -52,15 +52,15 @@ public class Map extends JFrame {
         for (int i = 0; i < zn.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);
-            zn.z[i].setBounds(x, 780, 100,100);
-            Background.add(zn.z[i]);
+            zn.z.get(i).setBounds(x, 780, 100,100);
+            Background.add(zn.z.get(i));
         }
         zf=new ZombieGenerator("ZombieFast");
         for (int i = 0; i < zf.getZombieNumber(); i++) {
               int x = r.nextInt(1400);
               int y= r.nextInt(800);
-            zf.z[i].setBounds(0, y, 100,100);
-            Background.add(zf.z[i]);
+            zf.z.get(i).setBounds(0, y, 100,100);
+            Background.add(zf.z.get(i));
         }
    }
    catch(Exception ex){
@@ -73,8 +73,8 @@ public class Map extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < zn.getZombieNumber(); i++){
-            zn.z[i].AI(p.getX(),p.getY());
-            zf.z[i].AI(p.getX(),p.getY());}
+            zn.z.get(i).AI(p.getX(),p.getY());
+            zf.z.get(i).AI(p.getX(),p.getY());}
            //z.move();
            p.move(mapdim);
            p.FireHandling();
@@ -86,7 +86,6 @@ public class Map extends JFrame {
    
     });
     t.start();
-    
     this.pack();
     this.setVisible(true);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
