@@ -10,7 +10,8 @@ import static survivalgame.Constants.*;
 
 
 public abstract class Zombie extends Character  {
-    
+    public int x;
+    public int y;
     private String Type;
     private Random r;
     ImageIcon shape;
@@ -67,6 +68,9 @@ public abstract class Zombie extends Character  {
     public int getSizeY(){
         return this.sizeY;
     }
+    public double GetAngle(){
+        return angle;
+    }
 //    public Zombie (int health,int speed){
 //    super(health,speed);
 //          int rand=r.nextInt(3);
@@ -85,13 +89,13 @@ public abstract class Zombie extends Character  {
         double SX=(this.getSpeed()*S*Math.cos(angle));
         double SY=(this.getSpeed()*S*Math.sin(angle));
         if((DiffX>-50&&DiffX<50)&&(DiffY>-50&&DiffY<50)){
-//            System.out.println(DiffX+"                "+DiffY+"\n");
+        
         }
-        else 
+        else {
             this.setLocation(this.getX()+(int)SX,this.getY()+(int)SY);
             
-        
-    
+        }
+        System.out.println(Math.toDegrees(angle)+"                "+"\n");
     }
     
     @Override
@@ -107,6 +111,7 @@ public abstract class Zombie extends Character  {
     }
     public void takeDamage(int d ){};
     public void setWeapon(){};
+    abstract void rotation();
 }
   class ZombieNormal extends Zombie{
         
@@ -118,13 +123,55 @@ public abstract class Zombie extends Character  {
         this.setWeapon(new MELEE());
         this.setIcon(shape);
         }
-    }
+        public void rotation(){
+            Double ang=Math.toDegrees(this.GetAngle());
+            if(ang>-165&&ang>165){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateLeft.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-165&&ang<-105){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateUpLeft.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-105&&ang<-75){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-75&&ang<-15){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateUpRight.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-15&&ang<15){
+                    shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateRight.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>15&&ang<75){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDownRight.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>75&&ang<105){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDown.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>105&&ang<165){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDownLeft.gif"));
+                this.setIcon(shape);
+            }
+        }
+        
+  }
     class ZombieStrong extends Zombie{
     
         public ZombieStrong(){
         super("ZombieStrong");
         this.setWeapon(new MELEE2()); //Missing image
         }
+
+    @Override
+    void rotation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+        
     }
     class ZombieFast extends Zombie{
 
@@ -134,5 +181,10 @@ public abstract class Zombie extends Character  {
         this.setWeapon(new MELEEFast());
         this.setIcon(shape);
         }
+
+    @Override
+    void rotation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
     }

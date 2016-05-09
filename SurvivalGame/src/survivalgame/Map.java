@@ -81,6 +81,7 @@ public class Map extends JFrame {
         public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
+            zn.z.get(i).rotation();
 //            zf.z.get(i).AI(p.getX(),p.getY());
         }
         if (zn.z.isEmpty()){
