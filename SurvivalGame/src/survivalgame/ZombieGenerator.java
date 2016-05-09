@@ -51,7 +51,41 @@ public class ZombieGenerator {
     public void setZombieNumber(int n){
   this.ZombieNumber=n;
     }
+    public void updateZombie(String Type){
+        switch (Type){
+       case "ZombieNormal":
+           ZombieNumber=10*Waves.getWave();
+           for (int i = 0; i < ZombieNumber; i++) {
+                 
+                  z.add(new ZombieNormal());
+                  if (z.get(i).isDead())
+                      ZombieNumber-=1;
+               }
+           break;
+       case "ZombieStrong":
+//           if (Waves.getWave()==2);
+//            ZombieNumber=3*Waves.getWave();
+           for (int i = 0; i < ZombieNumber; i++) {
+                     if(Waves.getWave()==2)
+                         
+                     z.add(new ZombieStrong());
+                     if (z.get(i).isDead())
+                      ZombieNumber-=1;
+               }
+           break;
+       case "ZombieFast":
+           for (int i = 0; i < ZombieNumber; i++) {
+                    z.add(new ZombieFast());
+                    if (z.get(i).isDead())
+                      ZombieNumber-=1;
+               }
+           break;
+ 
+       }
     
+    
+    
+    }
     
     
     
