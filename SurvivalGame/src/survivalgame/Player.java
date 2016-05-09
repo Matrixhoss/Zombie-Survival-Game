@@ -129,50 +129,30 @@ public class Player extends Character {
         // check of boolean of arrow is true or false if and check bounds 
         // if true set the new value of axis * speed 
      if (up) {
-         //if (!(y < 0))
-        // y = (y)-(this.getSpeed());
-        x =x-(int)(getSpeed()*Math.sin(Math.toRadians(angle*-1)));
-        y =y - (int)(getSpeed()*Math.cos(Math.toRadians(angle*-1))) ;
+         if (!(y < 0))
+         y = (y)-(this.getSpeed());
+       
         }
         if (down) {
-         // if (!(y > mapdim.height-this.getSize().height))
-          //  y = (y)+(this.getSpeed());
-         x =x+(int)(getSpeed()*Math.sin(Math.toRadians(angle*-1)));
-        y =y+(int)(getSpeed()*Math.cos(Math.toRadians(angle*-1))) ;
+          if (!(y > mapdim.height-this.getSize().height))
+            y = (y)+(this.getSpeed());
+         
         }
         if (right) {
-          // if (!(x > mapdim.width-this.getSize().width))
-            //  x = (x)+(this.getSpeed());
-            angle += 2;
+           if (!(x > mapdim.width-this.getSize().width))
+             x = (x)+(this.getSpeed());
+           
         }
         if (left) {
-          //if (!(x < 0))
-           //  x = (x)-(this.getSpeed());
-           angle -= 2;
+          if (!(x < 0))
+           x = (x)-(this.getSpeed());
+           
         }
     
         //this.setLocation(x, y);
     }
-    public void drow(Graphics2D g2d){
-        //  AffineTransform at = new AffineTransform();
-        BufferedImage bi = getImage();
-        AffineTransform at = AffineTransform.getTranslateInstance(this.x, this.y);
-        at.rotate(Math.toRadians(angle),bi.getWidth()/2,bi.getHeight()/1.5);
-        
-        g2d.drawImage(bi, at, null);
+    
    
-    }
-    public BufferedImage getImage(){
-        try {
-       
-            BufferedImage bi = ImageIO.read(new File("C:\\Users\\user1\\Documents\\NetBeansProjects\\asuprogrammingproject\\SurvivalGame\\src\\survivalgame\\misc\\Sprites\\Soldier.png")); 
-            return bi ;
-        }
-        catch (IOException e){
-        
-        }
-         return null;
-    }
     public void FireHandling (){
         
         
