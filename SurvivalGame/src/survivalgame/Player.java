@@ -107,7 +107,7 @@ public class Player extends Character {
     }
 // move palyer 
     public void move (Dimension d){
-        // check of boolean of arrow is true or false if 
+        // check of boolean of arrow is true or false if and check bounds 
         // if true set the new value of axis * speed 
      if (up) {
          if (!(y < 0))
