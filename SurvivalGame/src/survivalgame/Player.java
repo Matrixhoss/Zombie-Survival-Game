@@ -67,7 +67,6 @@ public class Player extends Character {
         PWeapon[0] = new Pistol();
         CurrentWeapon=0;
         this.zombies=zombies;
-       
         // key listener for arrowkeys
         frame.addKeyListener(new KeyAdapter() {
         @Override
@@ -90,7 +89,7 @@ public class Player extends Character {
                 case KeyEvent.VK_F:
                 if(Fired==false){
                 
-                bullets.add(new bullet(x,y,stopPosition));
+                bullets.add(new bullet(x+25 ,y+25,stopPosition));
                 drawpanel.add(bullets.get(bullets.size()-1));
                 Firing=PWeapon[CurrentWeapon].Fire();
                 Fired=true;
