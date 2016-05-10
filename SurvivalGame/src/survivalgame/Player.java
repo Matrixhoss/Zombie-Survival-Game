@@ -200,17 +200,24 @@ public class Player extends Character {
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
             for(int j=0;j<zombies.z.size();j++){
                 if((Math.abs(temp.getX()-zombies.z.get(j).getX())<=50) && (Math.abs(temp.getY()-zombies.z.get(j).getY())<=50)){
-                   zombies.TakeDamage(j, damage);
+                   try{
+                    zombies.TakeDamage(j, damage);
                    bullets.remove(i);
-                   drawpanel.remove(temp);
+                   drawpanel.remove(temp);}
+                   catch(Exception ex){
+                       System.out.println("none-critical Exception in Bullet Hitting Zombie:"+ex);
+                   }
                    j=-1;
                    i=-1;
                    break;
                 }
             }
             if((temp.b.getX()>mapdim.width+100)||(temp.b.getY()>mapdim.height+100)){
-                    bullets.remove(i);
-                    drawpanel.remove(temp);
+                    try{bullets.remove(i);
+                    drawpanel.remove(temp);}
+                    catch(Exception ex){
+                        System.out.println("none-critical Exception in Bullet Leaving Frame:"+ex);
+                    }
                 }
         }
     }
