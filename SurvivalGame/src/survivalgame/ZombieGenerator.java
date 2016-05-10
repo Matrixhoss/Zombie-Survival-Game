@@ -57,6 +57,7 @@ public class ZombieGenerator {
     public void TakeDamage(int index, int damage){
         z.get(index).setHealth(z.get(index).getHealth()-damage);
         if(z.get(index).getHealth()<=0){
+            drawpanel.remove(z.get(index));
             z.remove(index);
         }
         

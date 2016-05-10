@@ -54,6 +54,7 @@ public class Player extends Character {
    private ImagePanel drawpanel;
    private ArrayList<bullet> bullets = new ArrayList();
    private ZombieGenerator zombies;
+   private int damage;
     Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies){
         super(S,H);
         this.drawpanel=drawpanel;
@@ -64,6 +65,7 @@ public class Player extends Character {
         Firing=false;
         PWeapon[0] = new Pistol();
         CurrentWeapon=0;
+        damage=PWeapon[CurrentWeapon].damage;
         this.zombies=zombies;
         // key listener for arrowkeys
         frame.addKeyListener(new KeyAdapter() {
@@ -198,9 +200,7 @@ public class Player extends Character {
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
             for(int j=0;j<zombies.z.size();j++){
                 if((Math.abs(temp.getX()-zombies.z.get(j).getX())<=50) && (Math.abs(temp.getY()-zombies.z.get(j).getY())<=50)){
-                   Zombie z=zombies.z.get(j);
-                   zombies.z.remove(j);
-                   drawpanel.remove(z);
+                   zombies.TakeDamage(j, damage);
                    bullets.remove(i);
                    drawpanel.remove(temp);
                    j=-1;
