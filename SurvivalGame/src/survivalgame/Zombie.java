@@ -19,7 +19,7 @@ public abstract class Zombie extends Character  {
     private int sizeX;
     private int sizeY;
     private Weapons weapon;
-    
+    public double scale;
     public Zombie (int health,int speed,String Type){
         super(health,speed);
         this.Type=Type;
@@ -117,6 +117,7 @@ public abstract class Zombie extends Character  {
         super("ZombieNormal");
         this.setSizeX(100);
         this.setSizeY(100);
+        this.scale=1;
         shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
         this.setWeapon(new MELEE());
         this.setIcon(shape);
@@ -166,6 +167,7 @@ public abstract class Zombie extends Character  {
         this.setWeapon(new MELEE2()); //Missing image
         shape=new ImageIcon(getClass().getResource("misc/Sprites/Boss.gif"));
         this.setIcon(shape);
+        this.scale=2;
         }
 
    public void rotation(){
@@ -212,7 +214,7 @@ public abstract class Zombie extends Character  {
          shape = new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
         this.setWeapon(new MELEEFast());
         this.setIcon(shape);
-        
+        this.scale=1;
         }
 
     @Override
