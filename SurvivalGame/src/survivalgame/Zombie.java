@@ -46,6 +46,7 @@ public abstract class Zombie extends Character  {
         }
       
     }
+    
     public boolean isDead(){
         return this.getHealth()==0;
         }

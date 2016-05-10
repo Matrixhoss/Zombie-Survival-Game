@@ -48,7 +48,7 @@ public class MAP2 extends JFrame {
        r= new Random();
     
        
-      zn=new ZombieGenerator();
+      zn=new ZombieGenerator(Background);
       GenerateZombie(zn);
       
     

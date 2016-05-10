@@ -12,12 +12,14 @@ public class ZombieGenerator {
     private int NormalNumber;
     private int FastNumber;
     private int StrongNumber;
+    private ImagePanel drawpanel;
     
     
         public ArrayList<Zombie>z=new ArrayList<Zombie>();
     Random r;
-    public ZombieGenerator (){
+    public ZombieGenerator (ImagePanel drawpanel){
         
+        this.drawpanel=drawpanel;
        //NormalZombies
            NormalNumber=5*Waves.getWave();
            ZombieNumber+=NormalNumber;
@@ -52,6 +54,13 @@ public class ZombieGenerator {
  
        }
  }
+    public void TakeDamage(int index, int damage){
+        z.get(index).setHealth(z.get(index).getHealth()-damage);
+        if(z.get(index).getHealth()<=0){
+            z.remove(index);
+        }
+        
+    }
     public int getZombieNumber(){
     return this.ZombieNumber;
     }

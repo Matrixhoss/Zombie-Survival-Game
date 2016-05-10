@@ -44,7 +44,7 @@ public class Map extends JFrame {
     
     setBackground(MapIcn);
       r= new Random();
-      zn=new ZombieGenerator();
+      zn=new ZombieGenerator(Background);
       GenerateZombie(zn);
       p = new Player (100,10,this,20,20,Background,mapdim,zn);
       p.setIcon(Playericon);
