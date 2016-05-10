@@ -160,13 +160,48 @@ public abstract class Zombie extends Character  {
     
         public ZombieStrong(){
         super("ZombieStrong");
+        this.setSizeX(200);
+        this.setSizeY(200);
         this.setWeapon(new MELEE2()); //Missing image
+        shape=new ImageIcon(getClass().getResource("misc/Sprites/Boss.gif"));
+        this.setIcon(shape);
         }
 
-    @Override
-    void rotation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   public void rotation(){
+            Double ang=Math.toDegrees(this.GetAngle());
+            if(ang>-165&&ang>165){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/BossLeft.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-165&&ang<-105){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/BossUpLeft.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-105&&ang<-75){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/Boss.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-75&&ang<-15){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/BossUpRight.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-15&&ang<15){
+                    shape=new ImageIcon(getClass().getResource("misc/Sprites/BossRight.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>15&&ang<75){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/BossDownRight.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>75&&ang<105){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/BossDown.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>105&&ang<165){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/BossDownLeft.gif"));
+                this.setIcon(shape);
+            }
+        } 
         
     }
     class ZombieFast extends Zombie{
