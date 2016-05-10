@@ -183,11 +183,11 @@ public abstract class Zombie extends Character  {
     void rotation() {
         Double ang=Math.toDegrees(this.GetAngle());
             if(ang>-165&&ang>165){
-                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/FastLeft.gif"));
                 this.setIcon(shape);
             }
             else if(ang>-165&&ang<-105){
-                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/FastUpLeft.gif"));
                 this.setIcon(shape);
             }
             else if(ang>-105&&ang<-75){
@@ -195,23 +195,23 @@ public abstract class Zombie extends Character  {
                 this.setIcon(shape);
             }
             else if(ang>-75&&ang<-15){
-                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/FastUpRight.gif"));
                 this.setIcon(shape);
             }
             else if(ang>-15&&ang<15){
-                    shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                    shape=new ImageIcon(getClass().getResource("misc/Sprites/FastRight.gif"));
                 this.setIcon(shape);
             }
             else if(ang>15&&ang<75){
-                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/FastDownRight.gif"));
                 this.setIcon(shape);
             }
             else if(ang>75&&ang<105){
-                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/FastDown.gif"));
                 this.setIcon(shape);
             }
             else if(ang>105&&ang<165){
-                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/FastDownLeft.gif"));
                 this.setIcon(shape);
             }
     }
