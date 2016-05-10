@@ -85,13 +85,13 @@ public class Map extends JFrame {
             int y= r.nextInt(720);
             int loc=r.nextInt(4);
             switch (loc){
-                case 0: zn.z.get(i).setBounds(x, 780, 100,100);
+                case 0: zn.z.get(i).setBounds(x, 780, zn.z.get(i).getSizeX(),zn.z.get(i).getSizeY());
                 break;
-                case 1:zn.z.get(i).setBounds(0, y, 100,100);
+                case 1:zn.z.get(i).setBounds(0, y, zn.z.get(i).getSizeX(),zn.z.get(i).getSizeY());
                 break;
-                case 2 :zn.z.get(i).setBounds(x, 0, 100,100);
+                case 2 :zn.z.get(i).setBounds(x, 0, zn.z.get(i).getSizeX(),zn.z.get(i).getSizeY());
                 break;
-                case 3: zn.z.get(i).setBounds(1200, y, 100,100);
+                case 3: zn.z.get(i).setBounds(1200, y, zn.z.get(i).getSizeX(),zn.z.get(i).getSizeY());
                 break;
             }
             Background.add(zn.z.get(i));
