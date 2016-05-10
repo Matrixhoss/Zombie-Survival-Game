@@ -31,7 +31,7 @@ public class main_menu extends JFrame{
         Container c = this.getContentPane();
         c.setLayout(null);
         
-        main_menu.playback();
+//        main_menu.playback();
                 
         logo = new JLabel(start_logo);
         logo.setBounds(200,0, 400, 200);
@@ -111,18 +111,18 @@ public class main_menu extends JFrame{
             }
         );
     }
-    public static void playback(){
-        try{
-            if(x==1){
-                File file = new File("Menu_Theme.wav");
-                Clip clip1 = AudioSystem.getClip();
-                clip1.open(AudioSystem.getAudioInputStream(file));
-                clip1.loop(Clip.LOOP_CONTINUOUSLY);
-                clip1.start();
-            }
-        }
-        catch(Exception e){
-            System.err.println(e.getMessage());
-        }
-    }
+//    public static void playback(){
+//        try{
+//            if(x==1){
+//                File file = new File("Menu_Theme.wav");
+//                Clip clip1 = AudioSystem.getClip();
+//                clip1.open(AudioSystem.getAudioInputStream(file));
+//                clip1.loop(Clip.LOOP_CONTINUOUSLY);
+//                clip1.start();
+//            }
+//        }
+//        catch(Exception e){
+//            System.err.println(e.getMessage());
+//        }
+//    }
 }
