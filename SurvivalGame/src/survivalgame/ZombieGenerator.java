@@ -83,13 +83,14 @@ public class ZombieGenerator {
             }
         }
           //FastZombies
+         if(Waves.getWave()>=3){
             FastNumber=2*Waves.getWave();
             ZombieNumber+=FastNumber;
             for (int i = 0; i < FastNumber; i++) {
                 z.add(new ZombieFast());
                 if (z.get(i).isDead())
                     ZombieNumber-=1;
-            }
+            }}
     }
     public void zomdeath(){
           int sound = zm_die.nextInt(11);

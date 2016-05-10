@@ -209,6 +209,8 @@ public abstract class Zombie extends Character  {
 
         public ZombieFast(){
          super("ZombieFast");
+         this.setSizeX(60);
+        this.setSizeY(60);
          shape = new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
         this.setWeapon(new MELEEFast());
         this.setIcon(shape);
