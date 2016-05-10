@@ -18,7 +18,7 @@ public class ZombieGenerator {
     public ZombieGenerator (){
         
        //NormalZombies
-           NormalNumber=10*Waves.getWave();
+           NormalNumber=5*Waves.getWave();
            ZombieNumber+=NormalNumber;
            for (int i = 0; i < NormalNumber; i++) {
                  
@@ -38,14 +38,14 @@ public class ZombieGenerator {
 //                      ZombieNumber-=1;
 //               }
           //FastZombies
-           
-            FastNumber=3*Waves.getWave();
+           if(Waves.getWave()>=3){
+            FastNumber=2*Waves.getWave();
             ZombieNumber+=FastNumber;
            for (int i = 0; i < FastNumber; i++) {
                     z.add(new ZombieFast());
                     if (z.get(i).isDead())
                       ZombieNumber-=1;
-               
+           }
          
  
        }
@@ -58,7 +58,7 @@ public class ZombieGenerator {
     }
     public void updateZombie(){
             ZombieNumber=0;
-          NormalNumber=10*Waves.getWave();
+          NormalNumber=5*Waves.getWave();
            ZombieNumber+=NormalNumber;
            for (int i = 0; i < NormalNumber; i++) {
                   z.add(new ZombieNormal());
@@ -77,7 +77,7 @@ public class ZombieGenerator {
 //               }
           //FastZombies
            
-            FastNumber=3*Waves.getWave();
+            FastNumber=2*Waves.getWave();
             ZombieNumber+=FastNumber;
            for (int i = 0; i < FastNumber; i++) {
                     z.add(new ZombieFast());

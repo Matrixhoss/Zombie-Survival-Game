@@ -40,7 +40,7 @@ public abstract class Zombie extends Character  {
                 break;
             case"ZombieFast":
                 this.setHealth(10);
-                this.setSpeed(50);
+                this.setSpeed(60);
                   break;
                         
         }
@@ -55,7 +55,6 @@ public abstract class Zombie extends Character  {
      public void setWeapon(Weapons w){
     this.weapon=w;
     }
-    
     public Weapons getWeapon(){
     return this.weapon;
     }
@@ -96,7 +95,6 @@ public abstract class Zombie extends Character  {
             
         }
     }
-    
     @Override
     public void die(){
       if (this.getHealth()==0)
@@ -107,7 +105,6 @@ public abstract class Zombie extends Character  {
       } catch (Throwable ex) {
         System.out.print(ex);
       }
-
     }
     public void takeDamage(int d ){};
     public void setWeapon(){};
@@ -157,8 +154,7 @@ public abstract class Zombie extends Character  {
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDownLeft.gif"));
                 this.setIcon(shape);
             }
-        }
-        
+        } 
   }
     class ZombieStrong extends Zombie{
     
@@ -180,11 +176,44 @@ public abstract class Zombie extends Character  {
          shape = new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
         this.setWeapon(new MELEEFast());
         this.setIcon(shape);
+        
         }
 
     @Override
     void rotation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Double ang=Math.toDegrees(this.GetAngle());
+            if(ang>-165&&ang>165){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-165&&ang<-105){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-105&&ang<-75){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-75&&ang<-15){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>-15&&ang<15){
+                    shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>15&&ang<75){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>75&&ang<105){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                this.setIcon(shape);
+            }
+            else if(ang>105&&ang<165){
+                shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
+                this.setIcon(shape);
+            }
     }
         
     }

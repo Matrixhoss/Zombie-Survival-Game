@@ -25,52 +25,34 @@ public class Map extends JFrame {
     private ZombieGenerator zf;
     private Player p ;
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
+
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
     ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     private Random r;
     private Random R;
     private Dimension mapdim = new Dimension();
-     public static ArrayList<Zombie>AllZombies=new ArrayList<Zombie>();
+    private Container c;
      
     private int TotalNumberOfZombies;
     public Map(){
     
-    Container c = this.getContentPane();
+    c = this.getContentPane();
     
-    Background = new ImagePanel(MapIcn.getImage());
-    c.add(Background);
-    mapdim=Background.getSize();
-       
-        
-     
-   
-   
+    setBackground(MapIcn);
        r= new Random();
-    
-       
+
       zn=new ZombieGenerator();
       GenerateZombie(zn);
-      
-    
-    
- 
-
-    
-        
- 
-   
     p = new Player (100,10,this,20,20,Background,mapdim,zn);
      p.setIcon(Playericon);
        p.setSize(100, 100);
        Background.add(p);
-       
-   
     Timer t=new Timer(30,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
         for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
-//            zn.z.get(i).rotation();
+            zn.z.get(i).rotation();
         }
         
         if (zn.z.isEmpty()){
@@ -88,10 +70,7 @@ public class Map extends JFrame {
            System.out.println(Waves.getWave());
            repaint();
         }
-        
-        
-   
-   
+
     });
     t.start();
     this.pack();
@@ -120,7 +99,13 @@ public class Map extends JFrame {
                  
             Background.add(zn.z.get(i));
         }}
+      public void setBackground(ImageIcon IC){
       
+      Background = Background = new ImagePanel(IC.getImage());
+    
+        c.add(Background);
+        mapdim=Background.getSize();
+      }
     
       
  }

@@ -11,10 +11,6 @@ public abstract class Character extends JLabel {
     this.speed=s;
     this.health=h;
     }
-    
-
-    
-    
   
     public void move(){};
     public void die(){};
@@ -33,5 +29,4 @@ public abstract class Character extends JLabel {
     public void setSpeed(int s){
     this.speed=s;
     }
-    
 }
