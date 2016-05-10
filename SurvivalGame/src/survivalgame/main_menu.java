@@ -80,22 +80,22 @@ public class main_menu extends JFrame{
             }
         );
         
-//        music.addActionListener(
-//            new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    try{
-//                        File file = new File("rules.wav");
-//                        Clip clip1 = AudioSystem.getClip();
-//                        clip1.open(AudioSystem.getAudioInputStream(file));
-//                        clip1.start();
-//                    }
-//                    catch(Exception h){
-//                        System.err.println(h.getMessage());
-//                    }
-//                }
-//            }
-//        );
+        music.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    try{
+                        File file = new File("Menu_Theme.wav");
+                        Clip clip1 = AudioSystem.getClip();
+                        clip1.open(AudioSystem.getAudioInputStream(file));
+                        clip1.start();
+                    }
+                    catch(Exception eg){
+                        System.err.println(eg.getMessage());
+                    }
+                }
+            }
+        );
                 
         exit.addActionListener(
             new ActionListener() {
@@ -106,16 +106,16 @@ public class main_menu extends JFrame{
             }
         );
     }
-    public static void playback(){
-        try{
-            File file = new File("rules.wav");
-            Clip clip1 = AudioSystem.getClip();
-            clip1.open(AudioSystem.getAudioInputStream(file));
-            clip1.start();
-     
-        }
-        catch(Exception e){
-            System.err.println(e.getMessage());
-        }
-    }
+//    public static void playback(){
+//        try{
+//            File file = new File("Menu_Theme.wav");
+//            Clip clip1 = AudioSystem.getClip();
+//            clip1.open(AudioSystem.getAudioInputStream(file));
+//            clip1.start();
+//     
+//        }
+//        catch(Exception e){
+//            System.err.println(e.getMessage());
+//        }
+//    }
 }
