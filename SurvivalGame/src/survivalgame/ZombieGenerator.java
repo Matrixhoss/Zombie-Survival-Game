@@ -11,6 +11,7 @@ public class ZombieGenerator {
     private int ZombieNumber;
     private int NormalNumber;
     private int FastNumber;
+    private int StrongNumber;
     
     
         public ArrayList<Zombie>z=new ArrayList<Zombie>();
@@ -30,13 +31,14 @@ public class ZombieGenerator {
                }
      
           //StrongZombies
-//           for (int i = 0; i < ZombieNumber; i++) {
-//                     if(Waves.getWave()==2)
-//                         
-//                     z.add(new ZombieStrong());
-//                     if (z.get(i).isDead())
-//                      ZombieNumber-=1;
-//               }
+           if(Waves.getWave()==2){
+               StrongNumber=1;
+               ZombieNumber+=FastNumber;
+           for (int i = 0; i < StrongNumber; i++) {  
+                     z.add(new ZombieStrong());
+                     if (z.get(i).isDead())
+                      ZombieNumber-=1;
+               }}
           //FastZombies
            if(Waves.getWave()>=3){
             FastNumber=2*Waves.getWave();
@@ -67,14 +69,15 @@ public class ZombieGenerator {
                 
                }
      
-          //StrongZombies
-//           for (int i = 0; i < ZombieNumber; i++) {
-//                     if(Waves.getWave()==2)
-//                         
-//                     z.add(new ZombieStrong());
-//                     if (z.get(i).isDead())
-//                      ZombieNumber-=1;
-//               }
+        //StrongZombies
+           if(Waves.getWave()==2){
+               StrongNumber=1;
+               ZombieNumber+=StrongNumber;
+           for (int i = 0; i < StrongNumber; i++) {  
+                     z.add(new ZombieStrong());
+                     if (z.get(i).isDead())
+                      ZombieNumber-=1;
+               }}
           //FastZombies
            
             FastNumber=2*Waves.getWave();
