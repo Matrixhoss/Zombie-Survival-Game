@@ -77,7 +77,14 @@ public class Map extends JFrame {
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setResizable(false);
     this.setSize(1280, 720);
-    Map.playback1();
+    zomsound();
+    Timer ts=new Timer(8000,new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            zomsound();
+        }
+    });
+    ts.start();
     }
     public void GenerateZombie(ZombieGenerator zn){
         for (int i = 0; i < zn.getZombieNumber(); i++) {
@@ -102,17 +109,134 @@ public class Map extends JFrame {
       c.add(Background);
       mapdim=Background.getSize();
       
-      Random zm_Random = new Random();
+      zm_sound = new Random();
+      }
+      public void zomsound(){
+          int sound = zm_sound.nextInt(9);
+          switch(sound){
+              case 0:
+                  Map.playback1();
+                  break;
+              case 1:
+                  Map.playback2();
+                  break;
+              case 2:
+                  Map.playback3();
+                  break;
+              case 3:
+                  Map.playback4();
+                  break;
+              case 4:
+                  Map.playback5();
+                  break;
+              case 5:
+                  Map.playback6();
+                  break;
+              case 6:
+                  Map.playback7();
+                  break;
+              case 7:
+                  Map.playback8();
+                  break;
+              case 8:
+                  Map.playback9();
+                  break;
+          }
       }
       public static void playback1(){
           try{
-        //      int sound= ();
-         //     switch()
-                File file = new File("sprint0.wav");
+                File file1 = new File("sprint0.wav");
                 Clip clip1 = AudioSystem.getClip();
-                clip1.open(AudioSystem.getAudioInputStream(file));
-                clip1.loop(Clip.LOOP_CONTINUOUSLY);
+                clip1.open(AudioSystem.getAudioInputStream(file1));
                 clip1.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
+      }
+      public static void playback2(){
+          try{
+                File file2 = new File("sprint1.wav");
+                Clip clip2 = AudioSystem.getClip();
+                clip2.open(AudioSystem.getAudioInputStream(file2));
+                clip2.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
+      }
+      public static void playback3(){
+          try{
+                File file3 = new File("sprint2.wav");
+                Clip clip3 = AudioSystem.getClip();
+                clip3.open(AudioSystem.getAudioInputStream(file3));
+                clip3.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
+      }
+      public static void playback4(){
+          try{
+                File file4 = new File("sprint3.wav");
+                Clip clip4 = AudioSystem.getClip();
+                clip4.open(AudioSystem.getAudioInputStream(file4));
+                clip4.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
+      }
+      public static void playback5(){
+          try{
+                File file5 = new File("sprint4.wav");
+                Clip clip5 = AudioSystem.getClip();
+                clip5.open(AudioSystem.getAudioInputStream(file5));
+                clip5.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
+      }
+      public static void playback6(){
+          try{
+                File file6 = new File("sprint5.wav");
+                Clip clip6 = AudioSystem.getClip();
+                clip6.open(AudioSystem.getAudioInputStream(file6));
+                clip6.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
+      }
+      public static void playback7(){
+          try{
+                File file7 = new File("sprint6.wav");
+                Clip clip7 = AudioSystem.getClip();
+                clip7.open(AudioSystem.getAudioInputStream(file7));
+                clip7.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
+      }
+      public static void playback8(){
+          try{
+                File file8 = new File("sprint7.wav");
+                Clip clip8 = AudioSystem.getClip();
+                clip8.open(AudioSystem.getAudioInputStream(file8));
+                clip8.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
+      }
+      public static void playback9(){
+          try{
+                File file9 = new File("sprint8.wav");
+                Clip clip9 = AudioSystem.getClip();
+                clip9.open(AudioSystem.getAudioInputStream(file9));
+                clip9.start();
           }
           catch(Exception e){
               System.err.println(e.getMessage());
