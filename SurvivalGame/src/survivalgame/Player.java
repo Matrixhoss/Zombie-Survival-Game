@@ -1,4 +1,3 @@
-
 package survivalgame;
 
 import java.awt.Dimension;
@@ -10,33 +9,36 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.Timer;
+import static survivalgame.main_menu.x;
 
 class bullet extends JLabel{
     public Rectangle b;
     public int direction;
     
-bullet (int x, int y){
-    b = new Rectangle (x,y,10,10);
-    ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
-    this.setIcon(BulletImage);
-    this.setSize(10,10);
-}    
-bullet (int x, int y,int direction){
-    b = new Rectangle (x,y,10,10);
-    ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
-    this.setIcon(BulletImage);
-    this.setSize(20,20);
-    this.direction=direction;
-}  
-void MoveBulletBy(int x,int y){
-    b.x+=x;
-    b.y+=y;
-}
-Rectangle GetBullet(){
-    return b;
-}
+    bullet (int x, int y){
+        b = new Rectangle (x,y,10,10);
+        ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
+        this.setIcon(BulletImage);
+        this.setSize(10,10);
+    }
+    bullet (int x, int y,int direction){
+        b = new Rectangle (x,y,10,10);
+        ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
+        this.setIcon(BulletImage);
+        this.setSize(20,20);
+        this.direction=direction;
+    }  
+    void MoveBulletBy(int x,int y){
+        b.x+=x;
+        b.y+=y;
+    }
+    Rectangle GetBullet(){
+        return b;
+    }
 }
 public class Player extends Character {
     // position on axis
@@ -93,12 +95,11 @@ public class Player extends Character {
                 drawpanel.add(bullets.get(bullets.size()-1));
                 Firing=PWeapon[CurrentWeapon].Fire();
                 Fired=true;
+                gunsound();
                 break;
                 }
-            
+            }
         }
-        }
-
        @Override
        public void keyReleased(KeyEvent ke) {
             // when releas key of arrows set its boolean false
@@ -121,8 +122,6 @@ public class Player extends Character {
             }
        }
 });
-        
-       //
     }
     // get x of player
     public int getx(){
@@ -136,37 +135,30 @@ public class Player extends Character {
     public int getSpeed (){
     return super.getSpeed();
     }
-// move palyer 
+// move palyer
     public void move (Dimension d){
         // check of boolean of arrow is true or false if and check bounds 
         // if true set the new value of axis * speed 
      if (up) {
          if (!(y < 0))
          y = (y)-(this.getSpeed());
-        
         }
         if (down) {
          if (!(y > mapdim.height-this.getSize().height))
             y = (y)+(this.getSpeed());
-        
         }
         if (right) {
            if (!(x > mapdim.width-this.getSize().width))
              x = (x)+(this.getSpeed());
-            
         }
         if (left) {
           if (!(x < 0))
             x = (x)-(this.getSpeed());
-           
         }
-    
         //this.setLocation(x, y);
     }
     
     public void FireHandling (){
-        
-        
         for(int i=0;i<bullets.size();i++){
             bullet temp = bullets.get(i);
             switch(temp.direction){
@@ -194,7 +186,6 @@ public class Player extends Character {
                 case 4: //down and left
                     temp.MoveBulletBy(-50, 50);
                     break;
-                    
             }
             bullets.set(i, temp);
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
@@ -272,8 +263,17 @@ public class Player extends Character {
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Right.png")));
            if(stopPosition  == 8) // left 
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Left.png")));
-           //
         }
-    //
-}
     }
+    public static void gunsound(){
+        try{
+            File file = new File("gun_sound1.wav");
+            Clip clip1 = AudioSystem.getClip();
+            clip1.open(AudioSystem.getAudioInputStream(file));
+            clip1.start();
+        }
+        catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+}
