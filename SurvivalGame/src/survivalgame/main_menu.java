@@ -22,7 +22,7 @@ public class main_menu extends JFrame{
     ImageIcon option_button= new ImageIcon(getClass().getResource("misc/op.png"));
     ImageIcon exit_button= new ImageIcon(getClass().getResource("misc/ex.png"));
     ImageIcon music_button= new ImageIcon(getClass().getResource("misc/ms.png"));
-    
+    public static int x=1;
     public main_menu(){
         this.setTitle("Glav Survival");
         this.setResizable(false);
@@ -31,6 +31,8 @@ public class main_menu extends JFrame{
         Container c = this.getContentPane();
         c.setLayout(null);
         
+        main_menu.playback();
+                
         logo = new JLabel(start_logo);
         logo.setBounds(200,0, 400, 200);
         c.add(logo);
@@ -80,22 +82,25 @@ public class main_menu extends JFrame{
             }
         );
         
-        music.addActionListener(
-            new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try{
-                        File file = new File("Menu_Theme.wav");
-                        Clip clip1 = AudioSystem.getClip();
-                        clip1.open(AudioSystem.getAudioInputStream(file));
-                        clip1.start();
-                    }
-                    catch(Exception eg){
-                        System.err.println(eg.getMessage());
-                    }
-                }
-            }
-        );
+//        music.addActionListener(
+//            new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    try{
+//                        x=0;
+//                        if(x==1){
+//                            main_menu.playback();
+//                        }
+//                        else{
+//                            System.err.println("");
+//                        }
+//                    }
+//                    catch(Exception eg){
+//                        System.err.println(eg.getMessage());
+//                    }
+//                }
+//            }
+//        );
                 
         exit.addActionListener(
             new ActionListener() {
@@ -106,16 +111,18 @@ public class main_menu extends JFrame{
             }
         );
     }
-//    public static void playback(){
-//        try{
-//            File file = new File("Menu_Theme.wav");
-//            Clip clip1 = AudioSystem.getClip();
-//            clip1.open(AudioSystem.getAudioInputStream(file));
-//            clip1.start();
-//     
-//        }
-//        catch(Exception e){
-//            System.err.println(e.getMessage());
-//        }
-//    }
+    public static void playback(){
+        try{
+            if(x==1){
+                File file = new File("Menu_Theme.wav");
+                Clip clip1 = AudioSystem.getClip();
+                clip1.open(AudioSystem.getAudioInputStream(file));
+                clip1.loop(Clip.LOOP_CONTINUOUSLY);
+                clip1.start();
+            }
+        }
+        catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
 }
