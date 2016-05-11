@@ -223,6 +223,8 @@ public abstract class Zombie extends Character  {
         this.setWeapon(new MELEEFast());
         this.setIcon(shape);
         this.scale=1;
+        this.CollX=64;
+        this.CollY=64;
         }
 
     @Override
