@@ -10,9 +10,10 @@ import static survivalgame.Constants.*;
 
 
 public abstract class Zombie extends Character  {
+   
     public int x;
     public int y;
-    private String Type;
+    public String Type;
     private Random r;
     ImageIcon shape;
     private double angle;
@@ -114,9 +115,10 @@ public abstract class Zombie extends Character  {
     abstract void rotation();
 }
   class ZombieNormal extends Zombie{
-        
+       
         public ZombieNormal(){  
         super("ZombieNormal");
+        this.Type="ZombieN";
         this.setSizeX(100);
         this.setSizeY(100);
         this.scale=1;
@@ -166,6 +168,7 @@ public abstract class Zombie extends Character  {
     
         public ZombieStrong(){
         super("ZombieStrong");
+        this.Type="ZombieS";
         this.setSizeX(200);
         this.setSizeY(200);
         this.setWeapon(new MELEE2()); //Missing image
@@ -217,6 +220,7 @@ public abstract class Zombie extends Character  {
 
         public ZombieFast(){
          super("ZombieFast");
+         this.Type="ZombieF";
          this.setSizeX(80);
         this.setSizeY(80);
          shape = new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_odd_fast.gif"));
