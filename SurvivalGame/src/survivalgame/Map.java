@@ -112,14 +112,14 @@ public class Map extends JFrame {
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setResizable(false);
     this.setSize(1280, 720);
-    zomsound();
-    Timer ts=new Timer(8000,new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            zomsound();
-        }
-    });
-    ts.start();
+//    zomsound();
+//    Timer ts=new Timer(8000,new ActionListener() {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            zomsound();
+//        }
+//    });
+//    ts.start();
     }
     public void GenerateZombie(ZombieGenerator zn){
         for (int i = 0; i < zn.getZombieNumber(); i++) {
@@ -148,7 +148,7 @@ public class Map extends JFrame {
       
       zm_sound = new Random();
       }
-      public void zomsound(){
+      /*public void zomsound(){
           int sound = zm_sound.nextInt(9);
           switch(sound){
               case 0:
@@ -278,5 +278,5 @@ public class Map extends JFrame {
           catch(Exception e){
               System.err.println(e.getMessage());
           }
-      }
+      }*/
 }
