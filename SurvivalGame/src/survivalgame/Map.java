@@ -168,6 +168,8 @@ public class Map extends JFrame {
         JOptionPane.showMessageDialog(null,new ImageIcon(getClass().getResource("misc/gameover.gif")));
       }
     public void MissionFailed(){
+        ZombieGenerator.score=0;
+        Waves.setWave(1);
         this.dispose();
         this.removeAll();
         t.stop();
