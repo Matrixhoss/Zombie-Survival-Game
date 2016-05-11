@@ -9,6 +9,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 
 public class ZombieGenerator {
+    public static int score;
     private Random zm_die;
     private int ZombieNumber;
     private int NormalNumber;
@@ -56,6 +57,7 @@ public class ZombieGenerator {
             z.remove(index);
             zomdeath();
             ZombieNumber--;
+            score=score+10;
         }
     }
     public int getZombieNumber(){

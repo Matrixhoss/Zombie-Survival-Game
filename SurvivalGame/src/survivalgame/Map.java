@@ -14,7 +14,7 @@ import javax.swing.*;
 import static survivalgame.main_menu.x;
 
 public class Map extends JFrame {
-    private int score=0;
+    private JLabel score1;
     private Random zm_sound;
     private ZombieNormal z ;
     private ImagePanel Background;
@@ -41,7 +41,7 @@ public class Map extends JFrame {
     private int TotalNumberOfZombies;
     
     
-    
+    static int sc=0;
     public Map(){
     c = this.getContentPane();
     
@@ -76,6 +76,10 @@ public class Map extends JFrame {
       HealthBar.setBounds(Name.getX()+80,-2,100,70);
       Background.add(HealthBar);
       
+      score1=new JLabel("Score: "+ZombieGenerator.score);
+      score1.setBounds(0, 60, 400, 120);
+      Background.add(score1);
+      score1.setFont(new Font("Stencil Regular", Font.BOLD, 20));
       
       GenerateZombie(zn);
       
@@ -109,7 +113,6 @@ public class Map extends JFrame {
             if(t!=0)
             t--;
         else {
-               
             t=30;
             if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
                 p.takeDamage(zn.z.get(i).weapon.damage);
