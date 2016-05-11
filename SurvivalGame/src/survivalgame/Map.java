@@ -40,11 +40,12 @@ public class Map extends JFrame {
       r= new Random();
       zn=new ZombieGenerator(Background);
       GenerateZombie(zn);
-      p = new Player (100,10,this,20,20,Background,mapdim,zn);
+      p = new Player (100,10,this,200,400,Background,mapdim,zn);
       p.setIcon(Playericon);
       p.setSize(100, 100);
       Background.add(p);
-    Timer t2=new Timer(3000,new ActionListener(){
+      
+    Timer t2=new Timer(8000,new ActionListener(){
     public void actionPerformed(ActionEvent e){
         WavePopUp.setVisible(false);
         
@@ -67,8 +68,6 @@ public class Map extends JFrame {
             zn.z.get(i).rotation();
         }
         if (zn.z.isEmpty()){
-           
-//            WaveTxt.setText("Waves:"+Waves.getWave());
             WavePopUp.setVisible(true); 
         }
         
@@ -77,6 +76,7 @@ public class Map extends JFrame {
            p.animation();
            p.FireHandling();
            p.setLocation(p.getx(), p.gety());
+           p.Health.setLocation(p.getx()+10,p.gety()+80);
            System.out.println(Waves.getWave());
            repaint();
         }

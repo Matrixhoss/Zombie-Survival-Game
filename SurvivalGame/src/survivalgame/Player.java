@@ -19,6 +19,7 @@ class bullet extends JLabel{
     public Rectangle b;
     public int direction;
     
+    
     bullet (int x, int y){
         b = new Rectangle (x,y,10,10);
         ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
@@ -41,6 +42,7 @@ class bullet extends JLabel{
     }
 }
 public class Player extends Character {
+
     // position on axis
    private   int x = 0 ;
    private int stopPosition  = 5  ;
@@ -57,9 +59,13 @@ public class Player extends Character {
    private ArrayList<bullet> bullets = new ArrayList();
    private ZombieGenerator zombies;
    private int damage;
+   public JLabel Health;
     Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies){
         super(S,H);
+        Health=new JLabel("Health");
+        Health.setBounds(this.getX(),this.getY()+20,100,50);
         this.drawpanel=drawpanel;
+        drawpanel.add(Health);
         this.mapdim=mapdim;
         this.x = xL ;
         this.y = yL ;
