@@ -4,7 +4,7 @@ import java.io.*;
 
 public class save_score {
     public save_score(){
-        File newfile = new File("C:/Users/User/Desktop/Project/asuprogrammingproject/SurvivalGame/src/survivalgame/misc/highscore.txt");
+        File newfile = new File("misc/highscore.txt");
         if(newfile.exists()){
             System.out.println("Rename the file");
         }

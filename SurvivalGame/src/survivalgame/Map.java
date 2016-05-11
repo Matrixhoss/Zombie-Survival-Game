@@ -5,7 +5,9 @@ import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.ImageObserver;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.sound.sampled.AudioSystem;
@@ -144,8 +146,8 @@ public class Map extends JFrame {
            System.out.println(Waves.getWave());
            repaint();
            score1.setText("Score: "+ZombieGenerator.score);
+           savescore();
         }
-    
     });
     
     t.start();
@@ -256,6 +258,30 @@ public class Map extends JFrame {
               HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health10.png")));
           }
       }
+      public static void savescore(){
+        File newfile = new File("misc/highscore.txt");
+        if(newfile.exists()){
+            System.out.println("Rename the file");
+        }
+        else{
+            try{
+                newfile.createNewFile();
+            }
+            catch(Exception e){
+                System.err.println("Error");
+            }
+            try{
+                FileWriter score_file = new FileWriter(newfile);
+                BufferedWriter score_buff = new BufferedWriter(score_file);
+                //Th new score of the user
+                score_buff.write(ZombieGenerator.score);
+                score_buff.close();
+            }
+            catch(Exception e){
+                System.err.println("Error");
+            }
+        }
+    }
       /*public void zomsound(){
           int sound = zm_sound.nextInt(9);
           switch(sound){
