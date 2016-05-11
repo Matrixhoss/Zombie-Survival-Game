@@ -46,7 +46,7 @@ public class Map extends JFrame {
       p.setIcon(Playericon);
       p.setSize(100, 100);
       Background.add(p);
-      
+      play();
     Timer t2=new Timer(8000,new ActionListener(){
     public void actionPerformed(ActionEvent e){
         WavePopUp.setVisible(false);
