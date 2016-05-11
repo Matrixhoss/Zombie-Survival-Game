@@ -1,12 +1,7 @@
 package survivalgame;
 
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.ImageObserver;
@@ -15,10 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
 import static survivalgame.main_menu.x;
 
 public class Map extends JFrame {
@@ -30,6 +22,8 @@ public class Map extends JFrame {
     private Player p ;
     private Random r;
     private Random R;
+    private JLabel WaveTxt;
+    private JLabel WavePopUp;
     private Dimension mapdim = new Dimension();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
@@ -50,6 +44,21 @@ public class Map extends JFrame {
       p.setIcon(Playericon);
       p.setSize(100, 100);
       Background.add(p);
+    Timer t2=new Timer(3000,new ActionListener(){
+    public void actionPerformed(ActionEvent e){
+        WavePopUp.setVisible(false);
+        
+        if (zn.z.isEmpty()){
+           
+            Waves.setNextWave();
+            WaveTxt.setText("Wave: "+Waves.getWave());
+            zn.updateZombie();
+            GenerateZombie(zn); 
+            
+        }
+        
+        }});
+    
     Timer t=new Timer(30,new ActionListener(){
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -58,10 +67,11 @@ public class Map extends JFrame {
             zn.z.get(i).rotation();
         }
         if (zn.z.isEmpty()){
-            Waves.setNextWave();
-            zn.updateZombie();
-            GenerateZombie(zn);  
+           
+//            WaveTxt.setText("Waves:"+Waves.getWave());
+            WavePopUp.setVisible(true); 
         }
+        
            //z.move();
            p.move(mapdim);
            p.animation();
@@ -71,7 +81,23 @@ public class Map extends JFrame {
            repaint();
         }
     });
+    
+      WaveTxt=new JLabel("Wave: "+Waves.getWave());
+      WaveTxt.setBounds(0, 0, 100, 60);
+      Background.add(WaveTxt);
+      WaveTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      
+      WavePopUp=new JLabel("Wave Clear ");
+      WavePopUp.setBounds(400,100, 1000,400);
+      WavePopUp.setFont(new Font("Stencil Regular", Font.BOLD, 100));
+      WavePopUp.setForeground(Color.RED);
+        
+      WavePopUp.setVisible(false);
+      Background.add(WavePopUp);
+     
+      
     t.start();
+    t2.start();
     this.pack();
     this.setVisible(true);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -108,6 +134,8 @@ public class Map extends JFrame {
       Background = Background = new ImagePanel(IC.getImage());
       c.add(Background);
       mapdim=Background.getSize();
+      
+    
       
       zm_sound = new Random();
       }
