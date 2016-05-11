@@ -66,6 +66,12 @@ public class Map extends JFrame {
         for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
             zn.z.get(i).rotation();
+            if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
+                p.takeDamage(zn.z.get(i).weapon.damage);
+                if(p.getHealth()<=0)
+                    p.die();
+            }
+              
         }
         if (zn.z.isEmpty()){
             WavePopUp.setVisible(true);
