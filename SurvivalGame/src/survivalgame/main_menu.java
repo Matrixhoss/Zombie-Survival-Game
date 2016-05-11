@@ -16,6 +16,7 @@ public class main_menu extends JFrame{
     public JButton music;
     public JButton exit;
     public JLabel logo;
+    private static String player;
     ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("misc/zm.png"));
     ImageIcon start_logo= new ImageIcon(getClass().getResource("misc/zm2.gif"));
     ImageIcon start_logo_button= new ImageIcon(getClass().getResource("misc/logo.gif"));
@@ -68,6 +69,7 @@ public class main_menu extends JFrame{
                 public void actionPerformed(ActionEvent e) {
                     choose_map fa = new choose_map();
                     fa.setVisible(true);
+                    player=JOptionPane.showInputDialog(null,"Enter Player Name: ");
                 }
             }
         );
@@ -110,6 +112,9 @@ public class main_menu extends JFrame{
                 }
             }
         );
+    }
+    public static String getPlayer(){
+    return player;
     }
     public static void playback(){
         try{

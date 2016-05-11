@@ -59,13 +59,9 @@ public class Player extends Character {
    private ArrayList<bullet> bullets = new ArrayList();
    private ZombieGenerator zombies;
    private int damage;
-   public JLabel Health;
     Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies){
         super(S,H);
-        Health=new JLabel("Health");
-        Health.setBounds(this.getX(),this.getY()+20,100,50);
         this.drawpanel=drawpanel;
-        drawpanel.add(Health);
         this.mapdim=mapdim;
         this.x = xL ;
         this.y = yL ;

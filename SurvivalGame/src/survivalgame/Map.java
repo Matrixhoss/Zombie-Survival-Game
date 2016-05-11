@@ -24,6 +24,8 @@ public class Map extends JFrame {
     private Random R;
     private JLabel WaveTxt;
     private JLabel WavePopUp;
+    private JLabel Name;
+    private JLabel HealthBar;
     private Dimension mapdim = new Dimension();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
@@ -76,14 +78,13 @@ public class Map extends JFrame {
            p.animation();
            p.FireHandling();
            p.setLocation(p.getx(), p.gety());
-           p.Health.setLocation(p.getx()+10,p.gety()+80);
            System.out.println(Waves.getWave());
            repaint();
         }
     });
     
       WaveTxt=new JLabel("Wave: "+Waves.getWave());
-      WaveTxt.setBounds(0, 0, 100, 60);
+      WaveTxt.setBounds(0, 30, 100, 60);
       Background.add(WaveTxt);
       WaveTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
       
@@ -91,9 +92,17 @@ public class Map extends JFrame {
       WavePopUp.setBounds(400,100, 1000,400);
       WavePopUp.setFont(new Font("Stencil Regular", Font.BOLD, 100));
       WavePopUp.setForeground(Color.RED);
-        
       WavePopUp.setVisible(false);
       Background.add(WavePopUp);
+      
+      Name=new JLabel(main_menu.getPlayer());
+      Name.setBounds(0, 0, 100, 60);
+      Background.add(Name);
+      Name.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      
+      HealthBar=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
+      HealthBar.setBounds(Name.getX()+80,-2,100,70);
+      Background.add(HealthBar);
      
       
     t.start();
