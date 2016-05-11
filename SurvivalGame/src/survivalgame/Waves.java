@@ -11,5 +11,8 @@ public  class Waves {
     public static int getWave(){
     return WaveNumber;
     }
+    public static int getPrevWave(){
+    return WaveNumber-2;
+    }
  
 }

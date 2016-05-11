@@ -30,8 +30,8 @@ public class ZombieGenerator {
                ZombieNumber-=1; 
        }
           //StrongZombies
-          if(Waves.getWave()==2){
-              StrongNumber=1;
+          if(Waves.getWave()>=5){
+              StrongNumber=Waves.getPrevWave();
               ZombieNumber+=FastNumber;
               for (int i = 0; i < StrongNumber; i++) {
                   z.add(new ZombieStrong());
@@ -55,6 +55,7 @@ public class ZombieGenerator {
             drawpanel.remove(z.get(index));
             z.remove(index);
             zomdeath();
+            ZombieNumber--;
         }
     }
     public int getZombieNumber(){
@@ -73,8 +74,8 @@ public class ZombieGenerator {
                 ZombieNumber-=1;
         }
         //StrongZombies
-        if(Waves.getWave()==2){
-            StrongNumber=1;
+        if(Waves.getWave()>=5){
+              StrongNumber=2*(Waves.getPrevWave()-2);
             ZombieNumber+=StrongNumber;
             for (int i = 0; i < StrongNumber; i++) {
                 z.add(new ZombieStrong());

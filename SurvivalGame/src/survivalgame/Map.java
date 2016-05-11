@@ -27,6 +27,7 @@ public class Map extends JFrame {
     private JLabel Name;
     private JLabel HealthBar;
     private boolean StartedNewMap;
+    private JLabel NumberofRZ;
     private Dimension mapdim = new Dimension();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
@@ -45,73 +46,18 @@ public class Map extends JFrame {
     
     setBackground(MapIcn);
       r= new Random();
-      zn=new ZombieGenerator(Background);
-      GenerateZombie(zn);
-      p = new Player (100,10,this,200,400,Background,mapdim,zn);
-      p.setIcon(Playericon);
-      p.setSize(100, 100);
-      this.StartedNewMap=false;
-      Background.add(p);
-      play();
       
-    t2=new Timer(8000,new ActionListener(){
-    public void actionPerformed(ActionEvent e){
-        WavePopUp.setVisible(false);
-        if (zn.z.isEmpty()){
-           //Play strating round
-           play();
-           Waves.setNextWave();
-           WaveTxt.setText("Wave: "+Waves.getWave());
-           zn.updateZombie();
-           GenerateZombie(zn);
-        }
-        }});
-    
-    t=new Timer(30,new ActionListener(){
-        int t = 0;
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < zn.z.size(); i++){
-            zn.z.get(i).AI(p.getX(),p.getY());
-            zn.z.get(i).rotation();
-            if(t!=0)
-            t--;
-        else {
-                setHealthBar();
-            t=30;
-            if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
-                p.takeDamage(zn.z.get(i).weapon.damage);
-                System.out.println(p.getHealth());
-                hit();
-                if(p.getHealth()<=0){
-                    MissionFailed();
-                    game_over();
-                    p.setEnabled(false);
-                    p.setVisible(false);
-                    p.die();
-            }
-                
-            }}
-              
-        
-        }
-        
-        if (zn.z.isEmpty()){
-            WavePopUp.setVisible(true);
-        }
-           //z.move();
-           p.move(mapdim);
-           p.animation();
-           p.DamageHandling();
-           p.setLocation(p.getx(), p.gety());
-           System.out.println(Waves.getWave());
-           repaint();
-        }
-    });
-    
+      zn=new ZombieGenerator(Background);
+      
       WaveTxt=new JLabel("Wave: "+Waves.getWave());
       WaveTxt.setBounds(0, 30, 100, 60);
       Background.add(WaveTxt);
       WaveTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      
+      NumberofRZ=new JLabel("Remaining Zombies: "+zn.getZombieNumber());
+      NumberofRZ.setBounds(0, 60, 400, 60);
+      Background.add(NumberofRZ);
+      NumberofRZ.setFont(new Font("Stencil Regular", Font.BOLD, 20));
       
       WavePopUp=new JLabel("Wave Clear ");
       WavePopUp.setBounds(400,100, 1000,400);
@@ -128,6 +74,75 @@ public class Map extends JFrame {
       HealthBar=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
       HealthBar.setBounds(Name.getX()+80,-2,100,70);
       Background.add(HealthBar);
+      
+      
+      GenerateZombie(zn);
+      
+      p = new Player (100,10,this,200,400,Background,mapdim,zn);
+      p.setIcon(Playericon);
+      p.setSize(100, 100);
+      this.StartedNewMap=false;
+      Background.add(p);
+      play();
+      
+    t2=new Timer(8000,new ActionListener(){
+    public void actionPerformed(ActionEvent e){
+        WavePopUp.setVisible(false);
+        if (zn.z.isEmpty()){
+           //Play starting round
+           play();
+           Waves.setNextWave();
+           WaveTxt.setText("Wave: "+Waves.getWave());
+           NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
+           zn.updateZombie();
+           GenerateZombie(zn);
+        }
+        }});
+    
+    t=new Timer(30,new ActionListener(){
+        int t = 0;
+        public void actionPerformed(ActionEvent e) {
+            for (int i = 0; i < zn.z.size(); i++){
+            zn.z.get(i).AI(p.getX(),p.getY());
+            zn.z.get(i).rotation();
+            if(t!=0)
+            t--;
+        else {
+               
+            t=30;
+            if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
+                p.takeDamage(zn.z.get(i).weapon.damage);
+                System.out.println(p.getHealth());
+                hit();
+                if(p.getHealth()<=0){
+                    MissionFailed();
+                    game_over();
+                    p.setEnabled(false);
+                    p.setVisible(false);
+                    p.die();
+                   
+            }
+                
+            }}
+              
+        
+        }
+             setHealthBar();
+             NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
+        
+        if (zn.z.isEmpty()){
+            WavePopUp.setVisible(true);
+        }
+           //z.move();
+           p.move(mapdim);
+           p.animation();
+           p.DamageHandling();
+           p.setLocation(p.getx(), p.gety());
+           System.out.println(Waves.getWave());
+           repaint();
+        }
+    });
+    
      
       
     t.start();
