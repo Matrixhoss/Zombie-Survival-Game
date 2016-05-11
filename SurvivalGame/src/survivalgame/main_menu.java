@@ -70,6 +70,7 @@ public class main_menu extends JFrame{
                     choose_map fa = new choose_map();
                     fa.setVisible(true);
                     player=JOptionPane.showInputDialog(null,"Enter Player Name: ");
+                   
                 }
             }
         );

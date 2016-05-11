@@ -76,6 +76,7 @@ public class Map extends JFrame {
             if(t!=0)
             t--;
         else {
+                setHealthBar();
             t=30;
             if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
                 p.takeDamage(zn.z.get(i).weapon.damage);
@@ -203,6 +204,42 @@ public class Map extends JFrame {
               System.err.println(e.getMessage());
           }
       }
+      public void setHealthBar(){
+if (p.getHealth()==100){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
+}
+if (p.getHealth()==90){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health2.png")));
+}
+if (p.getHealth()==80){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health3.png")));
+}
+if (p.getHealth()==70){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health4.png")));
+}
+if (p.getHealth()==60){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health5.png")));
+}
+if (p.getHealth()==50){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health6.png")));
+}
+if (p.getHealth()==40){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health7.png")));
+}
+if (p.getHealth()==30){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health8.png")));
+}
+if (p.getHealth()==20){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health9.png")));
+}
+if (p.getHealth()==10){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health11.png")));
+}
+if (p.getHealth()==0){
+HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health10.png")));
+}
+
+}
       /*public void zomsound(){
           int sound = zm_sound.nextInt(9);
           switch(sound){
