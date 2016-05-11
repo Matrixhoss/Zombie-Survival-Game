@@ -259,7 +259,7 @@ public class Map extends JFrame {
           }
       }
       public static void savescore(){
-        File newfile = new File("C:/Users/User/Desktop/Project/asuprogrammingproject/SurvivalGame/src/survivalgame/misc/highscore.txt");
+        File newfile = new File("misc/highscore.txt");
         if(newfile.exists()){
             System.out.println("Rename the file");
         }
