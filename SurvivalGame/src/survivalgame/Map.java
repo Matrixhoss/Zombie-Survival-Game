@@ -50,16 +50,14 @@ public class Map extends JFrame {
     Timer t2=new Timer(8000,new ActionListener(){
     public void actionPerformed(ActionEvent e){
         WavePopUp.setVisible(false);
-        
         if (zn.z.isEmpty()){
-           
-            Waves.setNextWave();
-            WaveTxt.setText("Wave: "+Waves.getWave());
-            zn.updateZombie();
-            GenerateZombie(zn); 
-            
+           //Play strating round
+           play();
+           Waves.setNextWave();
+           WaveTxt.setText("Wave: "+Waves.getWave());
+           zn.updateZombie();
+           GenerateZombie(zn);
         }
-        
         }});
     
     Timer t=new Timer(30,new ActionListener(){
@@ -70,9 +68,8 @@ public class Map extends JFrame {
             zn.z.get(i).rotation();
         }
         if (zn.z.isEmpty()){
-            WavePopUp.setVisible(true); 
+            WavePopUp.setVisible(true);
         }
-        
            //z.move();
            p.move(mapdim);
            p.animation();
@@ -147,6 +144,17 @@ public class Map extends JFrame {
     
       
       zm_sound = new Random();
+      }
+      public static void play(){
+            try{
+            File files = new File("round_start.wav");
+            Clip clips = AudioSystem.getClip();
+            clips.open(AudioSystem.getAudioInputStream(files));
+            clips.start();
+        }
+            catch(Exception es){
+                System.err.println("");
+            }
       }
       /*public void zomsound(){
           int sound = zm_sound.nextInt(9);
