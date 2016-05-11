@@ -105,6 +105,7 @@ public class Map extends JFrame {
         }});
     
     t=new Timer(30,new ActionListener(){
+        
         int t = 0;
         public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < zn.z.size(); i++){
@@ -142,7 +143,9 @@ public class Map extends JFrame {
            p.setLocation(p.getx(), p.gety());
            System.out.println(Waves.getWave());
            repaint();
+           score1.setText("Score: "+ZombieGenerator.score);
         }
+    
     });
     
     t.start();
