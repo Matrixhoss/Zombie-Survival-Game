@@ -53,6 +53,7 @@ public class Map extends JFrame {
       this.StartedNewMap=false;
       Background.add(p);
       play();
+      
     t2=new Timer(8000,new ActionListener(){
     public void actionPerformed(ActionEvent e){
         WavePopUp.setVisible(false);
@@ -69,7 +70,6 @@ public class Map extends JFrame {
     t=new Timer(30,new ActionListener(){
         int t = 0;
         public void actionPerformed(ActionEvent e) {
-        
             for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
             zn.z.get(i).rotation();
@@ -80,9 +80,10 @@ public class Map extends JFrame {
             if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
                 p.takeDamage(zn.z.get(i).weapon.damage);
                 System.out.println(p.getHealth());
+                hit();
                 if(p.getHealth()<=0){
                     MissionFailed();
-                    System.out.println("DEAD");
+                    game_over();
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();
@@ -144,6 +145,9 @@ public class Map extends JFrame {
 //    });
 //    ts.start();
     }
+    public void game_over(){
+        JOptionPane.showMessageDialog(null,new ImageIcon(getClass().getResource("misc/gameover.gif")));
+      }
     public void MissionFailed(){
         this.dispose();
         this.removeAll();
@@ -187,6 +191,17 @@ public class Map extends JFrame {
             catch(Exception es){
                 System.err.println("");
             }
+      }
+      public static void hit(){
+          try{
+                File fileh = new File("attack.wav");
+                Clip cliph = AudioSystem.getClip();
+                cliph.open(AudioSystem.getAudioInputStream(fileh));
+                cliph.start();
+          }
+          catch(Exception e){
+              System.err.println(e.getMessage());
+          }
       }
       /*public void zomsound(){
           int sound = zm_sound.nextInt(9);
