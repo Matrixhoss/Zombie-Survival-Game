@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -263,7 +265,9 @@ public class Player extends Character {
                    try{
                     zombies.TakeDamage(j, damage);
                    bullets.remove(i);
-                   drawpanel.remove(temp);}
+                   drawpanel.remove(temp);
+                   
+                   }
                    catch(Exception ex){
                        System.out.println("none-critical Exception in Bullet Hitting Zombie:"+ex);
                    }
@@ -280,6 +284,13 @@ public class Player extends Character {
                     }
                 }
         }
+    }
+    public void die(){
+       try {
+           this.finalize();
+       } catch (Throwable ex) {
+           Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }
     public void animation (){
         // annimation of player

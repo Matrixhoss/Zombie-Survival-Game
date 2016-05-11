@@ -68,8 +68,12 @@ public class Map extends JFrame {
             zn.z.get(i).rotation();
             if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
                 p.takeDamage(zn.z.get(i).weapon.damage);
-                if(p.getHealth()<=0)
-                    p.die();
+                System.out.println(p.getHealth());
+                if(p.getHealth()<=0){
+                    System.out.println("DEAD");
+                    p.setEnabled(false);
+            }
+                
             }
               
         }

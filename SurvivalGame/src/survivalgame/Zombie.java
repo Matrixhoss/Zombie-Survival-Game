@@ -18,7 +18,7 @@ public abstract class Zombie extends Character  {
     private double angle;
     private int sizeX;
     private int sizeY;
-    private Weapons weapon;
+    public Weapons weapon;
     public double scale;
     public Zombie (int health,int speed,String Type){
         super(health,speed);

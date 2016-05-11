@@ -14,7 +14,7 @@ public abstract class Character extends JLabel {
   
     public void move(){};
     public void die(){};
-    public void takeDamage(int d){};
+    public void takeDamage(int d){health-=d;};
     public void setWeapon(){};
     
     public int getHealth(){return this.health;};
