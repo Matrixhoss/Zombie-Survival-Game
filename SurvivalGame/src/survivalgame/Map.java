@@ -26,16 +26,21 @@ public class Map extends JFrame {
     private JLabel WavePopUp;
     private JLabel Name;
     private JLabel HealthBar;
+    private boolean StartedNewMap;
     private Dimension mapdim = new Dimension();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
     ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
+    Timer t;
+    Timer t2;
 
     private Container c;
      
     private int TotalNumberOfZombies;
-    public Map(){
     
+    
+    
+    public Map(){
     c = this.getContentPane();
     
     setBackground(MapIcn);
@@ -45,9 +50,10 @@ public class Map extends JFrame {
       p = new Player (100,10,this,200,400,Background,mapdim,zn);
       p.setIcon(Playericon);
       p.setSize(100, 100);
+      this.StartedNewMap=false;
       Background.add(p);
       play();
-    Timer t2=new Timer(8000,new ActionListener(){
+    t2=new Timer(8000,new ActionListener(){
     public void actionPerformed(ActionEvent e){
         WavePopUp.setVisible(false);
         if (zn.z.isEmpty()){
@@ -60,23 +66,33 @@ public class Map extends JFrame {
         }
         }});
     
-    Timer t=new Timer(30,new ActionListener(){
-        @Override
+    t=new Timer(30,new ActionListener(){
+        int t = 0;
         public void actionPerformed(ActionEvent e) {
-        for (int i = 0; i < zn.z.size(); i++){
+        
+            for (int i = 0; i < zn.z.size(); i++){
             zn.z.get(i).AI(p.getX(),p.getY());
             zn.z.get(i).rotation();
+            if(t!=0)
+            t--;
+        else {
+            t=30;
             if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
                 p.takeDamage(zn.z.get(i).weapon.damage);
                 System.out.println(p.getHealth());
                 if(p.getHealth()<=0){
+                    MissionFailed();
                     System.out.println("DEAD");
                     p.setEnabled(false);
+                    p.setVisible(false);
+                    p.die();
             }
                 
-            }
+            }}
               
+        
         }
+        
         if (zn.z.isEmpty()){
             WavePopUp.setVisible(true);
         }
@@ -127,6 +143,12 @@ public class Map extends JFrame {
 //        }
 //    });
 //    ts.start();
+    }
+    public void MissionFailed(){
+        this.dispose();
+        this.removeAll();
+        t.stop();
+        t2.stop();
     }
     public void GenerateZombie(ZombieGenerator zn){
         for (int i = 0; i < zn.getZombieNumber(); i++) {
