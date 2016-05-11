@@ -73,7 +73,7 @@ public class Map extends JFrame {
            //z.move();
            p.move(mapdim);
            p.animation();
-           p.FireHandling();
+           p.DamageHandling();
            p.setLocation(p.getx(), p.gety());
            System.out.println(Waves.getWave());
            repaint();
