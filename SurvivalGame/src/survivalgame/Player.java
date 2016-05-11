@@ -186,7 +186,7 @@ public class Player extends Character {
         //this.setLocation(x, y);
     }
     
-    public void FireHandling (){
+    public void DamageHandling (){
         for(int i=0;i<bullets.size();i++){
             bullet temp = bullets.get(i);
             switch(temp.direction){
