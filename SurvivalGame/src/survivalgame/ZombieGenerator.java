@@ -54,18 +54,17 @@ public class ZombieGenerator {
         z.get(index).setHealth(z.get(index).getHealth()-damage);
         if(z.get(index).getHealth()<=0){
             drawpanel.remove(z.get(index));
-             if (z.get(index).Type=="ZombieN"){
-            score=score+10;
+            if (z.get(index).Type=="ZombieN"){
+                score=score+10;
             }if (z.get(index).Type=="ZombieS"){
-            score=score+30;
+                score=score+30;
             }
             if (z.get(index).Type=="ZombieF"){
-            score=score+20;
+                score=score+20;
             }
             z.remove(index);
             zomdeath();
             ZombieNumber--;
-           
         }
     }
     public int getZombieNumber(){
