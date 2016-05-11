@@ -260,7 +260,7 @@ public class Map extends JFrame {
       }
       public static void savescore(){
         File newfile = new File("highscore.txt");
-        if(newfile.exists()){
+        if(!newfile.exists()){
             System.out.println("Rename the file");
         }
         else{
