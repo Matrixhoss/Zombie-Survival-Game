@@ -20,6 +20,8 @@ public abstract class Zombie extends Character  {
     private int sizeY;
     public Weapons weapon;
     public double scale;
+    public int CollX;
+    public int CollY;
     public Zombie (int health,int speed,String Type){
         super(health,speed);
         this.Type=Type;
@@ -121,6 +123,8 @@ public abstract class Zombie extends Character  {
         shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
         this.setWeapon(new MELEE());
         this.setIcon(shape);
+        this.CollX=64;
+        this.CollY=64;
         }
         public void rotation(){
             Double ang=Math.toDegrees(this.GetAngle());
@@ -168,6 +172,8 @@ public abstract class Zombie extends Character  {
         shape=new ImageIcon(getClass().getResource("misc/Sprites/Boss.gif"));
         this.setIcon(shape);
         this.scale=2;
+        this.CollX=125;
+        this.CollY=165;
         }
 
    public void rotation(){
