@@ -6,8 +6,6 @@ public abstract class Weapons {
      int rateoffire;
      int ammo;
      int range;
-     int MAPSIZE=500;
-     boolean burstfire;
      
     public void RefillAmmo(){};
     public boolean Fire(){
@@ -22,8 +20,7 @@ public abstract class Weapons {
          this.damage = 10;
          this.rateoffire=10;
          this.ammo=Integer.MAX_VALUE;
-         this.range=this.MAPSIZE*(3/4);
-         this.burstfire=false;
+         this.range=3;
      }
  }
 class UZI extends Weapons{
@@ -31,18 +28,19 @@ class UZI extends Weapons{
         this.damage=5;
         this.rateoffire=50;
         this.ammo=500;
-        this.range=this.MAPSIZE;
-        this.burstfire=false;
+        this.range=1;
     }
     
 }
-class SHOTGUN extends Weapons{
-    SHOTGUN(){
+class Shotgun extends Weapons{
+    Shotgun(){
         this.damage = 50;
         this.rateoffire = 5;
-        this.ammo=30;
-        this.range=this.MAPSIZE*(1/2);
-        this.burstfire=true;
+        this.ammo=Integer.MAX_VALUE;
+        this.range=2;
+    }
+    public void AddAmmo(int ammo){
+        this.ammo+=ammo;
     }
 }
 class MELEE extends Weapons{
@@ -51,7 +49,6 @@ class MELEE extends Weapons{
         this.rateoffire = 5;
         this.ammo=Integer.MAX_VALUE;
         this.range=0;
-        this.burstfire=false;
     }
 }
 class MELEE2 extends Weapons{
@@ -60,7 +57,6 @@ class MELEE2 extends Weapons{
         this.rateoffire = 5;
         this.ammo=Integer.MAX_VALUE;
         this.range=0;
-        this.burstfire=false;
     }
 }
 class MELEEFast extends Weapons{
@@ -69,6 +65,5 @@ class MELEEFast extends Weapons{
         this.rateoffire = 20;
         this.ammo=Integer.MAX_VALUE;
         this.range=0;
-        this.burstfire=false;
     }
 }

@@ -18,6 +18,7 @@ import static survivalgame.main_menu.x;
 class bullet extends JLabel{
     public Rectangle b;
     public int direction;
+    public int ShotgunBullet=0; //1 is shotgun bullets going left of main and 2 is one going right of main
     
     
     bullet (int x, int y){
@@ -26,12 +27,13 @@ class bullet extends JLabel{
         this.setIcon(BulletImage);
         this.setSize(10,10);
     }
-    bullet (int x, int y,int direction){
+    bullet (int x, int y,int direction,int ShotgunBullet){
         b = new Rectangle (x,y,10,10);
         ImageIcon BulletImage = new ImageIcon(getClass().getResource("misc/TestBullet.png"));
         this.setIcon(BulletImage);
         this.setSize(20,20);
         this.direction=direction;
+        this.ShotgunBullet=ShotgunBullet;
     }  
     void MoveBulletBy(int x,int y){
         b.x+=x;
@@ -68,6 +70,7 @@ public class Player extends Character {
         Fired=false;
         Firing=false;
         PWeapon[0] = new Pistol();
+        PWeapon[1] = new Shotgun();
         CurrentWeapon=0;
         damage=PWeapon[CurrentWeapon].damage;
         this.zombies=zombies;
@@ -90,15 +93,38 @@ public class Player extends Character {
                 case KeyEvent.VK_DOWN :
                     down = true ;
                     break;  
+                case KeyEvent.VK_1:
+                    CurrentWeapon=0;
+                    damage=PWeapon[CurrentWeapon].damage;
+                    break;
+                case KeyEvent.VK_2:
+                    CurrentWeapon=1;
+                    damage=PWeapon[CurrentWeapon].damage;
+                    break;
+                    
                 case KeyEvent.VK_F:
                 if(Fired==false){
-                
-                bullets.add(new bullet(x+25 ,y+25,stopPosition));
+                if(CurrentWeapon==1){
+                    if(PWeapon[CurrentWeapon].ammo>0){
+                        bullets.add(new bullet(x+25 ,y+25,stopPosition,0));
+                        drawpanel.add(bullets.get(bullets.size()-1));
+                        bullets.add(new bullet(x+25 ,y+25,stopPosition,1));
+                        drawpanel.add(bullets.get(bullets.size()-1));
+                        bullets.add(new bullet(x+25 ,y+25,stopPosition,2));
+                        drawpanel.add(bullets.get(bullets.size()-1));
+                        Firing=PWeapon[CurrentWeapon].Fire();
+                        Fired=true;
+                        shotgunsound();
+                        break;
+                        
+                    }
+                }
+                else {bullets.add(new bullet(x+25 ,y+25,stopPosition,0));
                 drawpanel.add(bullets.get(bullets.size()-1));
                 Firing=PWeapon[CurrentWeapon].Fire();
                 Fired=true;
                 gunsound();
-                break;
+                break;}
                 }
             }
         }
@@ -165,28 +191,68 @@ public class Player extends Character {
             bullet temp = bullets.get(i);
             switch(temp.direction){
                 case 7://right
-                    temp.MoveBulletBy(50, 0);
+                    if(temp.ShotgunBullet>0){
+                        if(temp.ShotgunBullet==1)
+                            temp.MoveBulletBy(50, 5);
+                        else temp.MoveBulletBy(50, -5);
+                    }
+                    else temp.MoveBulletBy(50, 0);
                     break;
                 case 8://left
-                    temp.MoveBulletBy(-50, 0);
+                    if(temp.ShotgunBullet>0){
+                        if(temp.ShotgunBullet==1)
+                            temp.MoveBulletBy(-50, 5);
+                        else temp.MoveBulletBy(-50, -5);
+                    }
+                    else temp.MoveBulletBy(-50, 0);
                     break;
                 case 5://up
-                    temp.MoveBulletBy(0, -50);
+                    if(temp.ShotgunBullet>0){
+                        if(temp.ShotgunBullet==1)
+                            temp.MoveBulletBy(5, -50);
+                        else temp.MoveBulletBy(-5, -50);
+                    }
+                    else temp.MoveBulletBy(0, -50);
                     break;
                 case 6://down
-                    temp.MoveBulletBy(0, 50);
+                    if(temp.ShotgunBullet>0){
+                        if(temp.ShotgunBullet==1)
+                            temp.MoveBulletBy(5, 50);
+                        else temp.MoveBulletBy(-5, 50);
+                    }
+                    else temp.MoveBulletBy(0, 50);
                     break;
                 case 1://up and right
-                    temp.MoveBulletBy(50,-50);
+                    if(temp.ShotgunBullet>0){
+                        if(temp.ShotgunBullet==1)
+                            temp.MoveBulletBy(60, -50);
+                        else temp.MoveBulletBy(40, -50);
+                    }
+                    else temp.MoveBulletBy(50, -50);
                     break;
                 case 2://up and left
-                    temp.MoveBulletBy(-50, -50);
+                    if(temp.ShotgunBullet>0){
+                        if(temp.ShotgunBullet==1)
+                            temp.MoveBulletBy(-60, -50);
+                        else temp.MoveBulletBy(-40, -50);
+                    }
+                    else temp.MoveBulletBy(-50, -50);
                     break;
                 case 3: //down and right
-                    temp.MoveBulletBy(50, 50);
+                    if(temp.ShotgunBullet>0){
+                        if(temp.ShotgunBullet==1)
+                            temp.MoveBulletBy(50, 60);
+                        else temp.MoveBulletBy(60, 50);
+                    }
+                    else temp.MoveBulletBy(50, 50);
                     break;
                 case 4: //down and left
-                    temp.MoveBulletBy(-50, 50);
+                    if(temp.ShotgunBullet>0){
+                        if(temp.ShotgunBullet==1)
+                            temp.MoveBulletBy(-50, 60);
+                        else temp.MoveBulletBy(-60, 50);
+                    }
+                    else temp.MoveBulletBy(-50, 50);
                     break;
             }
             bullets.set(i, temp);
@@ -271,6 +337,17 @@ public class Player extends Character {
     public static void gunsound(){
         try{
             File file = new File("gun_sound1.wav");
+            Clip clip1 = AudioSystem.getClip();
+            clip1.open(AudioSystem.getAudioInputStream(file));
+            clip1.start();
+        }
+        catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+    public static void shotgunsound(){
+        try{
+            File file = new File("shotgun.wav");
             Clip clip1 = AudioSystem.getClip();
             clip1.open(AudioSystem.getAudioInputStream(file));
             clip1.start();
