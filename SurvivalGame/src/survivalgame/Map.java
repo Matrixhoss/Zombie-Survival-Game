@@ -14,6 +14,7 @@ import javax.swing.*;
 import static survivalgame.main_menu.x;
 
 public class Map extends JFrame {
+    private int score=0;
     private Random zm_sound;
     private ZombieNormal z ;
     private ImagePanel Background;
@@ -121,14 +122,12 @@ public class Map extends JFrame {
                     p.setVisible(false);
                     p.die();
                    
+                }
             }
-                
-            }}
-              
-        
-        }
-             setHealthBar();
-             NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
+            }
+            }
+            setHealthBar();
+            NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
         
         if (zn.z.isEmpty()){
             WavePopUp.setVisible(true);
@@ -143,8 +142,6 @@ public class Map extends JFrame {
         }
     });
     
-     
-      
     t.start();
     t2.start();
     this.pack();
@@ -192,9 +189,6 @@ public class Map extends JFrame {
       Background = Background = new ImagePanel(IC.getImage());
       c.add(Background);
       mapdim=Background.getSize();
-      
-    
-      
       zm_sound = new Random();
       }
       public static void play(){
@@ -203,7 +197,7 @@ public class Map extends JFrame {
             Clip clips = AudioSystem.getClip();
             clips.open(AudioSystem.getAudioInputStream(files));
             clips.start();
-        }
+            }
             catch(Exception es){
                 System.err.println("");
             }
@@ -220,41 +214,40 @@ public class Map extends JFrame {
           }
       }
       public void setHealthBar(){
-if (p.getHealth()==100){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
-}
-if (p.getHealth()==90){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health2.png")));
-}
-if (p.getHealth()==80){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health3.png")));
-}
-if (p.getHealth()==70){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health4.png")));
-}
-if (p.getHealth()==60){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health5.png")));
-}
-if (p.getHealth()==50){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health6.png")));
-}
-if (p.getHealth()==40){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health7.png")));
-}
-if (p.getHealth()==30){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health8.png")));
-}
-if (p.getHealth()==20){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health9.png")));
-}
-if (p.getHealth()==10){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health11.png")));
-}
-if (p.getHealth()==0){
-HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health10.png")));
-}
-
-}
+          if (p.getHealth()==100){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
+          }
+          if (p.getHealth()==90){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health2.png")));
+          }
+          if (p.getHealth()==80){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health3.png")));
+          }
+          if (p.getHealth()==70){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health4.png")));
+          }
+          if (p.getHealth()==60){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health5.png")));
+          }
+          if (p.getHealth()==50){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health6.png")));
+          }
+          if (p.getHealth()==40){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health7.png")));
+          }
+          if (p.getHealth()==30){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health8.png")));
+          }
+          if (p.getHealth()==20){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health9.png")));
+          }
+          if (p.getHealth()==10){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health11.png")));
+          }
+          if (p.getHealth()==0){
+              HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health10.png")));
+          }
+      }
       /*public void zomsound(){
           int sound = zm_sound.nextInt(9);
           switch(sound){
