@@ -15,6 +15,7 @@ public class main_menu extends JFrame{
     public JButton option;
     public JButton music;
     public JButton exit;
+    public JButton hall_of_fame;
     public JLabel logo;
     private static String player;
     ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("misc/zm.png"));
@@ -23,6 +24,7 @@ public class main_menu extends JFrame{
     ImageIcon option_button= new ImageIcon(getClass().getResource("misc/op.png"));
     ImageIcon exit_button= new ImageIcon(getClass().getResource("misc/ex.png"));
     ImageIcon music_button= new ImageIcon(getClass().getResource("misc/ms.png"));
+    ImageIcon hall_fame= new ImageIcon(getClass().getResource("misc/hall_of_fame.png"));
     public static int x=1;
     public main_menu(){
         this.setTitle("Glav Survival");
@@ -43,19 +45,24 @@ public class main_menu extends JFrame{
         start.setBackground(Color.BLACK);
         c.add(start);
         
+        hall_of_fame = new JButton(hall_fame);
+        hall_of_fame.setBackground(Color.BLACK);
+        hall_of_fame.setBounds(310, 250, 200, 50);
+        c.add(hall_of_fame);
+        
         option = new JButton(option_button);
         option.setBackground(Color.BLACK);
-        option.setBounds(310, 250, 200, 50);
+        option.setBounds(310, 320, 200, 50);
         c.add(option);
         
         music = new JButton(music_button);
         music.setBackground(Color.BLACK);
-        music.setBounds(310, 320, 200, 50);
+        music.setBounds(310, 390, 200, 50);
         c.add(music);
         
         exit = new JButton(exit_button);
         exit.setBackground(Color.BLACK);
-        exit.setBounds(310, 390, 200, 50);
+        exit.setBounds(310, 460, 200, 50);
         c.add(exit);
    
         background = new JLabel();
@@ -71,6 +78,14 @@ public class main_menu extends JFrame{
                     fa.setVisible(true);
                     player=JOptionPane.showInputDialog(null,"Enter Player Name: ");
                    
+                }
+            }
+        );
+        
+        hall_of_fame.addActionListener(     
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
                 }
             }
         );

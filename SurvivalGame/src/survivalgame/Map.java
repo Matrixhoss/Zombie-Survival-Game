@@ -127,7 +127,6 @@ public class Map extends JFrame {
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();
-                   
                 }
             }
             }
@@ -149,7 +148,6 @@ public class Map extends JFrame {
            savescore();
         }
     });
-    
     t.start();
     t2.start();
     this.pack();
@@ -259,7 +257,7 @@ public class Map extends JFrame {
           }
       }
       public static void savescore(){
-        File newfile = new File("highscore.txt");
+        File newfile = new File("C:/Users/User/Desktop/Project/asuprogrammingproject/SurvivalGame/Highscore.txt");
         if(!newfile.exists()){
             System.out.println("Rename the file");
         }
