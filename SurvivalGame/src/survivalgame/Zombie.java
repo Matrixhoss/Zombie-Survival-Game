@@ -122,18 +122,20 @@ public abstract class Zombie extends Character  {
         this.Type="ZombieN";
         this.setSizeX(100);
         this.setSizeY(100);
-        this.scale=1;
+        this.scale=1.4;
         shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
         this.setWeapon(new MELEE());
         this.setIcon(shape);
         this.CollX=64;
-        this.CollY=64;
+        this.CollY=80;
         }
         public void rotation(){
             Double ang=Math.toDegrees(this.GetAngle());
+            this.space=1;
             if(ang>-165&&ang>165){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateLeft.gif"));
                 this.setIcon(shape);
+                
             }
             else if(ang>-165&&ang<-105){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateUpLeft.gif"));
@@ -149,7 +151,6 @@ public abstract class Zombie extends Character  {
             else if(ang>-75&&ang<-15){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateUpRight.gif"));
                 this.setIcon(shape);
-                this.space=10;
             }
             else if(ang>-15&&ang<15){
                     shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateRight.gif"));
@@ -158,7 +159,6 @@ public abstract class Zombie extends Character  {
             else if(ang>15&&ang<75){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDownRight.gif"));
                 this.setIcon(shape);
-                this.space=10;
             }
             else if(ang>75&&ang<105){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDown.gif"));
@@ -167,7 +167,6 @@ public abstract class Zombie extends Character  {
             else if(ang>105&&ang<165){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDownLeft.gif"));
                 this.setIcon(shape);
-                this.space=10;
             }
         } 
   }
@@ -181,7 +180,7 @@ public abstract class Zombie extends Character  {
         this.setWeapon(new MELEE2()); //Missing image
         shape=new ImageIcon(getClass().getResource("misc/Sprites/Boss.gif"));
         this.setIcon(shape);
-        this.scale=2;
+        this.scale=3.3;
         this.CollX=125;
         this.CollY=165;
         }

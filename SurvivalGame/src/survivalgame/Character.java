@@ -6,12 +6,12 @@ public abstract class Character extends JLabel {
     
     private int speed;
     private int health;
-    
     public  Character(int s ,int h){
     this.speed=s;
     this.health=h;
     }
-  
+    
+    
     public void move(){};
     public void die(){};
     public void takeDamage(int d){health-=d;};
