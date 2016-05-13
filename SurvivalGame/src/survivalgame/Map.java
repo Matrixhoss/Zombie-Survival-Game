@@ -168,8 +168,8 @@ public class Map extends JFrame {
                     p2.die();}}}
             }
             }
-            setHealthBar(p);
-         setHealthBar(p2);
+            setHealthBar();
+         setHealthBar2();
             NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
         
         if (zn.z.isEmpty()){
@@ -264,7 +264,7 @@ public class Map extends JFrame {
               System.err.println(e.getMessage());
           }
       }
-      public void setHealthBar(Player p){
+      public void setHealthBar(){
           if (p.getHealth()==100){
               HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
           }
@@ -297,6 +297,41 @@ public class Map extends JFrame {
           }
           if (p.getHealth()==0){
               HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health10.png")));
+          }
+      }
+      public void setHealthBar2(){
+          if (p2.getHealth()==100){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
+          }
+          if (p2.getHealth()==90){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health2.png")));
+          }
+          if (p2.getHealth()==80){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health3.png")));
+          }
+          if (p2.getHealth()==70){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health4.png")));
+          }
+          if (p2.getHealth()==60){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health5.png")));
+          }
+          if (p2.getHealth()==50){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health6.png")));
+          }
+          if (p2.getHealth()==40){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health7.png")));
+          }
+          if (p2.getHealth()==30){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health8.png")));
+          }
+          if (p2.getHealth()==20){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health9.png")));
+          }
+          if (p2.getHealth()==10){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health11.png")));
+          }
+          if (p2.getHealth()==0){
+              HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health10.png")));
           }
       }
       public static void savescore(){
