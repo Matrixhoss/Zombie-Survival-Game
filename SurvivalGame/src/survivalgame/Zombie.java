@@ -23,6 +23,7 @@ public abstract class Zombie extends Character  {
     public double scale;
     public int CollX;
     public int CollY;
+    public int space=0;
     public Zombie (int health,int speed,String Type){
         super(health,speed);
         this.Type=Type;
@@ -137,6 +138,9 @@ public abstract class Zombie extends Character  {
             else if(ang>-165&&ang<-105){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateUpLeft.gif"));
                 this.setIcon(shape);
+                this.space=10;
+                
+                
             }
             else if(ang>-105&&ang<-75){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
@@ -145,6 +149,7 @@ public abstract class Zombie extends Character  {
             else if(ang>-75&&ang<-15){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateUpRight.gif"));
                 this.setIcon(shape);
+                this.space=10;
             }
             else if(ang>-15&&ang<15){
                     shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateRight.gif"));
@@ -153,6 +158,7 @@ public abstract class Zombie extends Character  {
             else if(ang>15&&ang<75){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDownRight.gif"));
                 this.setIcon(shape);
+                this.space=10;
             }
             else if(ang>75&&ang<105){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDown.gif"));
@@ -161,6 +167,7 @@ public abstract class Zombie extends Character  {
             else if(ang>105&&ang<165){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/RotateDownLeft.gif"));
                 this.setIcon(shape);
+                this.space=10;
             }
         } 
   }
@@ -184,10 +191,12 @@ public abstract class Zombie extends Character  {
             if(ang>-165&&ang>165){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/BossLeft.gif"));
                 this.setIcon(shape);
+                
             }
             else if(ang>-165&&ang<-105){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/BossUpLeft.gif"));
                 this.setIcon(shape);
+                this.space=35;
             }
             else if(ang>-105&&ang<-75){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/Boss.gif"));
@@ -196,6 +205,7 @@ public abstract class Zombie extends Character  {
             else if(ang>-75&&ang<-15){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/BossUpRight.gif"));
                 this.setIcon(shape);
+                this.space=35;
             }
             else if(ang>-15&&ang<15){
                     shape=new ImageIcon(getClass().getResource("misc/Sprites/BossRight.gif"));
@@ -204,6 +214,7 @@ public abstract class Zombie extends Character  {
             else if(ang>15&&ang<75){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/BossDownRight.gif"));
                 this.setIcon(shape);
+                this.space=35;
             }
             else if(ang>75&&ang<105){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/BossDown.gif"));
@@ -212,6 +223,7 @@ public abstract class Zombie extends Character  {
             else if(ang>105&&ang<165){
                 shape=new ImageIcon(getClass().getResource("misc/Sprites/BossDownLeft.gif"));
                 this.setIcon(shape);
+                this.space=35;
             }
         } 
         
