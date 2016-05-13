@@ -146,7 +146,9 @@ public class Map extends JFrame {
                     p.die();
            
                 }
-                if(NumberOfPlayers==2){
+                
+            }
+            if(NumberOfPlayers==2){
                if((Math.abs(zn.z.get(i).getX()-p2.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p2.getY())<=60)){
                 p2.takeDamage(zn.z.get(i).weapon.damage);
                 System.out.println(p2.getHealth());
@@ -157,7 +159,6 @@ public class Map extends JFrame {
                     p2.setEnabled(false);
                     p2.setVisible(false);
                     p2.die();}}}
-            }
             }
             }
             setHealthBar();
