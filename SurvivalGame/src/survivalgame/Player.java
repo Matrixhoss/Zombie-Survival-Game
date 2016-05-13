@@ -350,7 +350,7 @@ public class Player extends Character {
             bullets.get(i).setLocation(temp.b.x,temp.b.y);
             for(int j=0;j<zombies.z.size();j++){
                 if(((Math.abs(temp.getX()-zombies.z.get(j).getX())<=50*zombies.z.get(j).scale) && (Math.abs(temp.getY()-zombies.z.get(j).getY())<=50*zombies.z.get(j).scale))&&
-                        (Math.abs(temp.getX())>Math.abs(zombies.z.get(j).getX()))&&(Math.abs(temp.getX())<Math.abs(zombies.z.get(j).getX()+zombies.z.get(j).CollX))&&(Math.abs(temp.getY())>Math.abs(zombies.z.get(j).getY()))&&(Math.abs(temp.getY())<Math.abs(zombies.z.get(j).getY()+zombies.z.get(j).CollY))){
+                        (Math.abs(temp.getX())>Math.abs(zombies.z.get(j).getX()))&&(Math.abs(temp.getX())<Math.abs(zombies.z.get(j).getX()+zombies.z.get(j).CollX))&&(Math.abs(temp.getY())>Math.abs(zombies.z.get(j).getY()+zombies.z.get(j).space))&&(Math.abs(temp.getY())<Math.abs(zombies.z.get(j).getY()+zombies.z.get(j).CollY+zombies.z.get(j).space))){
                    try{
                     zombies.TakeDamage(j, damage);
                    bullets.remove(i);
