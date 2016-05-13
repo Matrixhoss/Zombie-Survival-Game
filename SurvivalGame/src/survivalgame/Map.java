@@ -30,6 +30,7 @@ public class Map extends JFrame {
     private JLabel WavePopUp;
     private JLabel Name;
     private JLabel HealthBar;
+    private JLabel HealthBar2;
     private boolean StartedNewMap;
     private JLabel NumberofRZ;
     private int NumberOfPlayers;
@@ -79,6 +80,11 @@ public class Map extends JFrame {
       HealthBar=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
       HealthBar.setBounds(Name.getX()+80,-2,100,70);
       Background.add(HealthBar);
+      
+      if(NumberOfPlayers==2){
+       HealthBar2=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
+      HealthBar2.setBounds(Name.getX()+80,30,100,70);
+      Background.add(HealthBar2);}
       
       score1=new JLabel("Score: "+ZombieGenerator.score);
       score1.setBounds(0, 60, 400, 120);
@@ -162,7 +168,7 @@ public class Map extends JFrame {
             }
             }
             setHealthBar(p);
-            setHealthBar(p2);
+         setHealthBar(p2);
             NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
         
         if (zn.z.isEmpty()){
