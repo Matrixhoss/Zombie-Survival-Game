@@ -175,7 +175,7 @@ public class Map extends JFrame {
                     System.out.println(p.getHealth());
                      hit();
                 }
-                else{
+                if(p.getHealth()<=0){
 //                    MissionFailed();
 //                    game_over();
                     p.setLocation(-10, -10);
@@ -189,7 +189,7 @@ public class Map extends JFrame {
                     p.takeDamage(zn.z.get(i).weapon.damage);
                     System.out.println(p.getHealth());
                      hit();}
-                else{
+                if(p.getHealth()<=0){
                     MissionFailed();
                     game_over();
                     p.setLocation(-10, -10);
@@ -209,7 +209,7 @@ public class Map extends JFrame {
                 p2.takeDamage(zn.z.get(i).weapon.damage);
                 System.out.println(p2.getHealth());
                 hit();}
-                else {
+                if(p2.getHealth()<=0){
 //                    MissionFailed();
 //                    game_over();
                    c.remove(p2);
