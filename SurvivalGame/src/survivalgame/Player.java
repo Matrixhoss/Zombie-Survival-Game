@@ -62,6 +62,7 @@ public class Player extends Character {
    private ImagePanel drawpanel;
    private ArrayList<bullet> bullets = new ArrayList();
    private ZombieGenerator zombies;
+   private boolean isSoundsEnabled=true;
    private int damage;
     Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies,int PlayerNumber){
         super(S,H);
@@ -368,6 +369,7 @@ public class Player extends Character {
         }
     }
     public void die(){
+        this.isSoundsEnabled=false;
        try {
            this.finalize();
        } catch (Throwable ex) {
@@ -427,7 +429,8 @@ public class Player extends Character {
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Left.png")));
         }
     }
-    public static void gunsound(){
+    public void gunsound(){
+        if(isSoundsEnabled){
         try{
             File file = new File("gun_sound1.wav");
             Clip clip1 = AudioSystem.getClip();
@@ -438,7 +441,10 @@ public class Player extends Character {
             System.err.println(e.getMessage());
         }
     }
-    public static void shotgunsound(){
+    }
+    public void shotgunsound(){
+        
+        if(isSoundsEnabled){
         try{
             File file = new File("shotgun.wav");
             Clip clip1 = AudioSystem.getClip();
@@ -448,5 +454,6 @@ public class Player extends Character {
         catch(Exception e){
             System.err.println(e.getMessage());
         }
+    }
     }
 }
