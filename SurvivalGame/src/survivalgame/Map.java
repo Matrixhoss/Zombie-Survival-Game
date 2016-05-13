@@ -127,16 +127,25 @@ public class Map extends JFrame {
         boolean n=r.nextBoolean();
         int t = 0;
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < zn.z.size(); i++){ 
-            if(i%2==0){    
-            zn.z.get(i).AI(p.getX(),p.getY());
-            
+         
+           for (int i = 0; i < zn.z.size(); i++){ 
+            if(p2.getHealth()<=0||p.getHealth()<=0){  
+            Player live=p.getHealth()>p2.getHealth()?p:p2;
+            zn.z.get(i).AI(live.getX(),live.getY());
             zn.z.get(i).rotation();
+            }
+               if(p2.getHealth()>0&&p.getHealth()>0){     
+                if(i%2==0){    
+                zn.z.get(i).AI(p.getX(),p.getY());
+            
+                zn.z.get(i).rotation();
             }
             else{
             zn.z.get(i).AI(p2.getX(),p2.getY());
             zn.z.get(i).rotation();
             }
+          }
+          
             if(t!=0)
             t--;
         else {
@@ -161,14 +170,15 @@ public class Map extends JFrame {
                 System.out.println(p2.getHealth());
                 hit();
                 if(p2.getHealth()<=0){
-//                    MissionFailed();
-//                    game_over();
-                    c.remove(p2);
-                    Background.remove(p2);
-                   
+                   // MissionFailed();
+                   // game_over();
+                   c.remove(p2);
+                   Background.remove(p2);
                     p2.setEnabled(false);
                     p2.setVisible(false);
                     p2.die();
+                    p2=null;
+                }}}
                              p2=null;}}}
             }
             }
