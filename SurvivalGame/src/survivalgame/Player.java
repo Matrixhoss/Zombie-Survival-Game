@@ -62,7 +62,7 @@ public class Player extends Character {
    private ImagePanel drawpanel;
    private ArrayList<bullet> bullets = new ArrayList();
    private ZombieGenerator zombies;
-   private boolean isAlive=true;
+   public boolean isAlive=true;
    private int damage;
     Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies,int PlayerNumber){
         super(S,H);
@@ -384,6 +384,7 @@ public class Player extends Character {
     }
     public void animation (){
         // annimation of player
+        if(isAlive){
         if  (up && right){
         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierUpRight.gif")));
         stopPosition  = 1 ;
@@ -433,6 +434,7 @@ public class Player extends Character {
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Right.png")));
            if(stopPosition  == 8) // left 
             this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Left.png")));
+        }
         }
     }
     public void gunsound(){

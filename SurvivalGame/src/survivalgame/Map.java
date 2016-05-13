@@ -165,7 +165,6 @@ public class Map extends JFrame {
                 if(p.getHealth()<=0&&p2.getHealth()<=0){
                     MissionFailed();
                     game_over();
-                    p.setLocation(-10, -10);
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();
@@ -178,7 +177,6 @@ public class Map extends JFrame {
                 if(p.getHealth()<=0){
 //                    MissionFailed();
 //                    game_over();
-                    p.setLocation(-10, -10);
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();}
@@ -192,7 +190,6 @@ public class Map extends JFrame {
                 if(p.getHealth()<=0){
                     MissionFailed();
                     game_over();
-                    p.setLocation(-10, -10);
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();}
@@ -214,7 +211,6 @@ public class Map extends JFrame {
 //                    game_over();
                    c.remove(p2);
                    Background.remove(p2);
-                    p2.setLocation(-10, -10);
                     p2.setEnabled(false);
                     p2.setVisible(false);
                     p2.die();

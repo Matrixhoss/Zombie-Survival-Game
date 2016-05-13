@@ -10,6 +10,7 @@ import java.applet.*;
 import java.net.*;
 
 public class main_menu extends JFrame{
+    private Clip clip1;
     public JLabel background;
     public JButton start;
     public JButton option;
@@ -34,7 +35,7 @@ public class main_menu extends JFrame{
         Container c = this.getContentPane();
         c.setLayout(null);
         
-        main_menu.playback();
+        this.playback();
                 
         logo = new JLabel(start_logo);
         logo.setBounds(200,0, 400, 200);
@@ -100,25 +101,16 @@ public class main_menu extends JFrame{
             }
         );
         
-//        music.addActionListener(
-//            new ActionListener() {
-//                @Override
-//                public void actionPerformed(ActionEvent e) {
-//                    try{
-//                        x=0;
-//                        if(x==1){
-//                            main_menu.playback();
-//                        }
-//                        else{
-//                            System.err.println("");
-//                        }
-//                    }
-//                    catch(Exception eg){
-//                        System.err.println(eg.getMessage());
-//                    }
-//                }
-//            }
-//        );
+        music.addActionListener(
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if(clip1.isRunning())
+                        clip1.stop();
+                    else clip1.start();
+                }
+            }
+        );
                 
         exit.addActionListener(
             new ActionListener() {
@@ -132,11 +124,11 @@ public class main_menu extends JFrame{
     public static String getPlayer(){
     return player;
     }
-    public static void playback(){
+    public void playback(){
         try{
             if(x==1){
                 File file = new File("Menu_Theme.wav");
-                Clip clip1 = AudioSystem.getClip();
+                clip1 = AudioSystem.getClip();
                 clip1.open(AudioSystem.getAudioInputStream(file));
                 clip1.loop(Clip.LOOP_CONTINUOUSLY);
                 clip1.start();
