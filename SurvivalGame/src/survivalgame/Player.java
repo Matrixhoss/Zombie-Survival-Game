@@ -63,7 +63,7 @@ public class Player extends Character {
    private ArrayList<bullet> bullets = new ArrayList();
    private ZombieGenerator zombies;
    private int damage;
-    Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies){
+    Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies,int PlayerNumber){
         super(S,H);
         this.drawpanel=drawpanel;
         this.mapdim=mapdim;
@@ -77,6 +77,7 @@ public class Player extends Character {
         damage=PWeapon[CurrentWeapon].damage;
         this.zombies=zombies;
         // key listener for arrowkeys
+        if (PlayerNumber==1){
         frame.addKeyListener(new KeyAdapter() {
         @Override
         public void keyPressed(KeyEvent ke) {
@@ -95,16 +96,16 @@ public class Player extends Character {
                 case KeyEvent.VK_DOWN :
                     down = true ;
                     break;  
-                case KeyEvent.VK_1:
+                case KeyEvent.VK_9:
                     CurrentWeapon=0;
                     damage=PWeapon[CurrentWeapon].damage;
                     break;
-                case KeyEvent.VK_2:
+                case KeyEvent.VK_0:
                     CurrentWeapon=1;
                     damage=PWeapon[CurrentWeapon].damage;
                     break;
                     
-                case KeyEvent.VK_F:
+                case KeyEvent.VK_K:
                 if(Fired==false){
                 if(CurrentWeapon==1){
                     if(PWeapon[CurrentWeapon].ammo>0){
@@ -146,12 +147,90 @@ public class Player extends Character {
                 case KeyEvent.VK_DOWN :
                     down = false ;
                     break;       
-                case KeyEvent.VK_F :
+                case KeyEvent.VK_K :
                     Fired=false;
                     break;  
             }
        }
 });
+        
+        }
+        if (PlayerNumber==2){
+        frame.addKeyListener(new KeyAdapter() {
+        @Override
+        public void keyPressed(KeyEvent ke) {
+            // when press key of arrows set its boolean true 
+            
+            switch (ke.getKeyCode()){
+                case KeyEvent.VK_D :
+                    right = true ;
+                    break;
+                case KeyEvent.VK_A :
+                    left = true ;
+                    break;    
+                case KeyEvent.VK_W :
+                    up = true ;
+                    break;     
+                case KeyEvent.VK_S :
+                    down = true ;
+                    break;  
+                case KeyEvent.VK_1:
+                    CurrentWeapon=0;
+                    damage=PWeapon[CurrentWeapon].damage;
+                    break;
+                case KeyEvent.VK_2:
+                    CurrentWeapon=1;
+                    damage=PWeapon[CurrentWeapon].damage;
+                    break;
+                    
+                case KeyEvent.VK_F:
+                if(Fired==false){
+                if(CurrentWeapon==1){
+                    if(PWeapon[CurrentWeapon].ammo>0){
+                        bullets.add(new bullet(x+25 ,y+25,stopPosition,0));
+                        drawpanel.add(bullets.get(bullets.size()-1));
+                        bullets.add(new bullet(x+25 ,y+25,stopPosition,1));
+                        drawpanel.add(bullets.get(bullets.size()-1));
+                        bullets.add(new bullet(x+25 ,y+25,stopPosition,2));
+                        drawpanel.add(bullets.get(bullets.size()-1));
+                        Firing=PWeapon[CurrentWeapon].Fire();
+                        Fired=true;
+                        shotgunsound();
+                        break;
+                        
+                    }
+                }
+                else {bullets.add(new bullet(x+25 ,y+25,stopPosition,0));
+                drawpanel.add(bullets.get(bullets.size()-1));
+                Firing=PWeapon[CurrentWeapon].Fire();
+                Fired=true;
+                gunsound();
+                break;}
+                }
+            }
+        }
+       @Override
+       public void keyReleased(KeyEvent ke) {
+            // when releas key of arrows set its boolean false
+            switch (ke.getKeyCode()){
+                case KeyEvent.VK_D :
+                    right = false ;
+                    break;
+                case KeyEvent.VK_A:
+                    left = false ;
+                    break;    
+                case KeyEvent.VK_W :
+                    up = false ;
+                    break;     
+                case KeyEvent.VK_S :
+                    down = false ;
+                    break;       
+                case KeyEvent.VK_F :
+                    Fired=false;
+                    break;  
+            }
+       }
+});}
     }
     // get x of player
     public int getx(){

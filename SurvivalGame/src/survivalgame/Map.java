@@ -22,6 +22,7 @@ public class Map extends JFrame {
     private ImagePanel Background;
     private ZombieGenerator zn;
     private ZombieGenerator zf;
+    private Player p2;
     private Player p ;
     private Random r;
     private Random R;
@@ -31,6 +32,7 @@ public class Map extends JFrame {
     private JLabel HealthBar;
     private boolean StartedNewMap;
     private JLabel NumberofRZ;
+    private int NumberOfPlayers;
     private Dimension mapdim = new Dimension();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
@@ -46,7 +48,7 @@ public class Map extends JFrame {
     static int sc=0;
     public Map(){
     c = this.getContentPane();
-    
+    NumberOfPlayers=1;
     setBackground(MapIcn);
       r= new Random();
       
@@ -84,13 +86,22 @@ public class Map extends JFrame {
       score1.setFont(new Font("Stencil Regular", Font.BOLD, 20));
       
       GenerateZombie(zn);
+      if(NumberOfPlayers==2){
+      p2 = new Player (200,10,this,200,400,Background,mapdim,zn,2);
+      p2.setIcon(Playericon);
+      p2.setSize(100, 100);
+      this.StartedNewMap=false;
+      Background.add(p2);
+      play();}
       
-      p = new Player (100,10,this,200,400,Background,mapdim,zn);
+      p = new Player (100,10,this,200,400,Background,mapdim,zn,1);
       p.setIcon(Playericon);
       p.setSize(100, 100);
       this.StartedNewMap=false;
       Background.add(p);
       play();
+      
+      
       
     t2=new Timer(8000,new ActionListener(){
     public void actionPerformed(ActionEvent e){
@@ -107,10 +118,10 @@ public class Map extends JFrame {
         }});
     
     t=new Timer(30,new ActionListener(){
-        
+        boolean n=r.nextBoolean();
         int t = 0;
         public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < zn.z.size(); i++){
+            for (int i = 0; i < zn.z.size(); i++){ 
             zn.z.get(i).AI(p.getX(),p.getY());
             zn.z.get(i).rotation();
             if(t!=0)
@@ -127,7 +138,19 @@ public class Map extends JFrame {
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();
+           
                 }
+                if(NumberOfPlayers==2){
+               if((Math.abs(zn.z.get(i).getX()-p2.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p2.getY())<=60)){
+                p2.takeDamage(zn.z.get(i).weapon.damage);
+                System.out.println(p2.getHealth());
+                hit();
+                if(p2.getHealth()<=0){
+                    MissionFailed();
+                    game_over();
+                    p2.setEnabled(false);
+                    p2.setVisible(false);
+                    p2.die();}}}
             }
             }
             }
@@ -142,6 +165,11 @@ public class Map extends JFrame {
            p.animation();
            p.DamageHandling();
            p.setLocation(p.getx(), p.gety());
+           if(NumberOfPlayers==2){
+            p2.move(mapdim);
+           p2.animation();
+           p2.DamageHandling();
+           p2.setLocation(p2.getx(), p2.gety());}
            System.out.println(Waves.getWave());
            repaint();
            score1.setText("Score: "+ZombieGenerator.score);

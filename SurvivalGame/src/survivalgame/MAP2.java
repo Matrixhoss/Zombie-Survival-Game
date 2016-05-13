@@ -78,7 +78,7 @@ public class MAP2 extends JFrame {
       
       GenerateZombie(zn);
       
-      p = new Player (100,10,this,200,400,Background,mapdim,zn);
+      p = new Player (100,10,this,200,400,Background,mapdim,zn,1);
       p.setIcon(Playericon);
       p.setSize(100, 100);
       this.StartedNewMap=false;
