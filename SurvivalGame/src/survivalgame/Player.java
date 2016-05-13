@@ -85,6 +85,7 @@ public class Player extends Character {
         public void keyPressed(KeyEvent ke) {
             // when press key of arrows set its boolean true 
             
+                if(isAlive)
             switch (ke.getKeyCode()){
                 case KeyEvent.VK_RIGHT :
                     right = true ;
@@ -108,7 +109,6 @@ public class Player extends Character {
                     break;
                     
                 case KeyEvent.VK_K:
-                if(isAlive)
                 if(Fired==false){
                 if(CurrentWeapon==1){
                     if(PWeapon[CurrentWeapon].ammo>0){
@@ -137,6 +137,8 @@ public class Player extends Character {
        @Override
        public void keyReleased(KeyEvent ke) {
             // when releas key of arrows set its boolean false
+            
+                if(isAlive)
             switch (ke.getKeyCode()){
                 case KeyEvent.VK_RIGHT :
                     right = false ;
@@ -164,6 +166,8 @@ public class Player extends Character {
         public void keyPressed(KeyEvent ke) {
             // when press key of arrows set its boolean true 
             
+            
+                if(isAlive)
             switch (ke.getKeyCode()){
                 case KeyEvent.VK_D :
                     right = true ;
@@ -189,7 +193,6 @@ public class Player extends Character {
                 case KeyEvent.VK_F:
                 if(Fired==false){
                 if(CurrentWeapon==1){
-                    if(isAlive)
                     if(PWeapon[CurrentWeapon].ammo>0){
                         bullets.add(new bullet(x+25 ,y+25,stopPosition,0));
                         drawpanel.add(bullets.get(bullets.size()-1));
