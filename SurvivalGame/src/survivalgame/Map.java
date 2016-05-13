@@ -49,7 +49,7 @@ public class Map extends JFrame {
     static int sc=0;
     public Map(){
     c = this.getContentPane();
-    NumberOfPlayers=2;
+    NumberOfPlayers=1;
     setBackground(MapIcn);
       r= new Random();
       

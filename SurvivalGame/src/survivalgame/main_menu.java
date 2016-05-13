@@ -10,7 +10,7 @@ import java.applet.*;
 import java.net.*;
 
 public class main_menu extends JFrame{
-    private Clip clip1;
+    public Clip clip1;
     public JLabel background;
     public JButton start;
     public JButton option;

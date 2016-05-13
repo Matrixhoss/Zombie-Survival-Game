@@ -38,12 +38,12 @@ public abstract class Zombie extends Character  {
                 this.setSpeed(40+RandS);
                 break;
             case"ZombieStrong":
-                this.setHealth(40);
-                this.setSpeed(30);
+                this.setHealth(200);
+                this.setSpeed(30+RandS);
                 break;
             case"ZombieFast":
                 this.setHealth(10);
-                this.setSpeed(60);
+                this.setSpeed(60+RandS);
                   break;
                         
         }
