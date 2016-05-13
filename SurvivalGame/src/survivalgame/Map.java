@@ -49,7 +49,7 @@ public class Map extends JFrame {
     static int sc=0;
     public Map(){
     c = this.getContentPane();
-    NumberOfPlayers=2;
+    NumberOfPlayers=1;
     setBackground(MapIcn);
       r= new Random();
       
@@ -129,6 +129,7 @@ public class Map extends JFrame {
         public void actionPerformed(ActionEvent e) {
          
            for (int i = 0; i < zn.z.size(); i++){ 
+               if(NumberOfPlayers==2){
             if(p2.getHealth()<=0||p.getHealth()<=0){  
             Player live=p.getHealth()>p2.getHealth()?p:p2;
             zn.z.get(i).AI(live.getX(),live.getY());
@@ -144,62 +145,100 @@ public class Map extends JFrame {
             zn.z.get(i).AI(p2.getX(),p2.getY());
             zn.z.get(i).rotation();
             }
-          }
+          }}
+               else{
+               zn.z.get(i).AI(p.getX(),p.getY());
+                 zn.z.get(i).rotation();
+               
+               }
           
             if(t!=0)
             t--;
         else {
             t=30;
             if((Math.abs(zn.z.get(i).getX()-p.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p.getY())<=60)){
-                p.takeDamage(zn.z.get(i).weapon.damage);
+                
                 System.out.println(p.getHealth());
-                hit();
-                if(p.getHealth()<=0){
+                
+                if(NumberOfPlayers==2){
+                  
+                if(p.getHealth()<=0&&p2.getHealth()<=0){
                     MissionFailed();
                     game_over();
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();
+                   }
+                if(p.getHealth()>0){
+                    p.takeDamage(zn.z.get(i).weapon.damage);
+                    System.out.println(p.getHealth());
+                     hit();
+                }
+                else{
+//                    MissionFailed();
+//                    game_over();
+                    p.setEnabled(false);
+                    p.setVisible(false);
+                    p.die();}
            
                 }
+                else if (NumberOfPlayers==1){
+                   if(p.getHealth()>0){
+                    p.takeDamage(zn.z.get(i).weapon.damage);
+                    System.out.println(p.getHealth());
+                     hit();}
+                else{
+                    MissionFailed();
+                    game_over();
+                    p.setEnabled(false);
+                    p.setVisible(false);
+                    p.die();}
+           
+                }
+           
+                
                 
             }
-            if(NumberOfPlayers==2){
+            if(NumberOfPlayers==2){             //CASE Number of players = 2 we enable the 2nd player to move,die and take damage
                if((Math.abs(zn.z.get(i).getX()-p2.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p2.getY())<=60)){
+               
+                if(p2.getHealth()>0){
                 p2.takeDamage(zn.z.get(i).weapon.damage);
                 System.out.println(p2.getHealth());
-                hit();
-                if(p2.getHealth()<=0){
-                   // MissionFailed();
-                   // game_over();
+                hit();}
+                else {
+//                    MissionFailed();
+//                    game_over();
                    c.remove(p2);
                    Background.remove(p2);
                     p2.setEnabled(false);
                     p2.setVisible(false);
                     p2.die();
-                    p2=null;
+                    
                 }}}
-                             p2=null;}}}
+                             
             }
             }
             setHealthBar();
             if (NumberOfPlayers==2){
-         setHealthBar2();}
+                setHealthBar2();}
             NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
         
         if (zn.z.isEmpty()){
             WavePopUp.setVisible(true);
            }
            //z.move();
+         if(p.getHealth()>0){
            p.move(mapdim);
            p.animation();
            p.DamageHandling();
-           p.setLocation(p.getx(), p.gety());
+           p.setLocation(p.getx(), p.gety());}
            if(NumberOfPlayers==2){
+               if(p2.getHealth()>0){
             p2.move(mapdim);
            p2.animation();
            p2.DamageHandling();
-           p2.setLocation(p2.getx(), p2.gety());}
+           p2.setLocation(p2.getx(), p2.gety());}}
            System.out.println(Waves.getWave());
            repaint();
            score1.setText("Score: "+ZombieGenerator.score);

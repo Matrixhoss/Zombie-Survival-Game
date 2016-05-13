@@ -65,6 +65,7 @@ public class Player extends Character {
    private int damage;
     Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies,int PlayerNumber){
         super(S,H);
+        
         this.drawpanel=drawpanel;
         this.mapdim=mapdim;
         this.x = xL ;
@@ -116,7 +117,7 @@ public class Player extends Character {
                         bullets.add(new bullet(x+25 ,y+25,stopPosition,2));
                         drawpanel.add(bullets.get(bullets.size()-1));
                         Firing=PWeapon[CurrentWeapon].Fire();
-                        Fired=true;
+                        Fired=true; 
                         shotgunsound();
                         break;
                         
@@ -232,6 +233,7 @@ public class Player extends Character {
        }
 });}
     }
+    
     // get x of player
     public int getx(){
     return this.x;
