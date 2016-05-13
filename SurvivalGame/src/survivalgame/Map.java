@@ -165,6 +165,7 @@ public class Map extends JFrame {
                 if(p.getHealth()<=0&&p2.getHealth()<=0){
                     MissionFailed();
                     game_over();
+                    p.setLocation(-10, -10);
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();
@@ -177,6 +178,7 @@ public class Map extends JFrame {
                 else{
 //                    MissionFailed();
 //                    game_over();
+                    p.setLocation(-10, -10);
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();}
@@ -190,6 +192,7 @@ public class Map extends JFrame {
                 else{
                     MissionFailed();
                     game_over();
+                    p.setLocation(-10, -10);
                     p.setEnabled(false);
                     p.setVisible(false);
                     p.die();}
@@ -211,6 +214,7 @@ public class Map extends JFrame {
 //                    game_over();
                    c.remove(p2);
                    Background.remove(p2);
+                    p2.setLocation(-10, -10);
                     p2.setEnabled(false);
                     p2.setVisible(false);
                     p2.die();
@@ -239,10 +243,10 @@ public class Map extends JFrame {
            p2.animation();
            p2.DamageHandling();
            p2.setLocation(p2.getx(), p2.gety());}}
-           System.out.println(Waves.getWave());
+           //System.out.println(Waves.getWave());
            repaint();
            score1.setText("Score: "+ZombieGenerator.score);
-           savescore();
+           //savescore();
         }
     });
     t.start();
