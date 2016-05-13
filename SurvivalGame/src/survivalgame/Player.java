@@ -62,7 +62,7 @@ public class Player extends Character {
    private ImagePanel drawpanel;
    private ArrayList<bullet> bullets = new ArrayList();
    private ZombieGenerator zombies;
-   private boolean isSoundsEnabled=true;
+   private boolean isAlive=true;
    private int damage;
     Player(int H,int S,JFrame frame, int xL , int yL,ImagePanel drawpanel,Dimension mapdim,ZombieGenerator zombies,int PlayerNumber){
         super(S,H);
@@ -108,6 +108,7 @@ public class Player extends Character {
                     break;
                     
                 case KeyEvent.VK_K:
+                if(isAlive)
                 if(Fired==false){
                 if(CurrentWeapon==1){
                     if(PWeapon[CurrentWeapon].ammo>0){
@@ -188,6 +189,7 @@ public class Player extends Character {
                 case KeyEvent.VK_F:
                 if(Fired==false){
                 if(CurrentWeapon==1){
+                    if(isAlive)
                     if(PWeapon[CurrentWeapon].ammo>0){
                         bullets.add(new bullet(x+25 ,y+25,stopPosition,0));
                         drawpanel.add(bullets.get(bullets.size()-1));
@@ -369,7 +371,7 @@ public class Player extends Character {
         }
     }
     public void die(){
-        this.isSoundsEnabled=false;
+        this.isAlive=false;
        try {
            this.finalize();
        } catch (Throwable ex) {
@@ -430,7 +432,7 @@ public class Player extends Character {
         }
     }
     public void gunsound(){
-        if(isSoundsEnabled){
+        if(isAlive){
         try{
             File file = new File("gun_sound1.wav");
             Clip clip1 = AudioSystem.getClip();
@@ -444,7 +446,7 @@ public class Player extends Character {
     }
     public void shotgunsound(){
         
-        if(isSoundsEnabled){
+        if(isAlive){
         try{
             File file = new File("shotgun.wav");
             Clip clip1 = AudioSystem.getClip();
