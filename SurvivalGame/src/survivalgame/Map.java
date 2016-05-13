@@ -48,7 +48,7 @@ public class Map extends JFrame {
     static int sc=0;
     public Map(){
     c = this.getContentPane();
-    NumberOfPlayers=1;
+    NumberOfPlayers=2;
     setBackground(MapIcn);
       r= new Random();
       
@@ -122,9 +122,15 @@ public class Map extends JFrame {
         int t = 0;
         public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < zn.z.size(); i++){ 
+            if(i%2==0){    
             zn.z.get(i).AI(p.getX(),p.getY());
             
             zn.z.get(i).rotation();
+            }
+            else{
+            zn.z.get(i).AI(p2.getX(),p2.getY());
+            zn.z.get(i).rotation();
+            }
             if(t!=0)
             t--;
         else {
