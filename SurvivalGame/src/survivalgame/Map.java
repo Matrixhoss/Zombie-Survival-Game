@@ -93,7 +93,7 @@ public class Map extends JFrame {
       
       GenerateZombie(zn);
       if(NumberOfPlayers==2){
-      p2 = new Player (200,10,this,200,400,Background,mapdim,zn,2);
+      p2 = new Player (100,10,this,200,400,Background,mapdim,zn,2);
       p2.setIcon(Playericon);
       p2.setSize(100, 100);
       this.StartedNewMap=false;
@@ -161,15 +161,20 @@ public class Map extends JFrame {
                 System.out.println(p2.getHealth());
                 hit();
                 if(p2.getHealth()<=0){
-                    MissionFailed();
-                    game_over();
+//                    MissionFailed();
+//                    game_over();
+                    c.remove(p2);
+                    Background.remove(p2);
+                   
                     p2.setEnabled(false);
                     p2.setVisible(false);
-                    p2.die();}}}
+                    p2.die();
+                             p2=null;}}}
             }
             }
             setHealthBar();
-         setHealthBar2();
+            if (NumberOfPlayers==2){
+         setHealthBar2();}
             NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
         
         if (zn.z.isEmpty()){
@@ -332,6 +337,7 @@ public class Map extends JFrame {
           }
           if (p2.getHealth()==0){
               HealthBar2.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health10.png")));
+              c.remove(p2);
           }
       }
       public static void savescore(){
