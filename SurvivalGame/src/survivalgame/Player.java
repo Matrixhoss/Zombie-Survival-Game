@@ -219,6 +219,7 @@ public class Player extends Character {
        @Override
        public void keyReleased(KeyEvent ke) {
             // when releas key of arrows set its boolean false
+            if(isAlive)
             switch (ke.getKeyCode()){
                 case KeyEvent.VK_D :
                     right = false ;
