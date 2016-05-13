@@ -123,6 +123,7 @@ public class Map extends JFrame {
         public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < zn.z.size(); i++){ 
             zn.z.get(i).AI(p.getX(),p.getY());
+            
             zn.z.get(i).rotation();
             if(t!=0)
             t--;
@@ -154,12 +155,13 @@ public class Map extends JFrame {
             }
             }
             }
-            setHealthBar();
+            setHealthBar(p);
+            setHealthBar(p2);
             NumberofRZ.setText("Remaining Zombies: "+zn.getZombieNumber());
         
         if (zn.z.isEmpty()){
             WavePopUp.setVisible(true);
-        }
+           }
            //z.move();
            p.move(mapdim);
            p.animation();
@@ -249,7 +251,7 @@ public class Map extends JFrame {
               System.err.println(e.getMessage());
           }
       }
-      public void setHealthBar(){
+      public void setHealthBar(Player p){
           if (p.getHealth()==100){
               HealthBar.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
           }

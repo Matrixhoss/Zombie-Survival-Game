@@ -56,7 +56,7 @@ public class Player extends Character {
    private   boolean up , down , right , left ;
    private int direction=1;
    private Weapons[] PWeapon = new Weapons[3];
-   private int CurrentWeapon;
+   public int CurrentWeapon;
    private boolean Fired,Firing;
    private Dimension mapdim;
    private ImagePanel drawpanel;
