@@ -71,22 +71,24 @@ public class main_menu extends JFrame{
         background.setBounds(0, 0, 800, 600);
         c.add(background);
         
-        start.addActionListener(     
+        start.addActionListener(
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    choose_map fa = new choose_map();
-                    fa.setVisible(true);
-                    player=JOptionPane.showInputDialog(null,"Enter Player Name: ");
-                   
+                    no_of_players np = new no_of_players();
+                    np.setVisible(true);
                 }
             }
         );
         
-        hall_of_fame.addActionListener(     
+        hall_of_fame.addActionListener(
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    leaderboard x = new leaderboard();
+                    x.setVisible(true);
+                    main_menu z = new main_menu();
+                    z.setVisible(false);
                 }
             }
         );
