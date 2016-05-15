@@ -400,8 +400,8 @@ public class All_map extends JFrame {
           }
       }
       public static void savescore(){
-        File newfile = new File("C:/Users/User/Desktop/Project/asuprogrammingproject/SurvivalGame/Highscore.txt");
-        if(!newfile.exists()){
+        File newfile = new File("Highscore.txt");
+        if(newfile.exists()){
             System.out.println("Rename the file");
         }
         else{
@@ -417,6 +417,7 @@ public class All_map extends JFrame {
                 //Th new score of the user
                 score_buff.write(ZombieGenerator.score);
                 score_buff.close();
+                score_file.close();
             }
             catch(Exception e){
                 System.err.println("Error");
