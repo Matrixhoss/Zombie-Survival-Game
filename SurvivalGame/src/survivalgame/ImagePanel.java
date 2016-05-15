@@ -1,18 +1,15 @@
-
 package survivalgame;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 class ImagePanel extends JPanel {
-
   private Image img;
-
   
   public ImagePanel(Image img) {
     this.img = img;
