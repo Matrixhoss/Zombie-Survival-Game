@@ -29,6 +29,7 @@ public class Map extends JFrame {
     private JLabel WaveTxt;
     private JLabel WavePopUp;
     private JLabel Name;
+    private JLabel Name2;
     private JLabel HealthBar;
     private JLabel HealthBar2;
     private boolean StartedNewMap;
@@ -70,10 +71,19 @@ public class Map extends JFrame {
       WavePopUp.setVisible(false);
       Background.add(WavePopUp);
       
-      Name=new JLabel(main_menu.getPlayer());
+      Name=new JLabel(no_of_players.getPlayer(1));
       Name.setBounds(0, 0, 100, 60);
       Background.add(Name);
       Name.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      
+      Name2=new JLabel(no_of_players.getPlayer(2));
+      Name2.setBounds(100, 0, 100, 60);
+      Background.add(Name2);
+      Name2.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      Name2.setVisible(false);
+      if(NumberOfPlayers==2){
+      Name2.setVisible(true);
+      }
       
       HealthBar=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
       HealthBar.setBounds(Name.getX()+80,-2,100,70);

@@ -132,9 +132,6 @@ public class main_menu extends JFrame{
             }
         );
     }
-    public static String getPlayer(){
-    return player;
-    }
     public void playback(){
         try{
             if(x==1){
