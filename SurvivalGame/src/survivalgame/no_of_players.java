@@ -24,6 +24,12 @@ public class no_of_players extends JFrame{
     ImageIcon menu_logo= new ImageIcon(getClass().getResource("misc/no_players.png"));
     ImageIcon back_btn = new ImageIcon(getClass().getResource("misc/back.png"));
     
+    void open_choose_map(){
+        this.setVisible(false);
+        choose_map cm = new choose_map(this);
+        cm.setVisible(true);
+    }
+    
     public no_of_players(main_menu m){
         this.setSize(800, 600);
         this.setTitle("Choose Players");
@@ -62,8 +68,8 @@ public class no_of_players extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    choose_map fa = new choose_map();
-                    fa.setVisible(true);
+                    Map.NumberOfPlayers=1;
+                    open_choose_map();
 //                    player=JOptionPane.showInputDialog(null,"Enter Player Name: ");
                 }
             }
@@ -72,8 +78,8 @@ public class no_of_players extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    choose_map_2 fa = new choose_map_2();
-                    fa.setVisible(true);
+                    Map.NumberOfPlayers=2;
+                    open_choose_map();
 //                    player=JOptionPane.showInputDialog(null,"Enter First Player Name: ");
 //                    player=JOptionPane.showInputDialog(null,"Enter Second Player Name: ");
                 }
@@ -83,7 +89,6 @@ public class no_of_players extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-        
                     dispose();
                     themenu.setVisible(true);
                 }

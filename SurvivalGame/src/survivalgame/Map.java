@@ -33,7 +33,7 @@ public class Map extends JFrame {
     private JLabel HealthBar2;
     private boolean StartedNewMap;
     private JLabel NumberofRZ;
-    private int NumberOfPlayers;
+    public static int NumberOfPlayers;
     private Dimension mapdim = new Dimension();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
@@ -45,11 +45,9 @@ public class Map extends JFrame {
      
     private int TotalNumberOfZombies;
     
-    
     static int sc=0;
     public Map(){
     c = this.getContentPane();
-    NumberOfPlayers=1;
     setBackground(MapIcn);
       r= new Random();
       

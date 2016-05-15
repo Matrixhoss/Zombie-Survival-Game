@@ -48,7 +48,6 @@ public class leaderboard extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-        
                     dispose();
                     themenu.setVisible(true);
                 }
