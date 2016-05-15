@@ -170,13 +170,7 @@ public class Map extends JFrame {
                 
                 if(NumberOfPlayers==2){
                   
-                if(p.getHealth()<=0&&p2.getHealth()<=0){
-                    MissionFailed();
-                    game_over();
-                    p.setEnabled(false);
-                    p.setVisible(false);
-                    p.die();
-                   }
+                
                 if(p.getHealth()>0){
                     p.takeDamage(zn.z.get(i).weapon.damage);
                     System.out.println(p.getHealth());
@@ -226,6 +220,14 @@ public class Map extends JFrame {
                 }}}
                              
             }
+            if(NumberOfPlayers==2)
+            if(p.getHealth()<=0&&p2.getHealth()<=0){
+                    MissionFailed();
+                    game_over();
+                    p.setEnabled(false);
+                    p.setVisible(false);
+                    p.die();
+                   }
             }
             setHealthBar();
             if (NumberOfPlayers==2){
