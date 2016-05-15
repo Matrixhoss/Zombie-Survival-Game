@@ -55,12 +55,12 @@ public class All_map extends JFrame {
       zn=new ZombieGenerator(Background);
       
       WaveTxt=new JLabel("Wave: "+Waves.getWave());
-      WaveTxt.setBounds(400, 10, 100, 60);
+      WaveTxt.setBounds(660, 0, 100, 60);
       Background.add(WaveTxt);
       WaveTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
       
       NumberofRZ=new JLabel("Remaining Zombies: "+zn.getZombieNumber());
-      NumberofRZ.setBounds(0, 60, 400, 60);
+      NumberofRZ.setBounds(600, 20, 400, 60);
       Background.add(NumberofRZ);
       NumberofRZ.setFont(new Font("Stencil Regular", Font.BOLD, 20));
       
@@ -95,7 +95,7 @@ public class All_map extends JFrame {
       Background.add(HealthBar2);}
       
       score1=new JLabel("Score: "+ZombieGenerator.score);
-      score1.setBounds(0, 60, 400, 120);
+      score1.setBounds(0, 10, 400, 120);
       Background.add(score1);
       score1.setFont(new Font("Stencil Regular", Font.BOLD, 20));
       
