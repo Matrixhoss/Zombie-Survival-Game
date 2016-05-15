@@ -44,7 +44,7 @@ public class main_menu extends JFrame{
         this.setTitle("Zombie Apocalypse");
         this.setResizable(false);
         this.setBounds(0, 0, 800, 600);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container c = this.getContentPane();
         c.setLayout(null);
         

@@ -29,7 +29,7 @@ public class choose_map extends JFrame{
         this.setTitle("Choose map");
         this.setSize(800, 600);
         this.setResizable(false);
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         players=nop;
         

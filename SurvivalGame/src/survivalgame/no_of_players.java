@@ -33,7 +33,7 @@ public class no_of_players extends JFrame{
     public no_of_players(main_menu m){
         this.setSize(800, 600);
         this.setTitle("Choose Players");
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         
         Container c = this.getContentPane();

@@ -25,7 +25,7 @@ public class leaderboard extends JFrame{
         themenu = m;
         this.setSize(800, 600);
         this.setTitle("Hall Of Fame");
-        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
         
         Container c =this.getContentPane();
