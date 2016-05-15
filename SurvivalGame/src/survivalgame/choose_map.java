@@ -65,7 +65,7 @@ public class choose_map extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Map fa = new Map();
+                    All_map fa = new All_map();
                     fa.setVisible(true);
                 }
             }
@@ -75,7 +75,7 @@ public class choose_map extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    MAP2 sn = new MAP2();
+                    map2 sn = new map2();
                     sn.setVisible(true);
                 }
             }
@@ -85,7 +85,7 @@ public class choose_map extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    MAP3 se = new MAP3();
+                    map3 se = new map3();
                     se.setVisible(true);
                 }
             }

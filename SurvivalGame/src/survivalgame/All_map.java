@@ -15,7 +15,7 @@ import javax.sound.sampled.Clip;
 import javax.swing.*;
 import static survivalgame.main_menu.x;
 
-public class Map extends JFrame {
+public class All_map extends JFrame {
     private JLabel score1;
     private Random zm_sound;
     private ZombieNormal z ;
@@ -47,7 +47,7 @@ public class Map extends JFrame {
     private int TotalNumberOfZombies;
     
     static int sc=0;
-    public Map(){
+    public All_map(){
     c = this.getContentPane();
     setBackground(MapIcn);
       r= new Random();

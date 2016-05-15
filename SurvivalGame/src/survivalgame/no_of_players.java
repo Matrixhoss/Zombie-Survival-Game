@@ -70,7 +70,7 @@ public class no_of_players extends JFrame {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Map.NumberOfPlayers = 1;
+                        All_map.NumberOfPlayers = 1;
                         open_choose_map();
                         player1 = JOptionPane.showInputDialog(null, "Enter Player Name: ");
                     }
@@ -80,7 +80,7 @@ public class no_of_players extends JFrame {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Map.NumberOfPlayers = 2;
+                        All_map.NumberOfPlayers = 2;
                         open_choose_map();
                         player1 = JOptionPane.showInputDialog(null, "Enter First Player Name: ");
                         player2 = JOptionPane.showInputDialog(null, "Enter Second Player Name: ");
