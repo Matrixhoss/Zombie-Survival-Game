@@ -35,6 +35,11 @@ public class main_menu extends JFrame{
         x.setVisible(true);
         
     }
+    void openno_of_players(){
+        this.setVisible(false);
+        no_of_players n = new no_of_players(this);
+        n.setVisible(true);
+    }
     public main_menu(){
         this.setTitle("Zombie Apocalypse");
         this.setResizable(false);
@@ -83,8 +88,7 @@ public class main_menu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    no_of_players np = new no_of_players();
-                    np.setVisible(true);
+                    openno_of_players();
                 }
             }
         );
