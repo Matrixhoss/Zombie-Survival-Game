@@ -14,11 +14,15 @@ public class leaderboard extends JFrame{
     private JButton back;
     private JLabel background;
     
+    main_menu themenu;
+    
     ImageIcon background_logo = new ImageIcon(getClass().getResource("misc/zm.png"));
     ImageIcon back_btn = new ImageIcon(getClass().getResource("misc/back.png"));
     ImageIcon leaderborad_logo = new ImageIcon(getClass().getResource("misc/leader_board.png"));
     
-    public leaderboard(){
+    public leaderboard(main_menu m){
+        
+        themenu = m;
         this.setSize(800, 600);
         this.setTitle("Hall Of Fame");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -44,8 +48,9 @@ public class leaderboard extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    main_menu x= new main_menu();
-                    x.setVisible(true);
+        
+                    dispose();
+                    themenu.setVisible(true);
                 }
             }
         );

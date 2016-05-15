@@ -27,8 +27,16 @@ public class main_menu extends JFrame{
     ImageIcon music_button= new ImageIcon(getClass().getResource("misc/ms.png"));
     ImageIcon hall_fame= new ImageIcon(getClass().getResource("misc/hall_of_fame.png"));
     public static int x=1;
+    
+    void openLeaderBoard()
+    {
+        this.setVisible(false);
+        leaderboard x = new leaderboard(this);            
+        x.setVisible(true);
+        
+    }
     public main_menu(){
-        this.setTitle("Glav Survival");
+        this.setTitle("Zombie Apocalypse");
         this.setResizable(false);
         this.setBounds(0, 0, 800, 600);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -85,10 +93,7 @@ public class main_menu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    leaderboard x = new leaderboard();
-                    x.setVisible(true);
-                    main_menu z = new main_menu();
-                    z.setVisible(false);
+                    openLeaderBoard();
                 }
             }
         );
