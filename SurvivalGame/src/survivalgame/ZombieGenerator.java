@@ -17,6 +17,7 @@ public class ZombieGenerator {
     private int StrongNumber;
     private ImagePanel drawpanel;
     
+    
     public ArrayList<Zombie>z=new ArrayList<Zombie>();
     Random r;
     public ZombieGenerator (ImagePanel drawpanel){
@@ -55,12 +56,12 @@ public class ZombieGenerator {
         if(z.get(index).getHealth()<=0){
             drawpanel.remove(z.get(index));
             if (z.get(index).Type=="ZombieN"){
-                score=score+10;
+                score=score+(10*All_map.Difficulty);
             }if (z.get(index).Type=="ZombieS"){
-                score=score+30;
+                score=score+(30*All_map.Difficulty);
             }
             if (z.get(index).Type=="ZombieF"){
-                score=score+20;
+                score=score+(20*All_map.Difficulty);
             }
             z.remove(index);
             zomdeath();

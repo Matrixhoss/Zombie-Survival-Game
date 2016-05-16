@@ -177,7 +177,7 @@ public abstract class Zombie extends Character  {
         this.Type="ZombieS";
         this.setSizeX(200);
         this.setSizeY(200);
-        this.setWeapon(new MELEE2()); //Missing image
+        this.setWeapon(new MELEE2()); 
         shape=new ImageIcon(getClass().getResource("misc/Sprites/Boss.gif"));
         this.setIcon(shape);
         this.scale=3.3;

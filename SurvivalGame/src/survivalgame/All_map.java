@@ -33,8 +33,11 @@ public class All_map extends JFrame {
     private JLabel HealthBar;
     private JLabel HealthBar2;
     private boolean StartedNewMap;
+    private JLabel DifficultyTxt;
+    private JLabel score2;
     private JLabel NumberofRZ;
     public static int NumberOfPlayers;
+    public static int Difficulty=1;
     private Dimension mapdim = new Dimension();
     ImageIcon MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
     ImageIcon Zombierawr= new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
@@ -58,11 +61,29 @@ public class All_map extends JFrame {
       WaveTxt.setBounds(610, 0, 100, 60);
       Background.add(WaveTxt);
       WaveTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      WaveTxt.setForeground(Color.WHITE);
+      
+      switch(Difficulty){
+          case 1:
+              DifficultyTxt=new JLabel("Difficulty: Easy");
+              break;
+          case 2:
+              DifficultyTxt=new JLabel("Difficulty: Medium");
+              break;
+          case 3:
+              DifficultyTxt=new JLabel("Difficulty Hard");
+              break;
+      }
+      DifficultyTxt.setBounds(580, 20, 200, 60);
+      Background.add(DifficultyTxt);
+      DifficultyTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      DifficultyTxt.setForeground(Color.WHITE);
       
       NumberofRZ=new JLabel("Remaining Zombies: "+zn.getZombieNumber());
-      NumberofRZ.setBounds(550, 20, 400, 60);
+      NumberofRZ.setBounds(550, 40, 400, 60);
       Background.add(NumberofRZ);
       NumberofRZ.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      NumberofRZ.setForeground(Color.WHITE);
       
       WavePopUp=new JLabel("Wave Clear ");
       WavePopUp.setBounds(400,100, 1000,400);
@@ -72,32 +93,43 @@ public class All_map extends JFrame {
       Background.add(WavePopUp);
       
       Name=new JLabel(no_of_players.getPlayer(1));
-      Name.setBounds(0, 0, 100, 60);
+      Name.setBounds(15, 0, 150, 60);
       Background.add(Name);
       Name.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      Name.setForeground(Color.WHITE);
       
       Name2=new JLabel(no_of_players.getPlayer(2));
-      Name2.setBounds(100, 0, 100, 60);
+      Name2.setBounds(1110, 0, 150, 60);
       Background.add(Name2);
       Name2.setFont(new Font("Stencil Regular", Font.BOLD, 20));
       Name2.setVisible(false);
+      Name2.setForeground(Color.WHITE);
+      
       if(NumberOfPlayers==2){
       Name2.setVisible(true);
       }
       
       HealthBar=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
-      HealthBar.setBounds(Name.getX()+80,-2,100,70);
+      HealthBar.setBounds(10,15,100,70);
       Background.add(HealthBar);
       
       if(NumberOfPlayers==2){
        HealthBar2=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
-      HealthBar2.setBounds(Name.getX()+80,30,100,70);
-      Background.add(HealthBar2);}
+      HealthBar2.setBounds(1105,15,100,70);
+      Background.add(HealthBar2);
+      
+      score2=new JLabel("Score: "+ZombieGenerator.score);
+      score2.setBounds(1110, 10, 400, 120);
+      Background.add(score2);
+      score2.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      score2.setForeground(Color.WHITE);
+      }
       
       score1=new JLabel("Score: "+ZombieGenerator.score);
-      score1.setBounds(0, 10, 400, 120);
+      score1.setBounds(15, 10, 400, 120);
       Background.add(score1);
       score1.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      score1.setForeground(Color.WHITE);
       
       GenerateZombie(zn);
       if(NumberOfPlayers==2){
@@ -172,7 +204,7 @@ public class All_map extends JFrame {
                   
                 
                 if(p.getHealth()>0){
-                    p.takeDamage(zn.z.get(i).weapon.damage);
+                    p.takeDamage(zn.z.get(i).weapon.damage*Difficulty);
                     System.out.println(p.getHealth());
                      hit();
                 }
@@ -186,7 +218,7 @@ public class All_map extends JFrame {
                 }
                 else if (NumberOfPlayers==1){
                    if(p.getHealth()>0){
-                    p.takeDamage(zn.z.get(i).weapon.damage);
+                    p.takeDamage(zn.z.get(i).weapon.damage*Difficulty);
                     System.out.println(p.getHealth());
                      hit();}
                 if(p.getHealth()<=0){
@@ -205,7 +237,7 @@ public class All_map extends JFrame {
                if((Math.abs(zn.z.get(i).getX()-p2.getX())<=60)&&(Math.abs(zn.z.get(i).getY()-p2.getY())<=60)){
                
                 if(p2.getHealth()>0){
-                p2.takeDamage(zn.z.get(i).weapon.damage);
+                p2.takeDamage(zn.z.get(i).weapon.damage*Difficulty);
                 System.out.println(p2.getHealth());
                 hit();}
                 if(p2.getHealth()<=0){
@@ -248,10 +280,12 @@ public class All_map extends JFrame {
             p2.move(mapdim);
            p2.animation();
            p2.DamageHandling();
-           p2.setLocation(p2.getx(), p2.gety());}}
+           p2.setLocation(p2.getx(), p2.gety());
+                score2.setText("Score: "+ZombieGenerator.score);}}
            //System.out.println(Waves.getWave());
            repaint();
            score1.setText("Score: "+ZombieGenerator.score);
+          
            //savescore();
         }
     });
