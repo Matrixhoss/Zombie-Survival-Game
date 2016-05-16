@@ -47,9 +47,9 @@ public class All_map extends JFrame {
     private int TotalNumberOfZombies;
     
     static int sc=0;
-    public All_map(){
+    public All_map(ImageIcon icon){
     c = this.getContentPane();
-    setBackground(MapIcn);
+    setBackground(icon);
       r= new Random();
       
       zn=new ZombieGenerator(Background);

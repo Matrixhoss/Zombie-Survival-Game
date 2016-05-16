@@ -15,6 +15,11 @@ import javax.sound.sampled.Clip;
 import javax.swing.*;
 import static survivalgame.main_menu.x;
 
-public class map1 extends All_map{
+public class map1{
+    private ImageIcon MapIcn;
     
+    public map1(){
+    MapIcn= new ImageIcon(getClass().getResource("misc/Map1.jpg"));
+    All_map m1=new All_map(MapIcn);
+    m1.setVisible(true);}
 }

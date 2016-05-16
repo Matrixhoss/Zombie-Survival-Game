@@ -12,7 +12,12 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import static survivalgame.main_menu.x;
-
-public class map3 extends All_map{
+ 
+public class map3{
+    private ImageIcon MapIcn;
     
+    public map3(){
+    MapIcn= new ImageIcon(getClass().getResource("misc/dre.png"));
+    All_map m3=new All_map(MapIcn);
+    m3.setVisible(true);}
 }
