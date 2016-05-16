@@ -252,14 +252,7 @@ public class All_map extends JFrame {
                 }}}
                              
             }
-            if(NumberOfPlayers==2)
-            if(p.getHealth()<=0&&p2.getHealth()<=0){
-                    MissionFailed();
-                    game_over();
-                    p.setEnabled(false);
-                    p.setVisible(false);
-                    p.die();
-                   }
+            
             }
             setHealthBar();
             if (NumberOfPlayers==2){
@@ -287,7 +280,14 @@ public class All_map extends JFrame {
            score1.setText("Score: "+ZombieGenerator.score);
           
            //savescore();
+           
+           if(NumberOfPlayers==2)
+            if(p.getHealth()<=0&&p2.getHealth()<=0){
+                    MissionFailed();
+                    game_over();
+                   }
         }
+        
     });
     t.start();
     t2.start();
@@ -309,12 +309,13 @@ public class All_map extends JFrame {
         JOptionPane.showMessageDialog(null,new ImageIcon(getClass().getResource("misc/gameover.gif")));
       }
     public void MissionFailed(){
+        t.stop();
+        t2.stop();
         ZombieGenerator.score=0;
         Waves.setWave(1);
         this.dispose();
         this.removeAll();
-        t.stop();
-        t2.stop();
+        
     }
     public void GenerateZombie(ZombieGenerator zn){
         for (int i = 0; i < zn.getZombieNumber(); i++) {
