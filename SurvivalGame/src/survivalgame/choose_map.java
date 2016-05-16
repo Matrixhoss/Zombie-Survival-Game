@@ -65,7 +65,8 @@ public class choose_map extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    All_map sa=new All_map(){};
+                    All_map sa=new All_map(new ImageIcon(getClass().getResource("misc/Map1.jpg"))){};
+                    sa.setVisible(true);
 //                    fa.setVisible(true);
                 }
             }
@@ -75,8 +76,8 @@ public class choose_map extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    map2 sn = new map2();
-//                    sn.setVisible(true);
+                    All_map sn = new All_map(new ImageIcon(getClass().getResource("misc/Hillsides.png")));
+                    sn.setVisible(true);
                 }
             }
         );
@@ -85,8 +86,8 @@ public class choose_map extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    map3 se = new map3();
-//                    se.setVisible(true);
+                    All_map se = new All_map(new ImageIcon(getClass().getResource("misc/wd.png")));
+                    se.setVisible(true);
                 }
             }
         );
