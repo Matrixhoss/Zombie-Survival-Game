@@ -67,7 +67,6 @@ public class choose_map extends JFrame{
                 public void actionPerformed(ActionEvent e) {
                     All_map sa=new All_map(new ImageIcon(getClass().getResource("misc/map1.jpg"))){};
                     sa.setVisible(true);
-//                    fa.setVisible(true);
                 }
             }
         );
