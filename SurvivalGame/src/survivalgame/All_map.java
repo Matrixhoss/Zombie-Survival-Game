@@ -45,53 +45,115 @@ public class All_map extends JFrame {
     ImageIcon Playericon = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     Timer t;
     Timer t2;
+    public static TotalScore l=new TotalScore();
 
     private Container c;
 
     private int TotalNumberOfZombies;
-
-    static int sc = 0;
-
-    public All_map(ImageIcon icon) {
-        c = this.getContentPane();
-        this.setLocation(15,0);
-        setBackground(icon);
-        r = new Random();
-
-        zn = new ZombieGenerator(Background);
-
-        WaveTxt = new JLabel("Night: " + Waves.getWave());
-        WaveTxt.setBounds(610, 0, 100, 60);
-        Background.add(WaveTxt);
-        WaveTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
-        WaveTxt.setForeground(Color.WHITE);
-
-        switch (Difficulty) {
-            case 1:
-                DifficultyTxt = new JLabel("Difficulty: Easy");
-                break;
-            case 2:
-                DifficultyTxt = new JLabel("Difficulty: Medium");
-                break;
-            case 3:
-                DifficultyTxt = new JLabel("Difficulty Hard");
-                break;
-        }
-        DifficultyTxt.setBounds(580, 20, 200, 60);
-        Background.add(DifficultyTxt);
-        DifficultyTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
-        DifficultyTxt.setForeground(Color.WHITE);
-
-        NumberofRZ = new JLabel("Remaining Zombies: " + zn.getZombieNumber());
-        NumberofRZ.setBounds(550, 40, 400, 60);
-        Background.add(NumberofRZ);
-        NumberofRZ.setFont(new Font("Stencil Regular", Font.BOLD, 20));
-        NumberofRZ.setForeground(Color.WHITE);
-
-        WavePopUp = new JLabel("Night Survived ");
-        WavePopUp.setBounds(330, 100, 1000, 400);
-        WavePopUp.setFont(new Font("Stencil Regular", Font.BOLD, 100));
-        WavePopUp.setForeground(Color.RED);
+    
+    static int sc=0;
+    public All_map(ImageIcon icon){
+    l.ReadScores();
+    c = this.getContentPane();
+    setBackground(icon);
+      r= new Random();
+      
+      zn=new ZombieGenerator(Background);
+      
+      WaveTxt=new JLabel("Wave: "+Waves.getWave());
+      WaveTxt.setBounds(610, 0, 100, 60);
+      Background.add(WaveTxt);
+      WaveTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      WaveTxt.setForeground(Color.WHITE);
+      
+      switch(Difficulty){
+          case 1:
+              DifficultyTxt=new JLabel("Difficulty: Easy");
+              break;
+          case 2:
+              DifficultyTxt=new JLabel("Difficulty: Medium");
+              break;
+          case 3:
+              DifficultyTxt=new JLabel("Difficulty Hard");
+              break;
+      }
+      DifficultyTxt.setBounds(580, 20, 200, 60);
+      Background.add(DifficultyTxt);
+      DifficultyTxt.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      DifficultyTxt.setForeground(Color.WHITE);
+      
+      NumberofRZ=new JLabel("Remaining Zombies: "+zn.getZombieNumber());
+      NumberofRZ.setBounds(550, 40, 400, 60);
+      Background.add(NumberofRZ);
+      NumberofRZ.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      NumberofRZ.setForeground(Color.WHITE);
+      
+      WavePopUp=new JLabel("Wave Clear ");
+      WavePopUp.setBounds(400,100, 1000,400);
+      WavePopUp.setFont(new Font("Stencil Regular", Font.BOLD, 100));
+      WavePopUp.setForeground(Color.RED);
+      WavePopUp.setVisible(false);
+      Background.add(WavePopUp);
+      
+      Name=new JLabel(no_of_players.getPlayer(1));
+      Name.setBounds(15, 0, 150, 60);
+      Background.add(Name);
+      Name.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      Name.setForeground(Color.WHITE);
+      
+      Name2=new JLabel(no_of_players.getPlayer(2));
+      Name2.setBounds(1110, 0, 150, 60);
+      Background.add(Name2);
+      Name2.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      Name2.setVisible(false);
+      Name2.setForeground(Color.WHITE);
+      
+      if(NumberOfPlayers==2){
+      Name2.setVisible(true);
+      }
+      
+      HealthBar=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
+      HealthBar.setBounds(10,15,100,70);
+      Background.add(HealthBar);
+      
+      if(NumberOfPlayers==2){
+       HealthBar2=new JLabel(new ImageIcon(getClass().getResource("misc/Sprites/Health1.png")));
+      HealthBar2.setBounds(1105,15,100,70);
+      Background.add(HealthBar2);
+      
+      score2=new JLabel("Score: "+ZombieGenerator.score);
+      score2.setBounds(1110, 10, 400, 120);
+      Background.add(score2);
+      score2.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      score2.setForeground(Color.WHITE);
+      }
+      
+      score1=new JLabel("Score: "+ZombieGenerator.score);
+      score1.setBounds(15, 10, 400, 120);
+      Background.add(score1);
+      score1.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+      score1.setForeground(Color.WHITE);
+      
+      GenerateZombie(zn);
+      if(NumberOfPlayers==2){
+      p2 = new Player (100,10,this,200,400,Background,mapdim,zn,2);
+      p2.setIcon(Playericon);
+      p2.setSize(100, 100);
+      this.StartedNewMap=false;
+      Background.add(p2);
+      play();}
+      
+      p = new Player (100,10,this,200,400,Background,mapdim,zn,1);
+      p.setIcon(Playericon);
+      p.setSize(100, 100);
+      this.StartedNewMap=false;
+      Background.add(p);
+      play();
+      
+      
+      
+    t2=new Timer(8000,new ActionListener(){
+    public void actionPerformed(ActionEvent e){
         WavePopUp.setVisible(false);
         Background.add(WavePopUp);
 
@@ -316,12 +378,15 @@ public class All_map extends JFrame {
 //    });
 //    ts.start();
     }
-
-    public void game_over() {
-        JOptionPane.showMessageDialog(null, new ImageIcon(getClass().getResource("misc/gameover.gif")));
-    }
-
-    public void MissionFailed() {
+    public void game_over(){
+        JOptionPane.showMessageDialog(null,new ImageIcon(getClass().getResource("misc/gameover.gif")));
+      }
+    public void MissionFailed(){
+        if(NumberOfPlayers==1){
+        All_map.l.addScore(no_of_players.getPlayer(1), ZombieGenerator.score);
+        All_map.l.SaveScores();
+        All_map.l.PrintAll();
+        }
         t.stop();
         t2.stop();
         ZombieGenerator.score = 0;

@@ -376,7 +376,7 @@ public class Player extends Character {
     }
     public void die(){
         this.isAlive=false;
-       try {
+        try {
            this.finalize();
        } catch (Throwable ex) {
            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
