@@ -21,7 +21,8 @@ public class diffculty extends JFrame{
     ImageIcon cyd_btn= new ImageIcon(getClass().getResource("misc/cyd.png"));
      ImageIcon back_btn = new ImageIcon(getClass().getResource("misc/back.png"));
     public diffculty(){
-        this.setTitle("Option");
+        this.setTitle("Difficulty");
+        this.setLocation(300,70);
         this.setSize(800, 600);
         this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

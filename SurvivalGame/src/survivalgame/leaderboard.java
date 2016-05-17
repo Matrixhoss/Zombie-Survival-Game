@@ -23,6 +23,7 @@ public class leaderboard extends JFrame{
     public leaderboard(main_menu m){
         
         themenu = m;
+        this.setLocation(300,70);
         this.setSize(800, 600);
         this.setTitle("Hall Of Fame");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

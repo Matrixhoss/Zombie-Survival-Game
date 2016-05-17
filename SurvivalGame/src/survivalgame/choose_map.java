@@ -27,6 +27,7 @@ public class choose_map extends JFrame{
     
     public choose_map(no_of_players nop){
         this.setTitle("Choose map");
+        this.setLocation(300,70);
         this.setSize(800, 600);
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
