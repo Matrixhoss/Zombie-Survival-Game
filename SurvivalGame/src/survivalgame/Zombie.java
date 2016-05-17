@@ -13,6 +13,7 @@ public abstract class Zombie extends Character  {
    
     public int x;
     public int y;
+    public int FollowedPlayer;
     public String Type;
     private Random r;
     ImageIcon shape;
@@ -32,7 +33,11 @@ public abstract class Zombie extends Character  {
     public Zombie (String T){
         super(20,50);
         r=new Random();
-        int RandS=r.nextInt(5);//RandS to make zombies have different value
+       Random x=new Random();
+       
+       this.FollowedPlayer=x.nextInt(2);
+       System.out.println(FollowedPlayer);
+       int RandS=r.nextInt(5);//RandS to make zombies have different value
         switch (T){
             case "ZombieNormal":
                 this.setHealth(20);
@@ -44,7 +49,7 @@ public abstract class Zombie extends Character  {
                 break;
             case"ZombieFast":
                 this.setHealth(10);
-                this.setSpeed(60+RandS);
+                this.setSpeed(80+RandS);
                   break;
                         
         }
