@@ -22,7 +22,7 @@ public class main_menu extends JFrame{
     ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("misc/zm.png"));
     ImageIcon start_logo= new ImageIcon(getClass().getResource("misc/zm2.gif"));
     ImageIcon start_logo_button= new ImageIcon(getClass().getResource("misc/logo.gif"));
-    ImageIcon option_button= new ImageIcon(getClass().getResource("misc/op.png"));
+    ImageIcon option_button= new ImageIcon(getClass().getResource("misc/diff.png"));
     ImageIcon exit_button= new ImageIcon(getClass().getResource("misc/ex.png"));
     ImageIcon music_button= new ImageIcon(getClass().getResource("misc/ms.png"));
     ImageIcon hall_fame= new ImageIcon(getClass().getResource("misc/hall_of_fame.png"));
