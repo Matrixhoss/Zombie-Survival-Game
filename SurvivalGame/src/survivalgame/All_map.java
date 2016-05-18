@@ -273,7 +273,7 @@ public class All_map extends JFrame {
            if(NumberOfPlayers==2){
                if(p2.getHealth()>0){
             p2.move(mapdim);
-           p2.animation();
+           p2.animation2();
            p2.DamageHandling();
            p2.setLocation(p2.getx(), p2.gety());
                 score2.setText("Score: "+ZombieGenerator.score);}}
@@ -354,6 +354,7 @@ public class All_map extends JFrame {
             File files = new File("round_start.wav");
             Clip clips = AudioSystem.getClip();
             clips.open(AudioSystem.getAudioInputStream(files));
+          
             clips.start();
             }
             catch(Exception es){

@@ -437,6 +437,61 @@ public class Player extends Character {
         }
         }
     }
+    public void animation2 (){
+         // annimation of player
+        if(isAlive){
+        if  (up && right){
+        this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierUpRight2.gif")));
+        stopPosition  = 1 ;
+        }
+        else if  (up && left){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierUpLeft2.gif")));
+         stopPosition  = 2 ;
+        } 
+        else if  (down && right){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierDownRight2.gif")));
+         stopPosition  = 3;
+        }
+        else if  (down && left){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierDownLeft2.gif")));
+         stopPosition  = 4;
+        }
+        else if  (up){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierUp2.gif")));
+         stopPosition  = 5;
+        }
+        else if  (down){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierDown2.gif")));
+         stopPosition  = 6;
+        }
+        else if  (right){
+        this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierRight2.gif")));
+        stopPosition  = 7;
+        }
+        else if  (left){
+         this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/SoldierLeft2.gif")));
+         stopPosition  = 8 ;
+        }
+        else{ // when player  not move 
+            if(stopPosition  == 1)// Up and right
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/2UpRight.png")));
+           if(stopPosition  == 2)// up and left 
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/2UpLeft.png")));
+           if(stopPosition  == 3) // down and right 
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/2DownRight.png")));
+           if(stopPosition  == 4) // down amd left 
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/2DownLeft.png")));
+           if(stopPosition  == 5) // up
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/2Up.png")));
+           if(stopPosition  == 6) // down
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/2Down.png")));
+           if(stopPosition  == 7) // right 
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/2Right.png")));
+           if(stopPosition  == 8) // left 
+            this.setIcon(new ImageIcon(getClass().getResource("misc/Sprites/2Left.png")));
+    
+        }}
+    }
     public void gunsound(){
         if(isAlive){
         try{
