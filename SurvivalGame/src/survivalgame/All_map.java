@@ -135,14 +135,14 @@ public class All_map extends JFrame {
       
       GenerateZombie(zn);
       if(NumberOfPlayers==2){
-      p2 = new Player (100,10,this,200,400,Background,mapdim,zn,2);
+      p2 = new Player (100,10,this,400,300,Background,mapdim,zn,2);
       p2.setIcon(Playericon);
       p2.setSize(100, 100);
       this.StartedNewMap=false;
       Background.add(p2);
       play();}
       
-      p = new Player (100,10,this,200,400,Background,mapdim,zn,1);
+      p = new Player (100,10,this,700,300,Background,mapdim,zn,1);
       p.setIcon(Playericon);
       p.setSize(100, 100);
       this.StartedNewMap=false;
