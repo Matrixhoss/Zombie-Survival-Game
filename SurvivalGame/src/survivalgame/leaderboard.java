@@ -17,7 +17,6 @@ public class leaderboard extends JFrame{
     private JLabel ground;
     
     main_menu themenu;
-    Score score_board;
     
     ImageIcon background_logo = new ImageIcon(getClass().getResource("misc/zm.png"));
     ImageIcon back_btn = new ImageIcon(getClass().getResource("misc/back.png"));
