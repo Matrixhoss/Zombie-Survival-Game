@@ -44,7 +44,7 @@ public class All_map extends JFrame {
     ImageIcon Playericon  = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     Timer t;
     Timer t2;
-    public static TotalScore l=new TotalScore();
+    
 
     private Container c;
      
@@ -312,10 +312,10 @@ public class All_map extends JFrame {
       }
     public void MissionFailed(){
         if(NumberOfPlayers==1){
-        l.ReadScores();
-        All_map.l.addScore(no_of_players.getPlayer(1), ZombieGenerator.score);
-        All_map.l.SaveScores();
-        All_map.l.PrintAll();
+        main_menu.l.ReadScores();
+        main_menu.l.addScore(no_of_players.getPlayer(1), ZombieGenerator.score);
+        main_menu.l.SaveScores();
+        main_menu.l.PrintAll();
         }
         t.stop();
         t2.stop();

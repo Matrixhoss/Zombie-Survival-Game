@@ -19,6 +19,7 @@ public class main_menu extends JFrame{
     public JButton hall_of_fame;
     public JLabel logo;
     private static String player;
+    public static TotalScore l=new TotalScore();
     ImageIcon main_menu_logo= new ImageIcon(getClass().getResource("misc/zm.png"));
     ImageIcon start_logo= new ImageIcon(getClass().getResource("misc/zm2.gif"));
     ImageIcon start_logo_button= new ImageIcon(getClass().getResource("misc/logo.gif"));
@@ -41,6 +42,7 @@ public class main_menu extends JFrame{
         n.setVisible(true);
     }
     public main_menu(){
+        l.ReadScores();
         this.setTitle("Zombie Apocalypse");
         this.setResizable(false);
         this.setBounds(300,70, 800, 600);
@@ -97,6 +99,7 @@ public class main_menu extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    main_menu.l.ReadScores();
                     openLeaderBoard();
                 }
             }

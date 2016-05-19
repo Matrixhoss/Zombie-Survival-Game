@@ -44,7 +44,6 @@ class TotalScore implements Serializable{
     
     public void addScore(String name,int Score){
         System.out.println(Size);
-        if(!this.IsFull()){
         for(int i=0;i<Size;i++){
             if(Score>Total.get(i).Score){
                 Total.add(i, new Score(name,Score));
@@ -53,12 +52,12 @@ class TotalScore implements Serializable{
                 break;
             }    
         }
-        if(!Added){
+        if(!Added && this.IsFull()){
             Total.add(new Score(name,Score));
             Size++;
 //            System.out.println("add new Score");
         }
-        }
+        
         Added=false;
     }
     
