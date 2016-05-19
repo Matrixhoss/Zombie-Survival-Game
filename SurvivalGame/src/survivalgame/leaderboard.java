@@ -23,6 +23,7 @@ public class leaderboard extends JFrame{
     ImageIcon leaderborad_logo = new ImageIcon(getClass().getResource("misc/leader_board.png"));
     ImageIcon ground_logo = new ImageIcon(getClass().getResource("misc/aqw.png"));
     
+    
     public leaderboard(main_menu m){
         
         themenu = m;
@@ -52,6 +53,10 @@ public class leaderboard extends JFrame{
         score_field.setBorder(BorderFactory.createLineBorder(Color.WHITE, 4));
         score_field.setBounds(130, 140, 550, 300);
         score_field.setBackground(Color.BLACK);
+        score_field.setEditable(false);
+        for(int i=0;i<10;i++){
+                score_field.setText(score_field.getText()+"\n"+main_menu.l.Total.get(i));
+                        }
         c.add(score_field);
         
         background = new JLabel(background_logo);
