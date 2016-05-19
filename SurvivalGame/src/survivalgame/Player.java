@@ -591,7 +591,7 @@ public class Player extends Character {
 
         if (isAlive) {
             try {
-                File file = new File("shotgun.wav");
+                File file = new File("noammosound.wav");
                 Clip clip1 = AudioSystem.getClip();
                 clip1.open(AudioSystem.getAudioInputStream(file));
                 clip1.start();
