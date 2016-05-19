@@ -54,7 +54,7 @@ public class leaderboard extends JFrame{
         score_field.setBounds(130, 140, 550, 300);
         score_field.setBackground(Color.BLACK);
         score_field.setEditable(false);
-        score_field.setFont(new Font("Stencil Regular", Font.BOLD, 20));
+        score_field.setFont(new Font("Stencil Regular", Font.ITALIC, 20));
         score_field.setForeground(Color.WHITE);
         for(int i=0;i<10;i++){
             score_field.setText(score_field.getText()+"\n"+main_menu.l.Total.get(i));
