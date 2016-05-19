@@ -272,7 +272,7 @@ public class All_map extends JFrame {
            p.setLocation(p.getx(), p.gety());}
            if(NumberOfPlayers==2){
                if(p2.getHealth()>0){
-            p2.move(mapdim);
+           p2.move(mapdim);
            p2.animation2();
            p2.DamageHandling();
            p2.setLocation(p2.getx(), p2.gety());
