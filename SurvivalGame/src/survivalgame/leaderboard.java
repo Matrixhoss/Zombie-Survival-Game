@@ -13,12 +13,16 @@ public class leaderboard extends JFrame{
     private JLabel leaderboard;
     private JButton back;
     private JLabel background;
+    private JTextArea score_field;
+    private JLabel ground;
     
     main_menu themenu;
+    Score score_board;
     
     ImageIcon background_logo = new ImageIcon(getClass().getResource("misc/zm.png"));
     ImageIcon back_btn = new ImageIcon(getClass().getResource("misc/back.png"));
     ImageIcon leaderborad_logo = new ImageIcon(getClass().getResource("misc/leader_board.png"));
+    ImageIcon ground_logo = new ImageIcon(getClass().getResource("misc/aqw.png"));
     
     public leaderboard(main_menu m){
         
@@ -40,6 +44,16 @@ public class leaderboard extends JFrame{
         back.setBounds(20, 450, 130, 75);
         back.setBackground(Color.BLACK);
         c.add(back);
+        
+        ground = new JLabel(ground_logo);
+        ground.setBounds(670, 450, 100, 99);
+        c.add(ground);
+        
+        score_field = new JTextArea();
+        score_field.setBorder(BorderFactory.createLineBorder(Color.WHITE, 4));
+        score_field.setBounds(130, 140, 550, 300);
+        score_field.setBackground(Color.BLACK);
+        c.add(score_field);
         
         background = new JLabel(background_logo);
         background.setBounds(0, 0, 800, 600);

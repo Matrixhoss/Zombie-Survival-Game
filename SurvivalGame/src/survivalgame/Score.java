@@ -1,4 +1,3 @@
-
 package survivalgame;
 
 import java.io.File;
@@ -13,7 +12,6 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 class Score implements Serializable{
     public String name;
@@ -31,9 +29,6 @@ class Score implements Serializable{
     public String toString() {
         return "Name :"+this.name+", Score :"+this.Score; //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
 }
 class TotalScore implements Serializable{
     public static LinkedList<Score> Total=new LinkedList();
@@ -100,7 +95,7 @@ class TotalScore implements Serializable{
         ois.close();
         fis.close();
         
-       } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
             System.out.println(ex);
         } catch (IOException ex) {
             System.out.println(ex);
