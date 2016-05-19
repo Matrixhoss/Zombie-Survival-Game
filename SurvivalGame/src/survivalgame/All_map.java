@@ -40,7 +40,7 @@ public class All_map extends JFrame {
     public static int NumberOfPlayers;
     public static int Difficulty = 1;
     private Dimension mapdim = new Dimension();
-    ImageIcon MapIcn = new ImageIcon(getClass().getResource("misc/Map1.jpg"));
+    ImageIcon MapIcn = new ImageIcon(getClass().getResource("misc/map1.jpg"));
     ImageIcon Zombierawr = new ImageIcon(getClass().getResource("misc/Sprites/ZombieWalk_normal_scaled_fast.gif"));
     ImageIcon Playericon = new ImageIcon(getClass().getResource("misc/Sprites/Soldier.png"));
     Timer t;
