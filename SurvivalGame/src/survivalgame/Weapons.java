@@ -36,9 +36,12 @@ class Shotgun extends Weapons{
     Shotgun(){
         this.damage = 50;
         this.rateoffire = 5;
-        this.ammo=Integer.MAX_VALUE;
+        this.ammo=10;
         this.range=2;
     }
+    @Override
+    public void RefillAmmo(){this.ammo=10;};
+    
     public void AddAmmo(int ammo){
         this.ammo+=ammo;
     }
